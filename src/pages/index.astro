@@ -1,0 +1,28 @@
+---
+// src/pages/index.astro
+import "../styles/global.css";
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ServicesSection from '../components/ServicesSection.tsx';
+import MethodologySection from '../components/MethodologySection.tsx';
+import LogoShowcase from '../components/LogoShowcase.astro';
+import AboutUsSection from '../components/AboutUsSection.astro';
+import CTASection from '../components/CTASection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Day One | Talent Advisory">
+  <div class="min-h-screen font-serif">
+    <Header />
+    <Hero />
+    <ServicesSection />
+    <MethodologySection />
+    <!-- <LogoShowcase /> -->
+    <AboutUsSection />
+    <CTASection />
+    <ContactSection />
+    <Footer />
+  </div>
+</Layout>

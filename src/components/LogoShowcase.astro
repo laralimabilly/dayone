@@ -1,0 +1,89 @@
+---
+// src/components/LogoShowcase.astro
+---
+
+<section class="section bg-dark rounded-section">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-accent">Our Brand Evolution</h2>
+      
+      <p class="text-secondary max-w-3xl mb-12">
+        Our logo is a visual embodiment of the company's philosophy: combining the energy of a fresh start with the depth of experience and insight. The brain icon, split into two distinct halves, reflects this duality of thought and approach:
+        <br /><br />The left side, with its curvy, organic lines, symbolizes the emotional and human side — embracing intuition, empathy, and the ability to form deep, meaningful connections. It reflects the care, attention, and sensitivity with which DayOne approaches every individual and organization.
+        <br /><br />The right side, defined by its structured, geometric network, represents the analytical and strategic side — highlighting logic, clarity, and the objective processes that drive effective executive search and talent advisory.
+        <br /><br />This contrast illustrates DayOne's commitment to balancing heart and mind, emotion and reason — recognizing that true leadership and transformation happen when both dimensions work in harmony. The clean typography and emphasis on "One" in gold highlight the company's core belief: that every day can carry the impact and intention of Day One — full of purpose, clarity, and possibility.
+      </p>
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="bg-gradient-to-br from-primary/20 to-accent/10 p-8 rounded-xl border border-primary/30 relative overflow-hidden">
+          <!-- Background decorative elements -->
+          <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+          <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+          
+          <div class="relative z-10 text-center">
+            <img
+              src="/img/DayOne_Logo_Light.png"
+              alt="Primary Logo"
+              class="w-full max-w-md mx-auto h-auto rounded-lg mb-4"
+            />
+            <div class="mt-6 p-4 bg-dark/50 rounded-lg backdrop-blur-sm">
+              <h3 class="text-lg font-semibold text-accent mb-2">Primary Logo</h3>
+              <p class="text-secondary/80 text-sm">
+                Full wordmark with brain icon representing the balance between analytical thinking and human intuition.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Brand Elements -->
+        <div class="space-y-6">
+          <div class="bg-primary/20 p-6 rounded-xl border border-primary/50 relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-24 h-24 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+            
+            <div class="relative z-10">
+              <h4 class="text-xl font-bold text-accent mb-4">Brand Philosophy</h4>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                  <p class="text-secondary/80 text-sm">
+                    <span class="font-medium text-secondary">Day One Energy:</span> Every challenge approached with fresh perspective and renewed purpose
+                  </p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                  <p class="text-secondary/80 text-sm">
+                    <span class="font-medium text-secondary">Dual Thinking:</span> Balancing analytical precision with human empathy
+                  </p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                  <p class="text-secondary/80 text-sm">
+                    <span class="font-medium text-secondary">Transformational Impact:</span> Creating meaningful change through strategic talent placement
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-accent/10 p-6 rounded-xl border border-accent/30 relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-24 h-24 bg-accent/20 rounded-full blur-2xl opacity-70"></div>
+            
+            <div class="relative z-10">
+              <h4 class="text-xl font-bold text-accent mb-4">Color Psychology</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-accent rounded-lg mx-auto mb-2"></div>
+                  <p class="text-xs text-secondary/80">Warm Gold</p>
+                  <p class="text-xs text-secondary/60">Trust & Excellence</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-primary rounded-lg mx-auto mb-2"></div>
+                  <p class="text-xs text-secondary/80">Deep Blue</p>
+                  <p class="text-xs text-secondary/60">Stability & Wisdom</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

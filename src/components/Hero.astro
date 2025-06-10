@@ -1,0 +1,47 @@
+---
+// src/components/Hero.astro
+import SocialLinks from './SocialLinks.tsx';
+import HeroAnimation from './HeroAnimation.tsx';
+---
+
+<section class="relative h-[80vh] overflow-hidden flex items-center">
+  <div 
+    class="absolute inset-0 bg-cover bg-center bg-dark bg-blend-multiply"
+    style="background-image: url('/img/building.jpg')"
+  >
+  </div>
+  <div class="absolute inset-0 bg-primary/60"></div>
+  
+  <div class="relative z-10 container mx-auto px-4 pl-8 flex flex-col justify-center border-l-1">
+    <div class="max-w-1/2">
+      <HeroAnimation client:load />
+      
+      <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
+        <button class="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-8 py-3 rounded-full font-medium">
+          Transform Your Organization
+        </button>
+      </div>
+    </div>
+    <div class="absolute flex flex-col items-center gap-6 top-1/2 -translate-y-1/2 right-0">
+      <SocialLinks />
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    opacity: 0;
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+</style>

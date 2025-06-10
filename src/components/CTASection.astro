@@ -1,0 +1,68 @@
+---
+// src/components/CTASection.astro
+import { useTranslations } from '../utils/i18n';
+
+const perks = [
+  {
+    title: '20+',
+    description: 'Years of Experience'
+  },
+  {
+    title: '12-month',
+    description: 'replacement guarantee for all executive placements'
+  },
+  {
+    title: '3-week',
+    description: 'delivery of qualified finalist candidates'
+  },
+  {
+    title: 'Exclusive',
+    description: 'partnership model for focused attention'
+  },
+  {
+    title: 'No fees',
+    description: 'No cancellation fees - we\'re confident in our value delivery'
+  },
+  {
+    title: '15%',
+    description: 'discount for any candidates hired besides the first hire'
+  }
+];
+
+const { t } = useTranslations();
+---
+
+<section class="section bg-secondary rounded-b-4xl">
+  <div class="container mx-auto px-4 text-center relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute -right-20 -top-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute -left-20 -bottom-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl opacity-50"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto py-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-primary">Why choose DayOne</h2>
+      <p class="text-dark mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+        As a specialized Talent Advisory firm, we combine the personalized attention of a boutique with the expertise and track record of industry leaders. Our consultative approach recognizes that behind every leadership role lies a unique story, culture, and vision for the future.
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <button class="bg-accent text-white hover:bg-primary hover:text-white transition-all duration-300 px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          Transform Your Organization
+        </button>
+        <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 px-8 py-4 rounded-full font-medium text-lg">
+          Schedule a Consultation
+        </button>
+      </div>
+      
+      <!-- Trust indicators -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        {perks.map((perk) => (
+          <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-primary/20 folder-mask">
+            <div class="text-2xl font-bold text-accent mb-2">{perk.title}</div>
+            <p class="text-primary/80 font-medium text-sm">{perk.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

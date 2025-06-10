@@ -1,0 +1,8 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+
+User-agent: facebookexternalhit
+Allow: /
+
+Sitemap: https://d1hc.com/sitemap.xml

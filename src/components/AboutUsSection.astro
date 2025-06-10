@@ -1,0 +1,98 @@
+---
+// src/components/AboutUsSection.astro
+
+import { FaLinkedin } from "react-icons/fa";
+
+const persons = [
+  {
+    id: 'fernanda-amorim',
+    name: 'Fernanda Amorim',
+    title: 'Founding Partner',
+    image: '/img/Fernanda.png',
+    linkedinUrl: 'https://www.linkedin.com/in/fernandaamorim/',
+    description: `Fernanda Amorim brings over 20 years of experience in executive search, with a strong track record leading more than 400 projects, and a reputation of delivering tailored, high-impact solutions with assertiveness and a sharp insight into digital transformation and human connections.
+
+                  She built her career in global firms such as KPMG, Michael Page, Page Executive, Oracle, and Indeed, where she developed deep expertise in business strategy and strategic hiring, as well as consultative B2B leadership.
+
+                  Most recently, as a Sr. Executive Partner at FIND HR, she led top management recruitment across players in tech, telecom and digital and championed diversity in leadership.`
+  },
+  {
+    id: 'claudio-guerreiro',
+    name: 'Claudio Guerreiro',
+    title: 'Founding Partner',
+    image: '/img/Claudio.png',
+    linkedinUrl: 'https://www.linkedin.com/in/claudio-guerreiro/',
+    description: `Bachelor's degree in Business Administration with a specialization in Foreign Trade and an Executive MBA from the Escola Superior de Propaganda e Marketing.​
+
+                  He has taken several international courses at innovation schools such as Singularity University and Hyper Island.​
+
+                  After 20 years of experience as an executive in the technology industry, in 2014 Guerreiro became an entrepreneur in the Executive Search segment, as well as an angel investor in digitally born companies.​
+
+                  Today, in addition to being a Partner and CEO of Find HR, where he leads the CEO and Board practices, he is an investor and Board Member of the startups FOHAT and Manyplaces.`
+  },
+  {
+    id: 'osvaldo-aranha',
+    name: 'Osvaldo Aranha',
+    title: 'Thought Leader',
+    image: '/img/Osvaldo.png',
+    linkedinUrl: 'https://www.linkedin.com/in/osvaldoaranha/',
+    description: `Osvaldo Aranha is recognized as one of the 100 best AI professionals in the world by PixieBrix. He has been working in the information technology sector for over 18 years. He has an MBA in Business Intelligence and a specialization in IT Management, Futures Studies and AI.
+
+      He has decades of experience in AI, Analytics, Cloud, Innovation and Digital Transformation. He is an AI specialist, having led areas at Microsoft, Deloitte and CSU Digital.
+
+      He has been teaching classes, courses and training since 2014, having supported over 6,000 executives in extensive courses, webinars, innovation projects, lectures and in-person and online training. He is a mentor for startups and also writes articles and publications on IT-related topics.`
+  }
+];
+
+const formatDescription = (text: string) => {
+  return text.split('\n\n').map(paragraph => paragraph.trim()).filter(p => p.length > 0);
+};
+---
+
+<section class="section bg-light">
+  <div class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-accent">About Us</h2>  
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 md:gap-x-8 items-start">
+      {persons.map((person) => (
+        <div class="grid grid-cols-1">
+          <div class="p-6 rounded-lg">
+            <div class="relative mb-6">
+              <img
+                src={person.image}
+                alt={person.name}
+                class="w-full object-cover rounded-lg p-8"
+              />
+            </div>
+          </div>
+          <div>
+            <a class="ml-4" href={person.linkedinUrl} target="_blank">
+              <h3 class="text-2xl text-accent hover:text-accent/40 font-semibold flex items-center">
+                {person.name}
+                <FaLinkedin className="ml-4" />
+              </h3>
+            </a>
+            <h4 class="text-xl font-bold text-primary mb-4">{person.title}</h4>
+            <div>
+                
+            </div>
+            <div class="text-dark mb-4">
+              {formatDescription(person.description).map((paragraph, index) => (
+                <p class={index > 0 ? 'mt-4' : ''}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <button class="text-accent hover:text-accent-light flex items-center group transition-colors">
+              Read More 
+              <svg width="16" height="16" fill="currentColor" class="ml-1 group-hover:ml-2 transition-all" viewBox="0 0 24 24">
+                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+    <img  class="max-w-1/8 m-auto mt-36" src="/img/DayOne_Symbol.svg" alt="Brain symbol" />
+  </div>
+</section>

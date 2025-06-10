@@ -1,0 +1,199 @@
+/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+    /* Fonts */
+  --font-serif: 'Ubuntu Sans', serif;
+  --font-sans: 'Ubuntu Sans', serif;
+  --font-mono: 'Afacad', serif;
+  
+    /* Colors */
+  --color-primary: #414F59;
+  --color-primary-light: #556B7A;
+  --color-secondary: #E0DFD5;
+  --color-secondary-dark: #BFC0C2;
+  --color-accent: #E2A86B;
+  --color-accent-light: #E6B384;
+  --color-accent-dark: #CF8020;
+  --color-dark: #2C2F34;
+  --color-light: #E8E9EB;
+}
+
+/* CSS Variables */
+:root {
+  /* Typography */
+  font-family: 'Afacad', serif, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--color-dark);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+button {
+    cursor: pointer;
+}
+
+h2 {
+    text-transform: lowercase;
+    font-weight: 100;
+    font-family: Afacad, serif;
+}
+
+header {
+    background-color: var(--color-dark);
+}
+
+.folder-mask {
+    -webkit-mask: url(../img/shape-1.svg) center / contain no-repeat, linear-gradient(#000000 0 0);
+    mask-size: 14rem;
+    mask-position: 10rem 100.1%;
+    mask-composite: exclude;
+}
+
+.rounded-section {
+    border-radius: 3.2rem;
+}
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+  
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+/* Scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-animate.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form styles */
+input, textarea, select {
+  font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: var(--color-accent);
+}

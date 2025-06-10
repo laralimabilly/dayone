@@ -1,0 +1,13 @@
+---
+// src/components/NavLinks.astro
+export interface Props {
+  classList: string;
+}
+
+const { classList } = Astro.props;
+---
+
+<a href="#" class={classList}>Solutions</a>
+<a href="#" class={classList}>How We Work</a>
+<a href="#" class={classList}>Our Team</a>
+<a href="#" class={classList}>Contact</a>

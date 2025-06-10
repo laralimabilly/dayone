@@ -1,0 +1,56 @@
+{
+    "solutions": {
+        "h2": "How DayOne can support your people needs",
+        "h3": "From Executive Search & Talent Advisory to Career Transition Support, we provide detailed market insights to improve your strategic hiring decisions.",
+        "p": "Transform your organization with leaders who don't just adapt — they drive evolution. Our comprehensive executive search service goes beyond traditional recruitment to deliver strategic leaders with digital DNA who can navigate complexity and accelerate growth.",
+        "services": {
+            "role": {
+                "title": "Roles Definition",
+                "description": "From Organizational architecture, roles definition, executive search to further onboarding and 100-day plan and reviews"
+            },
+            "market": {
+                "title": "Market Mapping",
+                "description": "Active market mapping and targeted executive hunting"
+            },
+            "assessment": {
+                "title": "Fit Assessment",
+                "description": "Assessment of technical and behavioral fit at leadership level"
+            },
+            "resume": {
+                "title": "Profile Optimization",
+                "description": "Resume and digital profile optimization, personal brand development and market positioning"
+            },
+            "skills": {
+                "title": "Skills Mapping",
+                "description": "Skills mapping, leadership style assessment and self knowledge"
+            },
+            "programs": {
+                "title": "Tailored Programs",
+                "description": "Short and practical tailor-made programs for Executives who want to feel better prepared for their career transition stages"
+            }
+        }
+    },
+    "methodology": {
+        "h2": "Our Executive Search Methodology",
+        "h3": "The DayOne Approach: Every Day Like the First",
+        "p": "We believe that every great transformation begins with Day One energy—and that true success happens when that energy is renewed daily. Our proven methodology ensures we identify leaders who maintain the spirit of innovation, dedication, and purpose as if every challenge were their first and most meaningful."
+    },
+    "contact": {
+        "h2": "Get in touch",
+        "h3": "Let's discuss how our Executive Search solutions can help your business",
+        "p": "Reach out to our team to learn more about our services or to schedule a consultation. We're ready to help you optimize your hiring operations.",
+        "label": {
+            "email": "Email",
+            "phone": "Phone",
+            "office": "Office"
+        },
+        "input": {
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone",
+            "company": "Company",
+            "message": "Message"
+        },
+        "address": "Av. Brigadeiro Faria Lima, 1.811,<br />Suite 1119<br />01452-001<br />São Paulo, SP - Brazil"
+    }
+}

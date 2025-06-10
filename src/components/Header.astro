@@ -1,0 +1,35 @@
+---
+// src/components/Header.astro
+import NavLinks from './NavLinks.astro';
+import MobileNav from './MobileNav.jsx';
+---
+
+<header class="relative z-20">
+  <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center">
+      <img src="/img/DayOne_Logo_Light.png" alt="Logo Day One" class="max-w-36" />
+    </div>
+    
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex space-x-8">
+      <NavLinks classList="nav-link" />
+    </div>
+    
+    <div class="hidden md:block">
+      <button class="btn-primary">Get Started</button>
+    </div>
+    
+    <!-- Mobile menu -->
+    <MobileNav client:load />
+  </nav>
+</header>
+
+<style>
+  .nav-link {
+    @reference text-secondary hover:text-accent transition-colors;
+  }
+  
+  .btn-primary {
+    @reference bg-accent text-white hover:bg-white hover:text-primary transition-colors px-8 py-3 rounded-full font-medium;
+  }
+</style>

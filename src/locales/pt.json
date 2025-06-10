@@ -1,0 +1,56 @@
+{
+    "solutions": {
+        "h2": "Como a DayOne pode apoiar suas necessidades",
+        "h3": "Desde Executive Search e Consultoria de Talentos até Suporte de Transição de Carreira, fornecemos insights detalhados de mercado para melhorar suas decisões estratégicas de contratação.",
+        "p": "Transforme sua organização com líderes que não apenas se adaptam — eles conduzem a evolução. Nosso serviço abrangente de executive search vai além do recrutamento tradicional para entregar líderes estratégicos com DNA digital que podem navegar pela complexidade e acelerar o crescimento.",
+        "services": {
+            "role": {
+                "title": "Definição de Funções",
+                "description": "Desde arquitetura organizacional, definição de funções, executive search até onboarding e plano de 100 dias e revisões"
+            },
+            "market": {
+                "title": "Mapeamento de Mercado",
+                "description": "Mapeamento ativo de mercado e caça executiva direcionada"
+            },
+            "assessment": {
+                "title": "Avaliação de Fit",
+                "description": "Avaliação de adequação técnica e comportamental em nível de liderança"
+            },
+            "resume": {
+                "title": "Otimização de Perfil",
+                "description": "Otimização de currículo e perfil digital, desenvolvimento de marca pessoal e posicionamento de mercado"
+            },
+            "skills": {
+                "title": "Mapeamento de Competências",
+                "description": "Mapeamento de competências, avaliação de estilo de liderança e autoconhecimento"
+            },
+            "programs": {
+                "title": "Programas Personalizados",
+                "description": "Programas curtos e práticos sob medida para Executivos que querem se sentir melhor preparados para suas etapas de transição de carreira"
+            }
+        }
+    },
+    "methodology": {
+        "h2": "Nossa Metodologia de Executive Search",
+        "h3": "A Abordagem DayOne: Todo Dia Como o Primeiro",
+        "p": "Acreditamos que toda grande transformação começa com a energia do primeiro dia—e que o verdadeiro sucesso acontece quando essa energia é renovada diariamente. Nossa metodologia comprovada garante que identifiquemos líderes que mantêm o espírito de inovação, dedicação e propósito como se cada desafio fosse seu primeiro e mais significativo."
+    },
+    "contact": {
+        "h2": "Entre em contato",
+        "h3": "Vamos discutir como nossas soluções de Executive Search podem ajudar seu negócio",
+        "p": "Entre em contato com nossa equipe para saber mais sobre nossos serviços ou agendar uma consulta. Estamos prontos para ajudar você a otimizar suas operações de contratação.",
+        "label": {
+            "email": "Email",
+            "phone": "Telefone",
+            "office": "Escritório"
+        },
+        "input": {
+            "name": "Nome",
+            "email": "Email",
+            "phone": "Telefone",
+            "company": "Empresa",
+            "message": "Mensagem"
+        },
+        "address": "Av. Brigadeiro Faria Lima, 1.811,<br />Sala 1119<br />01452-001<br />São Paulo, SP - Brasil"
+    }
+}
