@@ -1,7 +1,5 @@
 ---
 // src/components/CTASection.astro
-import { useTranslations } from '../utils/i18n';
-
 const perks = [
   {
     title: '20+',
@@ -29,7 +27,6 @@ const perks = [
   }
 ];
 
-const { t } = useTranslations();
 ---
 
 <section class="section bg-secondary rounded-b-4xl">
@@ -57,7 +54,7 @@ const { t } = useTranslations();
       <!-- Trust indicators -->
       <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         {perks.map((perk) => (
-          <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-primary/20 folder-mask">
+          <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-primary/20">
             <div class="text-2xl font-bold text-accent mb-2">{perk.title}</div>
             <p class="text-primary/80 font-medium text-sm">{perk.description}</p>
           </div>

@@ -1,9 +1,9 @@
 import { Users, Target, Search, UserCheck, BarChart, Handshake, Calendar, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from '../utils/i18n';
 
 const MethodolodySection = () => {
 
-    const {t} = useTranslation();
+    const {t} = useTranslations();
 
     const methodologySteps = [
         {
@@ -73,7 +73,7 @@ const MethodolodySection = () => {
       ];
     
       return (
-        <section className="bg-dark py-24 text-secondary">
+        <section id="how-we-work" className="bg-dark py-24 text-secondary">
           <div className="container mx-auto px-6">
             {/* Header */}
             <div className="text-center mb-20">

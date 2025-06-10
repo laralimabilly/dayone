@@ -1,9 +1,9 @@
 import { Users, FileSearch, Award, BookOpen, BarChart, Handshake } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from '../utils/i18n';
 
-const ServicesSection = () => {
+const SolutionsSection = () => {
 
-  const {t} = useTranslation();
+  const {t} = useTranslations();
 
   const services = [
     {
@@ -39,7 +39,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="bg-light py-24 text-primary folder-mask">
+    <section id="solutions" className="bg-light py-24 text-primary folder-mask">
       <div className="container mx-auto px-6">
         {/* Featured section with image */}
         <div className="flex flex-col lg:flex-row gap-12 mb-20 items-center">
@@ -150,4 +150,4 @@ const ServicesSection = () => {
   );
 };
 
-export default ServicesSection;
+export default SolutionsSection;
