@@ -1,90 +1,176 @@
 // src/components/MobileNav.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Debug logging
+  useEffect(() => {
+    console.log('MobileNav mounted, isMenuOpen:', isMenuOpen);
+  }, [isMenuOpen]);
+
+  // Close menu when window is resized to desktop size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) { // md breakpoint
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Prevent body scroll when menu is open (simplified)
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
     e.preventDefault();
-    setIsMenuOpen(false); // Close mobile menu
+    setIsMenuOpen(false);
     
-    const targetElement = document.getElementById(targetId);
-    if (!targetElement) return;
-    
-    // Calculate header height for offset
-    const header = document.querySelector('header');
-    const headerHeight = header ? header.offsetHeight : 0;
-    
-    // Scroll to target with offset for fixed header
-    const targetPosition = targetElement.offsetTop - headerHeight - 20; // 20px extra padding
-    
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
+    // Small delay to allow menu to close
+    setTimeout(() => {
+      const targetElement = document.getElementById(targetId);
+      if (!targetElement) return;
+      
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80; // fallback height
+      
+      const targetPosition = targetElement.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }, 100);
   };
 
+  const navItems = [
+    { href: '#our-solutions', label: 'Our Solutions' },
+    // { href: '#how-we-work', label: 'How We Work' },
+    { href: '#our-team', label: 'Our Team' },
+    // { href: '#contact', label: 'Contact' }
+  ];
+
   return (
-    <>
-      {/* Mobile menu button */}
+    <div className="md:hidden">
+      {/* Mobile menu button - Always visible */}
       <button 
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="md:hidden text-secondary hover:text-accent"
+        onClick={() => {
+          console.log('Menu button clicked, current state:', isMenuOpen);
+          setIsMenuOpen(!isMenuOpen);
+        }}
+        className="relative z-[100] text-secondary hover:text-accent transition-colors duration-200 p-2"
+        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        type="button"
       >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Mobile Navigation */}
+      {/* Backdrop - Fixed positioning */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-dark py-4 border-t border-secondary/10 z-50"
-          >
-            <div className="container mx-auto px-4 flex flex-col space-y-4">
-              <a 
-                href="#solutions" 
-                className="nav-link py-2"
-                onClick={(e) => handleNavClick(e, 'solutions')}
-              >
-                Solutions
-              </a>
-              <a 
-                href="#methodology" 
-                className="nav-link py-2"
-                onClick={(e) => handleNavClick(e, 'methodology')}
-              >
-                How We Work
-              </a>
-              <a 
-                href="#about" 
-                className="nav-link py-2"
-                onClick={(e) => handleNavClick(e, 'about')}
-              >
-                Our Team
-              </a>
-              <a 
-                href="#contact" 
-                className="nav-link py-2"
-                onClick={(e) => handleNavClick(e, 'contact')}
-              >
-                Contact
-              </a>
-              <button 
-                className="btn-primary self-start mt-4"
-                onClick={(e) => handleNavClick(e, 'contact')}
-              >
-                Get Started
-              </button>
-            </div>
-          </motion.div>
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed h-dvh inset-0 bg-black/50 z-[90]"
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            {/* Mobile Navigation Menu */}
+            <motion.div 
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ 
+                type: 'tween',
+                duration: 0.3,
+                ease: 'easeInOut'
+              }}
+              className="fixed top-0 right-0 h-dvh w-80 max-w-[90vw] bg-dark border-l border-secondary/20 z-[95] shadow-2xl"
+            >
+              {/* Header */}
+              <div className="flex justify-between items-center p-6 border-b border-secondary/20">
+                <img 
+                  src="/img/DayOne_Logo_Light.png" 
+                  alt="Day One Logo" 
+                  className="h-8 w-auto"
+                />
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="flex flex-col p-6 space-y-2">
+                {navItems.map((item, index) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 + 0.1 }}
+                    className="flex items-center justify-between py-4 px-4 rounded-lg text-secondary hover:text-accent hover:bg-secondary/10 transition-all duration-200"
+                    onClick={(e) => handleNavClick(e, item.href.substring(1))}
+                  >
+                    <span className="text-lg font-medium">{item.label}</span>
+                    <svg 
+                      width="16" 
+                      height="16" 
+                      fill="currentColor" 
+                      className="opacity-50"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                    </svg>
+                  </motion.a>
+                ))}
+              </nav>
+
+              {/* CTA Section */}
+              <div className="p-6 border-t border-secondary/20">
+                <button 
+                  className="w-full bg-accent text-white hover:bg-accent/90 transition-colors px-6 py-4 rounded-full font-medium text-lg"
+                  onClick={(e) => handleNavClick(e, 'contact')}
+                  type="button"
+                >
+                  Get Started
+                </button>
+                
+                {/* Contact Info */}
+                <div className="mt-6 text-center space-y-2">
+                  <p className="text-secondary/60 text-sm">Let's Talk!</p>
+                  <a 
+                    href="mailto:contato@dayonetalent.com"
+                    className="block text-accent hover:text-accent/80 transition-colors text-sm font-medium"
+                  >
+                    contato@dayonetalent.com
+                  </a>
+                  <a 
+                    href="tel:+5511997127227"
+                    className="block text-accent hover:text-accent/80 transition-colors text-sm font-medium"
+                  >
+                    +55 11 99712-7227
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 

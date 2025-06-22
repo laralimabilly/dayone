@@ -2,25 +2,35 @@
 // src/components/Header.astro
 import NavLinks from './NavLinks.astro';
 import MobileNav from './MobileNav.tsx';
+import { Image } from 'astro:assets';
+import myImage from './public/img/DayOne_Logo_Light.png';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-secondary/10">
-  <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <div class="flex items-center">
-      <img src="/img/DayOne_Logo_Light.png" alt="Logo Day One" class="max-w-36" />
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center flex-shrink-0">
+      <a href="/" aria-label="Day One Talent Advisory Home">
+        <Image 
+          src={myImage} 
+          alt="Logo Day One" 
+          class="max-w-28 sm:max-w-32 lg:max-w-36 h-auto" 
+        />
+      </a>
     </div>
     
     <!-- Desktop Navigation -->
-    <div class="hidden md:flex space-x-8">
+    <div class="hidden lg:flex space-x-6 xl:space-x-8">
       <NavLinks classList="nav-link" />
     </div>
     
-    <div class="hidden md:block">
+    <!-- Desktop CTA Button -->
+    <div class="hidden lg:block">
       <button 
         class="btn-primary"
         onclick="document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
       >
-        Get Started
+        Contact
       </button>
     </div>
     
@@ -31,10 +41,32 @@ import MobileNav from './MobileNav.tsx';
 
 <style>
   .nav-link {
-    @reference text-secondary hover:text-accent transition-colors cursor-pointer;
+    @reference text-secondary hover:text-accent transition-colors cursor-pointer text-sm xl:text-base font-medium;
   }
   
   .btn-primary {
-    @reference bg-accent text-white hover:bg-white hover:text-primary transition-colors px-8 py-3 rounded-full font-medium cursor-pointer;
+    @reference bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-medium cursor-pointer text-sm xl:text-base;
+  }
+  
+  /* Ensure header doesn't interfere with content */
+  header {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  /* Mobile landscape adjustments */
+  @media (max-height: 500px) and (orientation: landscape) {
+    nav {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    
+    .max-w-28 {
+      max-width: 6rem;
+    }
+    
+    .max-w-32 {
+      max-width: 7rem;
+    }
   }
 </style>

@@ -4,26 +4,49 @@ import SocialLinks from './SocialLinks.tsx';
 import HeroAnimation from './HeroAnimation.tsx';
 ---
 
-<section class="relative h-[80vh] overflow-hidden flex items-center">
+<section class="relative min-h-screen lg:h-screen overflow-hidden flex items-center">
   <div 
-    class="absolute inset-0 bg-cover bg-center bg-dark bg-blend-multiply"
-    style="background-image: url('/img/building.jpg')"
+    class="absolute inset-0 bg-cover bg-center bg-light bg-blend-multiply"
+    style="background-image: url('/img/skyline.jpg')"
   >
   </div>
-  <div class="absolute inset-0 bg-primary/60"></div>
+  <div class="absolute inset-0 bg-light/60"></div>
   
-  <div class="relative z-10 container mx-auto px-4 pl-8 flex flex-col justify-center border-l-1">
-    <div class="max-w-1/2">
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center min-h-screen lg:h-auto">
+    <div class="w-full max-w-4xl mx-auto lg:mx-0 lg:max-w-3xl xl:max-w-4xl text-center lg:text-left">
       <HeroAnimation client:load />
       
-      <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style="animation-delay: 0.6s;">
-        <button class="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-8 py-3 rounded-full font-medium">
-          Transform Your Organization
-        </button>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div>
+          <button 
+            class="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto"
+            onclick="document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+            >
+            Executive Search & Talent Advisory 
+          </button>
+          <p class="text-dark font-mono mt-2 text-center">*For Companies</p>
+        </div>
+        <div>
+          <button 
+            class="border-2 border-dark/80 hover:text-dark hover:bg-transparent bg-dark text-light transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto"
+            onclick="document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+            >
+            Career Transition Support 
+          </button>
+          <p class="text-dark font-mono mt-2 text-center">*For Executives</p>
+        </div>
       </div>
     </div>
-    <div class="absolute flex flex-col items-center gap-6 top-1/2 -translate-y-1/2 right-0">
-      <SocialLinks />
+    
+    <!-- Social Links - repositioned for better mobile experience -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:left-auto lg:right-4 xl:right-8 lg:transform-none lg:translate-x-0">
+      <div class="flex lg:flex-col items-center gap-4 lg:gap-6">
+        <div class="hidden lg:block w-px h-16 bg-dark/30"></div>
+        <div class="flex lg:flex-col gap-4 lg:gap-6">
+          <SocialLinks />
+        </div>
+        <div class="hidden lg:block w-px h-16 bg-dark/30"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -43,5 +66,13 @@ import HeroAnimation from './HeroAnimation.tsx';
   .animate-fade-in-up {
     opacity: 0;
     animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  /* Ensure proper spacing on very small screens */
+  @media (max-width: 375px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 </style>

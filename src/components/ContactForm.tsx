@@ -1,4 +1,4 @@
-// src/components/ContactForm.jsx
+// src/components/ContactForm.tsx
 import { useState } from 'react';
 import { User, Mail, Phone, Building, MessageSquare } from 'lucide-react';
 
@@ -25,18 +25,18 @@ function ContactForm() {
   };
 
   return (
-    <div className="bg-[#414F59]/30 p-8 rounded-xl border border-[#414F59] relative overflow-hidden">
+    <div className="bg-[#414F59]/30 p-4 sm:p-6 lg:p-8 rounded-xl border border-[#414F59] relative overflow-hidden">
       <div className="absolute -right-20 -top-20 w-40 h-40 bg-[#E2A86B]/10 rounded-full blur-2xl"></div>
       <div className="absolute -left-20 -bottom-20 w-40 h-40 bg-[#E2A86B]/10 rounded-full blur-2xl"></div>
       
       <div className="relative z-10">
-        <h3 className="text-2xl font-bold text-secondary mb-6">Send us a message</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-secondary mb-4 sm:mb-6">Send us a message</h3>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Name field */}
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-[#E0DFD5] font-medium">
+              <label htmlFor="name" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
                 Name <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
@@ -50,7 +50,7 @@ function ContactForm() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200"
+                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200 text-sm sm:text-base"
                   placeholder="Your name"
                 />
               </div>
@@ -58,7 +58,7 @@ function ContactForm() {
             
             {/* Email field */}
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-[#E0DFD5] font-medium">
+              <label htmlFor="email" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
                 Email <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
@@ -72,7 +72,7 @@ function ContactForm() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200"
+                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200 text-sm sm:text-base"
                   placeholder="your.email@company.com"
                 />
               </div>
@@ -80,7 +80,7 @@ function ContactForm() {
             
             {/* Phone field */}
             <div className="space-y-2">
-              <label htmlFor="phone" className="block text-[#E0DFD5] font-medium">
+              <label htmlFor="phone" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
                 Phone <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
@@ -94,7 +94,7 @@ function ContactForm() {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200"
+                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200 text-sm sm:text-base"
                   placeholder="(555) 123-4567"
                 />
               </div>
@@ -102,7 +102,7 @@ function ContactForm() {
             
             {/* Company field */}
             <div className="space-y-2">
-              <label htmlFor="company" className="block text-[#E0DFD5] font-medium">
+              <label htmlFor="company" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
                 Company <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
@@ -116,7 +116,7 @@ function ContactForm() {
                   required
                   value={formData.company}
                   onChange={handleChange}
-                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200"
+                  className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200 text-sm sm:text-base"
                   placeholder="Your company name"
                 />
               </div>
@@ -125,7 +125,7 @@ function ContactForm() {
           
           {/* Message field */}
           <div className="space-y-2">
-            <label htmlFor="message" className="block text-[#E0DFD5] font-medium">
+            <label htmlFor="message" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
               Message <span className="text-[#E2A86B]">*</span>
             </label>
             <div className="relative">
@@ -139,19 +139,19 @@ function ContactForm() {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200 resize-none"
+                className="bg-[#2C2F34]/70 text-secondary w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-lg border border-[#414F59]/50 focus:border-[#E2A86B] focus:outline-none focus:ring-1 focus:ring-[#E2A86B] transition-all duration-200 resize-none text-sm sm:text-base"
                 placeholder="How can we help you?"
               ></textarea>
             </div>
           </div>
           
           {/* Submit button */}
-          <div className="flex justify-end">
+          <div className="flex justify-end pt-2">
             <button 
               type="submit"
-              className="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-8 py-3 rounded-full font-medium"
+              className="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium text-sm sm:text-base w-full sm:w-auto"
             >
-              Send
+              Send Message
             </button>
           </div>
         </form>

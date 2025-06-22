@@ -4,65 +4,35 @@ import NavLinks from './NavLinks.astro';
 import SocialLinks from './SocialLinks.tsx';
 ---
 
-<footer class="bg py-12">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<footer class="bg py-8 sm:py-12">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12">
       <!-- Brand section -->
-      <div class="mb-6 md:mb-0">
-        <img src="/img/DayOne_Logo_Light.png" alt="Logo Day One" class="max-w-36 mb-4" />
+      <div class="w-full lg:w-auto mb-6 lg:mb-0">
+        <img src="/img/DayOne_Logo_Light.png" alt="Logo Day One" class="max-w-32 sm:max-w-36 mb-4" />
         <p class="text-secondary text-sm max-w-xs">
           Global Talent Network
         </p>
-        <!-- <div class="mt-4">
-          <p class="text-secondary/80 text-sm font-medium mb-2">Contact</p>
-          <p class="text-secondary/60 text-sm">fernanda.amorim@dayonetalent.com</p>
-          <p class="text-secondary/60 text-sm">+55 11 99712-7227</p>
-        </div> -->
       </div>
       
       <!-- Navigation Links -->
-      <div class="flex flex-col md:flex-row gap-8">
-        <div>
-          <!-- <h4 class="text-secondary font-medium mb-4">Navigation</h4> -->
-          <div class="flex gap-3">
-            <NavLinks classList="text-secondary/60 hover:text-accent text-sm transition-colors" />
-          </div>
+      <div class="w-full lg:w-auto">
+        <div class="flex flex-col sm:flex-row lg:flex-row gap-4 sm:gap-6 lg:gap-8">
+          <NavLinks classList="text-secondary/60 hover:text-accent text-sm transition-colors" />
         </div>
-        
-        <!-- Services -->
-        <!-- <div>
-          <h4 class="text-secondary font-medium mb-4">Services</h4>
-          <div class="flex flex-col gap-3">
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Executive Search</a>
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Talent Advisory</a>
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Market Mapping</a>
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Assessment</a>
-          </div>
-        </div> -->
-        
-        <!-- Company -->
-        <!-- <div>
-          <h4 class="text-secondary font-medium mb-4">Company</h4>
-          <div class="flex flex-col gap-3">
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">About Us</a>
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Our Team</a>
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Methodology</a>
-            <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Case Studies</a>
-          </div>
-        </div> -->
       </div>
     </div>
     
     <!-- Bottom section -->
-    <div class="border-t border-secondary/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="flex flex-col md:flex-row items-center gap-4">
-        <p class="text-secondary/60 text-sm">
+    <div class="border-t border-secondary/10 mt-8 pt-6 sm:pt-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-6">
+      <div class="flex flex-col gap-4 w-full lg:w-auto">
+        <p class="text-secondary/60 text-xs sm:text-sm">
           &copy; {new Date().getFullYear()} Day One Talent Advisory. All rights reserved.
         </p>
-        <div class="flex gap-6">
-          <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Privacy Policy</a>
-          <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Terms of Service</a>
-          <a href="#" class="text-secondary/60 hover:text-accent text-sm transition-colors">Cookie Policy</a>
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+          <a href="#" class="text-secondary/60 hover:text-accent text-xs sm:text-sm transition-colors">Privacy Policy</a>
+          <a href="#" class="text-secondary/60 hover:text-accent text-xs sm:text-sm transition-colors">Terms of Service</a>
+          <a href="#" class="text-secondary/60 hover:text-accent text-xs sm:text-sm transition-colors">Cookie Policy</a>
         </div>
       </div>
       
@@ -73,21 +43,21 @@ import SocialLinks from './SocialLinks.tsx';
     </div>
     
     <!-- Newsletter signup -->
-    <div class="mt-8 p-6 bg-primary/20 rounded-xl border border-primary/30 relative overflow-hidden">
+    <div class="mt-8 p-4 sm:p-6 bg-primary/20 rounded-xl border border-primary/30 relative overflow-hidden">
       <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
       
-      <div class="relative z-10 text-center md:text-left md:flex items-center justify-between">
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-secondary font-semibold mb-2">Stay Updated</h3>
-          <p class="text-secondary/80 text-sm">Get insights on talent trends and leadership strategies.</p>
+      <div class="relative z-10 text-center lg:text-left lg:flex items-center justify-between gap-6">
+        <div class="mb-4 lg:mb-0 lg:flex-1">
+          <h3 class="text-secondary font-semibold mb-2 text-base sm:text-lg">Stay Updated</h3>
+          <p class="text-secondary/80 text-xs sm:text-sm">Get insights on talent trends and leadership strategies.</p>
         </div>
-        <div class="flex flex-col sm:flex-row gap-3 md:max-w-sm">
+        <div class="flex flex-col sm:flex-row gap-3 lg:max-w-sm w-full lg:w-auto">
           <input 
             type="email" 
             placeholder="your.email@company.com"
-            class="bg/50 text-secondary px-4 py-2 rounded-lg border border-secondary/20 focus:border-accent focus:outline-none flex-1"
+            class="bg/50 text-secondary px-3 sm:px-4 py-2 rounded-lg border border-secondary/20 focus:border-accent focus:outline-none flex-1 text-sm sm:text-base"
           />
-          <button class="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-2 rounded-lg font-medium whitespace-nowrap">
+          <button class="bg-accent text-white hover:bg-accent-light transition-colors px-4 sm:px-6 py-2 rounded-lg font-medium whitespace-nowrap text-sm sm:text-base">
             Subscribe
           </button>
         </div>
