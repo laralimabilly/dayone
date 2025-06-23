@@ -1,0 +1,90 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import { renderRichText } from '@storyblok/astro';
+import type { ArticleStoryblok } from '../types/storyblok';
+import { formatDate, calculateReadingTime } from '../utils/storyblok';
+
+export interface Props {
+  blok: ArticleStoryblok;
+}
+
+const { blok } = Astro.props;
+const readingTime = calculateReadingTime(blok.content);
+const formattedDate = formatDate(blok.date);
+---
+
+<article {...storyblokEditable(blok)} class="max-w-4xl mx-auto">
+  <!-- Article Header -->
+  <header class="mb-8">
+    {blok.image && blok.image.filename && (
+      <div class="mb-6">
+        <img
+          src={`${blok.image.filename}/m/1200x600/smart`}
+          alt={blok.image.alt || blok.title}
+          class="w-full h-64 md:h-96 object-cover rounded-xl"
+          loading="lazy"
+        />
+      </div>
+    )}
+    
+    <div class="space-y-4">
+      {blok.category && (
+        <span class="inline-block bg-accent/20 text-accent px-3 py-1 rounded-full text-sm font-medium">
+          {blok.category}
+        </span>
+      )}
+      
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">
+        {blok.title}
+      </h1>
+      
+      {blok.intro && (
+        <p class="text-xl text-primary/80 leading-relaxed">
+          {blok.intro}
+        </p>
+      )}
+      
+      <div class="flex flex-wrap items-center gap-4 text-sm text-primary/60">
+        {blok.author && (
+          <span class="flex items-center gap-2">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            {blok.author}
+          </span>
+        )}
+        
+        <span class="flex items-center gap-2">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+          </svg>
+          {formattedDate}
+        </span>
+        
+        {readingTime > 0 && (
+          <span class="flex items-center gap-2">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>
+            </svg>
+            {readingTime} min read
+          </span>
+        )}
+      </div>
+      
+      {blok.tags && blok.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {blok.tags.map((tag: string) => (
+            <span class="bg-secondary/50 text-primary px-2 py-1 rounded text-sm">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  </header>
+  
+  <!-- Article Content -->
+  <div class="prose prose-lg prose-primary max-w-none">
+    <Fragment set:html={renderRichText(blok.content)} />
+  </div>
+</article>

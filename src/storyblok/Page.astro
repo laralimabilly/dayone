@@ -1,0 +1,28 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import type { PageStoryblok } from '../types/storyblok';
+
+export interface Props {
+  blok: PageStoryblok;
+}
+
+const { blok } = Astro.props;
+---
+
+<main {...storyblokEditable(blok)}>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8 text-primary">{blok.title}</h1>
+    
+    {blok.body && blok.body.length > 0 && (
+      <div class="prose prose-lg max-w-none">
+        <!-- Render body blocks here when implementing other components -->
+        {blok.body.map((nestedBlok: any) => (
+          <!-- This will be expanded when we add more components -->
+          <div class="mb-8">
+            <p class="text-gray-600">Component: {nestedBlok.component}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</main>
