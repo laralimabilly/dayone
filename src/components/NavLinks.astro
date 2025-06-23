@@ -1,5 +1,5 @@
 ---
-// src/components/NavLinks.astro (Updated)
+// src/components/NavLinks.astro (Fixed)
 export interface Props {
   classList: string;
 }
@@ -7,37 +7,46 @@ export interface Props {
 const { classList } = Astro.props;
 ---
 
-<a href="#our-solutions" class={classList}>Our Solutions</a>
-<a href="#our-team" class={classList}>Our Team</a>
+<a href="/#our-solutions" class={classList}>Our Solutions</a>
+<a href="/#our-team" class={classList}>Our Team</a>
 <a href="/blog" class={classList}>Blog</a>
-<!-- <a href="#contact" class={classList}>Contact</a> -->
+<!-- <a href="/#contact" class={classList}>Contact</a> -->
 
 <script>
-  // Add smooth scrolling behavior to all navigation links (except external ones)
+  // Add smooth scrolling behavior to all navigation links
   function initSmoothScrolling() {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
+    const navLinks = document.querySelectorAll('a[href^="/#"]');
     
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (!href) return;
         
-        const targetId = link.getAttribute('href')?.substring(1);
-        if (!targetId) return;
-        
-        const targetElement = document.getElementById(targetId);
-        if (!targetElement) return;
-        
-        // Calculate header height for offset
-        const header = document.querySelector('header');
-        const headerHeight = header ? header.offsetHeight : 0;
-        
-        // Scroll to target with offset for fixed header
-        const targetPosition = targetElement.offsetTop - headerHeight;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
+        // Check if we're on the homepage
+        if (window.location.pathname === '/') {
+          // We're on homepage, scroll to section
+          e.preventDefault();
+          
+          const targetId = href.substring(2); // Remove /#
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            // Calculate header height for offset
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            
+            // Scroll to target with offset for fixed header
+            const targetPosition = targetElement.offsetTop - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        } else {
+          // We're on a different page, navigate to homepage with anchor
+          // Let the browser handle the navigation normally
+        }
       });
     });
   }

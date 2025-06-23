@@ -1,4 +1,4 @@
-// src/components/MobileNav.tsx (Updated)
+// src/components/MobileNav.tsx (Fixed)
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,38 +31,63 @@ function MobileNav() {
     };
   }, [isMenuOpen]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId?: string) => {
-    e.preventDefault();
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsMenuOpen(false);
     
-    if (targetId) {
-      // Small delay to allow menu to close
-      setTimeout(() => {
-        const targetElement = document.getElementById(targetId);
-        if (!targetElement) return;
+    // Check if it's a homepage anchor link
+    if (href.startsWith('/#')) {
+      if (window.location.pathname === '/') {
+        // We're on homepage, scroll to section
+        e.preventDefault();
         
+        const targetId = href.substring(2); // Remove /#
+        
+        // Small delay to allow menu to close
+        setTimeout(() => {
+          const targetElement = document.getElementById(targetId);
+          if (!targetElement) return;
+          
+          const header = document.querySelector('header');
+          const headerHeight = header ? header.offsetHeight : 80;
+          
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+      // If we're not on homepage, let the browser navigate normally
+    }
+    // For regular links like /blog, let them work normally
+  };
+
+  const handleContactClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsMenuOpen(false);
+    
+    if (window.location.pathname === '/') {
+      // We're on homepage, scroll to contact
+      const targetElement = document.getElementById('contact');
+      if (targetElement) {
         const header = document.querySelector('header');
         const headerHeight = header ? header.offsetHeight : 80;
-        
         const targetPosition = targetElement.offsetTop - headerHeight;
         
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
         });
-      }, 100);
-    } else {
-      // For external links like blog
-      const href = (e.target as HTMLAnchorElement).getAttribute('href');
-      if (href && href.startsWith('/')) {
-        window.location.href = href;
       }
+    } else {
+      // Navigate to homepage contact section
+      window.location.href = '/#contact';
     }
   };
 
   const navItems = [
-    { href: '#our-solutions', label: 'Our Solutions', isHash: true },
-    { href: '#our-team', label: 'Our Team', isHash: true },
+    { href: '/#our-solutions', label: 'Our Solutions', isHash: true },
+    { href: '/#our-team', label: 'Our Team', isHash: true },
     { href: '/blog', label: 'Blog', isHash: false },
   ];
 
@@ -121,7 +146,7 @@ function MobileNav() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 + 0.1 }}
                     className="flex items-center justify-between py-4 px-4 rounded-lg text-secondary hover:text-accent hover:bg-secondary/10 transition-all duration-200"
-                    onClick={(e) => handleNavClick(e, item.isHash ? item.href.substring(1) : undefined)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                   >
                     <span className="text-lg font-medium">{item.label}</span>
                     <svg 
@@ -141,7 +166,7 @@ function MobileNav() {
               <div className="p-6 border-t border-secondary/20">
                 <button 
                   className="w-full bg-accent text-white hover:bg-accent/90 transition-colors px-6 py-4 rounded-full font-medium text-lg"
-                  onClick={(e) => handleNavClick(e, 'contact')}
+                  onClick={handleContactClick}
                   type="button"
                 >
                   Get Started

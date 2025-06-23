@@ -1,5 +1,5 @@
 ---
-// src/components/Header.astro
+// src/components/Header.astro (Fixed)
 import NavLinks from './NavLinks.astro';
 import MobileNav from './MobileNav.tsx';
 import { Image } from 'astro:assets';
@@ -26,12 +26,12 @@ import myImage from './public/img/DayOne_Logo_Light.png';
     
     <!-- Desktop CTA Button -->
     <div class="hidden lg:block">
-      <button 
+      <a 
+        href="/#contact"
         class="btn-primary"
-        onclick="document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
       >
         Contact
-      </button>
+      </a>
     </div>
     
     <!-- Mobile menu -->

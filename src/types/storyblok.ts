@@ -44,7 +44,7 @@ export interface ArticleStoryblok {
   content: StoryblokRichText;
   author: string;
   date: string;
-  tags: string[];
+  tags: string[] | string | any; // More flexible tags type
   seo_title?: string;
   seo_description?: string;
   featured: boolean;

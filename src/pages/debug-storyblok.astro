@@ -1,59 +1,179 @@
 ---
+// src/pages/debug-storyblok.astro
 import { getBlogArticles } from '../utils/storyblok';
 
-// Test the connection
+// Test both draft and published versions
 let articles: any[] = [];
+let draftArticles: any[] = [];
 let error = null;
+let draftError = null;
 
 try {
-  const blogData = await getBlogArticles({ per_page: 10 });
+  console.log('Fetching published articles...');
+  const blogData = await getBlogArticles({ per_page: 50, version: 'published' });
   articles = blogData?.stories || [];
-  console.log('Articles found:', articles.length);
-  console.log('First article:', articles[0]);
-} catch (e) {
+  console.log('Published articles found:', articles.length);
+} catch (e: any) {
   error = e.message;
-  console.error('Error fetching articles:', e);
+  console.error('Error fetching published articles:', e);
 }
+
+try {
+  console.log('Fetching draft articles...');
+  const draftBlogData = await getBlogArticles({ per_page: 50, version: 'draft' });
+  draftArticles = draftBlogData?.stories || [];
+  console.log('Draft articles found:', draftArticles.length);
+} catch (e: any) {
+  draftError = e.message;
+  console.error('Error fetching draft articles:', e);
+}
+
+// Environment info
+const storyblokToken = import.meta.env.STORYBLOK_TOKEN;
+const nodeEnv = import.meta.env.NODE_ENV;
+const mode = import.meta.env.MODE;
 ---
 
 <html>
 <head>
-  <title>Storyblok Debug</title>
+  <meta charset="UTF-8" />
+  <title>Storyblok Debug - Enhanced</title>
+  <style>
+    body { font-family: monospace; margin: 2rem; line-height: 1.6; }
+    .error { color: red; background: #ffe6e6; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+    .success { color: green; background: #e6ffe6; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+    .info { background: #e6f3ff; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+    .article { border: 1px solid #ddd; margin: 1rem 0; padding: 1rem; border-radius: 4px; }
+    .article h3 { margin-top: 0; }
+    .meta { color: #666; font-size: 0.9em; }
+    pre { background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
 </head>
 <body>
-  <h1>Storyblok Debug Page</h1>
+  <h1>🔍 Storyblok Debug Dashboard</h1>
+  
+  <div class="info">
+    <h2>📊 Environment Information</h2>
+    <table>
+      <tr><td><strong>STORYBLOK_TOKEN:</strong></td><td>{storyblokToken ? `${storyblokToken.substring(0, 8)}...` : '❌ Missing'}</td></tr>
+      <tr><td><strong>NODE_ENV:</strong></td><td>{nodeEnv || 'undefined'}</td></tr>
+      <tr><td><strong>MODE:</strong></td><td>{mode || 'undefined'}</td></tr>
+      <tr><td><strong>Current Time:</strong></td><td>{new Date().toISOString()}</td></tr>
+    </table>
+  </div>
+
+  <!-- Published Articles Section -->
+  <h2>📝 Published Articles ({articles.length})</h2>
   
   {error && (
-    <div style="color: red;">
-      <h2>Error:</h2>
+    <div class="error">
+      <h3>❌ Error fetching published articles:</h3>
       <pre>{error}</pre>
     </div>
   )}
   
-  <h2>Articles Found: {articles.length}</h2>
-  
-  {articles.length > 0 ? (
-    <ul>
-      {articles.map((article) => (
-        <li>
-          <strong>{article.name}</strong> - {article.slug}
-          <br />
-          Component: {article.content.component}
-          <br />
-          Published: {article.published_at}
-          <br />
-          <a href={`/blog/${article.slug}`}>View Article</a>
-        </li>
-      ))}
-    </ul>
-  ) : (
-    <p>No articles found. Check your Storyblok configuration.</p>
+  {!error && articles.length === 0 && (
+    <div class="info">
+      <p>ℹ️ No published articles found. This could mean:</p>
+      <ul>
+        <li>Articles exist but are not published yet</li>
+        <li>Articles are not in the correct folder structure (should be in 'blog/')</li>
+        <li>Content type component name doesn't match</li>
+      </ul>
+    </div>
   )}
+
+  {articles.length > 0 && (
+    <div class="success">
+      <p>✅ Found {articles.length} published articles!</p>
+    </div>
+  )}
+
+  {articles.map((article, index) => (
+    <div class="article">
+      <h3>{article.name} ({article.content?.component || 'no component'})</h3>
+      <div class="meta">
+        <p><strong>Slug:</strong> {article.slug}</p>
+        <p><strong>Full Slug:</strong> {article.full_slug}</p>
+        <p><strong>Published:</strong> {article.published_at}</p>
+        <p><strong>First Published:</strong> {article.first_published_at}</p>
+        <p><strong>Content Type:</strong> {article.content?.component || 'Unknown'}</p>
+        <p><strong>Title:</strong> {article.content?.title || 'No title'}</p>
+        <p><strong>Category:</strong> {article.content?.category || 'No category'}</p>
+        <p><strong>Author:</strong> {article.content?.author || 'No author'}</p>
+        <p><strong>Featured:</strong> {article.content?.featured ? '✅ Yes' : '❌ No'}</p>
+      </div>
+      <p><a href={`/blog/${article.slug}`} target="_blank">🔗 View Article</a></p>
+      
+      <details>
+        <summary>📄 Raw Content Data</summary>
+        <pre>{JSON.stringify(article.content, null, 2)}</pre>
+      </details>
+    </div>
+  ))}
+
+  <!-- Draft Articles Section -->
+  <h2>📝 Draft Articles ({draftArticles.length})</h2>
   
-  <h3>Environment Check:</h3>
-  <ul>
-    <li>STORYBLOK_TOKEN: {import.meta.env.STORYBLOK_TOKEN ? 'Set' : 'Missing'}</li>
-    <li>NODE_ENV: {import.meta.env.NODE_ENV}</li>
-  </ul>
+  {draftError && (
+    <div class="error">
+      <h3>❌ Error fetching draft articles:</h3>
+      <pre>{draftError}</pre>
+    </div>
+  )}
+
+  {!draftError && draftArticles.length > 0 && (
+    <div class="info">
+      <p>ℹ️ Found {draftArticles.length} draft articles (including unpublished changes)</p>
+    </div>
+  )}
+
+  {draftArticles.map((article, index) => (
+    <div class="article" style="border-color: orange;">
+      <h3>📝 {article.name} (DRAFT)</h3>
+      <div class="meta">
+        <p><strong>Slug:</strong> {article.slug}</p>
+        <p><strong>Status:</strong> {article.published_at ? 'Published with changes' : 'Unpublished'}</p>
+        <p><strong>Last Modified:</strong> {article.content?.updated_at || 'Unknown'}</p>
+        <p><strong>Title:</strong> {article.content?.title || 'No title'}</p>
+        <p><strong>Category:</strong> {article.content?.category || 'No category'}</p>
+      </div>
+    </div>
+  ))}
+
+  <!-- Troubleshooting Section -->
+  <div class="info">
+    <h2>🔧 Troubleshooting Steps</h2>
+    <ol>
+      <li><strong>Check Publication Status:</strong> Make sure articles are published in Storyblok (green dot)</li>
+      <li><strong>Verify Folder Structure:</strong> Articles should be in 'blog/' folder</li>
+      <li><strong>Content Type:</strong> Component should be 'article'</li>
+      <li><strong>Clear Cache:</strong> Try restarting your dev server</li>
+      <li><strong>Check Token:</strong> Ensure STORYBLOK_TOKEN is correctly set</li>
+      <li><strong>Region:</strong> Verify you're using the correct region (US/EU) in astro.config.mjs</li>
+    </ol>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="info">
+    <h2>⚡ Quick Actions</h2>
+    <ul>
+      <li><a href="/blog">🔗 Go to Blog Page</a></li>
+      <li><a href="/" target="_blank">🔗 Go to Homepage</a></li>
+      <li><button onclick="location.reload()">🔄 Refresh Debug</button></li>
+    </ul>
+  </div>
+
+  <script>
+    // Add timestamp to show when page was generated
+    console.log('Debug page generated at:', new Date().toISOString());
+    
+    // Show some helpful info in console
+    console.log('Published articles:', {articles}.length);
+    console.log('Draft articles:', {draftArticles}.length);
+  </script>
 </body>
 </html>

@@ -11,6 +11,19 @@ export interface Props {
 const { blok } = Astro.props;
 const readingTime = calculateReadingTime(blok.content);
 const formattedDate = formatDate(blok.date);
+
+// Safely handle tags - ensure it's always an array
+const safeTags = Array.isArray(blok.tags) ? blok.tags : 
+                 (typeof blok.tags === 'string' && blok.tags) ? [blok.tags] : 
+                 (blok.tags && typeof blok.tags === 'object' && blok.tags.length) ? blok.tags : 
+                 [];
+
+console.log('Tags debug:', { 
+  originalTags: blok.tags, 
+  tagsType: typeof blok.tags, 
+  isArray: Array.isArray(blok.tags),
+  safeTags 
+});
 ---
 
 <article {...storyblokEditable(blok)} class="max-w-4xl mx-auto">
@@ -71,9 +84,9 @@ const formattedDate = formatDate(blok.date);
         )}
       </div>
       
-      {blok.tags && blok.tags.length > 0 && (
+      {safeTags.length > 0 && (
         <div class="flex flex-wrap gap-2">
-          {blok.tags.map((tag: any) => (
+          {safeTags.map((tag) => (
             <span class="bg-secondary/50 text-primary px-2 py-1 rounded text-sm">
               #{tag}
             </span>

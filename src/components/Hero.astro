@@ -1,5 +1,5 @@
 ---
-// src/components/Hero.astro
+// src/components/Hero.astro (Fixed)
 import SocialLinks from './SocialLinks.tsx';
 import HeroAnimation from './HeroAnimation.tsx';
 ---
@@ -18,21 +18,21 @@ import HeroAnimation from './HeroAnimation.tsx';
       
       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up" style="animation-delay: 0.6s;">
         <div>
-          <button 
-            class="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto"
-            onclick="document.getElementById('our-solutions')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+          <a 
+            href="/#our-solutions"
+            class="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto inline-block text-center"
             >
             Executive Search & Talent Advisory 
-          </button>
+          </a>
           <p class="text-dark font-mono mt-2 text-center">*For Companies</p>
         </div>
         <div>
-          <button 
-            class="border-2 border-dark/80 hover:text-dark hover:bg-transparent bg-dark text-light transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto"
-            onclick="document.getElementById('our-solutions')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+          <a 
+            href="/#our-solutions"
+            class="border-2 border-dark/80 hover:text-dark hover:bg-transparent bg-dark text-light transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto inline-block text-center"
             >
             Career Transition Support 
-          </button>
+          </a>
           <p class="text-dark font-mono mt-2 text-center">*For Executives</p>
         </div>
       </div>

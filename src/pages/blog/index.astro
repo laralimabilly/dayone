@@ -15,7 +15,7 @@ const featuredData = await getFeaturedArticles(3);
 const articles = blogData?.stories || [];
 const categories = categoriesData || [];
 const featured = featuredData?.stories || [];
-const total = blogData?.total || 0;
+const total = blogData?.total || blogData?.stories.length || 0;
 const currentPage = 1;
 const totalPages = Math.ceil(total / 12);
 ---

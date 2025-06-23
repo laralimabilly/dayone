@@ -31,6 +31,10 @@ export default defineConfig({
       bridge: process.env.NODE_ENV === 'development',
       apiOptions: {
         region: 'eu', // Change to 'eu' if your space is in Europe
+        cache: {
+          clear: 'auto',
+          type: process.env.NODE_ENV === 'development' ? 'memory' : 'memory'
+        }
       },
       components: {
         page: 'storyblok/Page',
@@ -55,6 +59,10 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
       mkcert()
-    ]
+    ],
+
+    optimizeDeps: {
+      force: process.env.NODE_ENV === 'development'
+    }
   }
 });

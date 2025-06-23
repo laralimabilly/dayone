@@ -55,26 +55,21 @@ export async function getBlogArticles(params: {
     resolve_links: 'url',
   };
 
-  // Add filters
-  const filterQuery: string[] = [];
-  
+  // Alternative approach: Use individual filter parameters
   if (featured !== undefined) {
-    filterQuery.push(`featured=${featured}`);
+    searchParams['filter_query[featured][in]'] = featured.toString();
   }
   
   if (category) {
-    filterQuery.push(`category=${category}`);
+    searchParams['filter_query[category][in]'] = category;
   }
   
   if (tag) {
-    filterQuery.push(`tags~="${tag}"`);
-  }
-  
-  if (filterQuery.length > 0) {
-    searchParams.filter_query = filterQuery.join(',');
+    searchParams['filter_query[tags][any_in_array]'] = tag;
   }
 
   try {
+    console.log('Storyblok API call params:', searchParams);
     const response = await storyblokApi.get('cdn/stories', searchParams);
     return response.data as StoryblokStoriesResponse<ArticleStoryblok>;
   } catch (error) {
@@ -143,8 +138,23 @@ export async function getBlogTags() {
     const tags = new Set<string>();
     
     stories.forEach(story => {
-      if (story.content.tags && Array.isArray(story.content.tags)) {
-        story.content.tags.forEach((tag: string) => tags.add(tag));
+      // Safely handle different tag formats
+      const storyTags = story.content.tags;
+      
+      if (Array.isArray(storyTags)) {
+        storyTags.forEach((tag: string) => {
+          if (tag && typeof tag === 'string' && tag.trim()) {
+            tags.add(tag.trim());
+          }
+        });
+      } else if (typeof storyTags === 'string' && storyTags.trim()) {
+        // Handle comma-separated string tags
+        storyTags.split(',').forEach(tag => {
+          const trimmedTag = tag.trim();
+          if (trimmedTag) {
+            tags.add(trimmedTag);
+          }
+        });
       }
     });
     
@@ -153,6 +163,19 @@ export async function getBlogTags() {
     console.error('Error fetching blog tags:', error);
     return [];
   }
+}
+
+// Helper function to safely get tags from an article
+export function getTagsArray(tags: any): string[] {
+  if (Array.isArray(tags)) {
+    return tags.filter(tag => tag && typeof tag === 'string' && tag.trim()).map(tag => tag.trim());
+  }
+  
+  if (typeof tags === 'string' && tags.trim()) {
+    return tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+  }
+  
+  return [];
 }
 
 // Calculate reading time (approximate)
