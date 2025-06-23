@@ -1,0 +1,59 @@
+---
+import { getBlogArticles } from '../utils/storyblok';
+
+// Test the connection
+let articles: any[] = [];
+let error = null;
+
+try {
+  const blogData = await getBlogArticles({ per_page: 10 });
+  articles = blogData?.stories || [];
+  console.log('Articles found:', articles.length);
+  console.log('First article:', articles[0]);
+} catch (e) {
+  error = e.message;
+  console.error('Error fetching articles:', e);
+}
+---
+
+<html>
+<head>
+  <title>Storyblok Debug</title>
+</head>
+<body>
+  <h1>Storyblok Debug Page</h1>
+  
+  {error && (
+    <div style="color: red;">
+      <h2>Error:</h2>
+      <pre>{error}</pre>
+    </div>
+  )}
+  
+  <h2>Articles Found: {articles.length}</h2>
+  
+  {articles.length > 0 ? (
+    <ul>
+      {articles.map((article) => (
+        <li>
+          <strong>{article.name}</strong> - {article.slug}
+          <br />
+          Component: {article.content.component}
+          <br />
+          Published: {article.published_at}
+          <br />
+          <a href={`/blog/${article.slug}`}>View Article</a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No articles found. Check your Storyblok configuration.</p>
+  )}
+  
+  <h3>Environment Check:</h3>
+  <ul>
+    <li>STORYBLOK_TOKEN: {import.meta.env.STORYBLOK_TOKEN ? 'Set' : 'Missing'}</li>
+    <li>NODE_ENV: {import.meta.env.NODE_ENV}</li>
+  </ul>
+</body>
+</html>
