@@ -1,4 +1,4 @@
-// src/components/MobileNav.tsx
+// src/components/MobileNav.tsx (Updated)
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,15 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Debug logging
-  useEffect(() => {
-    console.log('MobileNav mounted, isMenuOpen:', isMenuOpen);
-  }, [isMenuOpen]);
-
   // Close menu when window is resized to desktop size
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) { // md breakpoint
+      if (window.innerWidth >= 768) {
         setIsMenuOpen(false);
       }
     };
@@ -23,7 +18,7 @@ function MobileNav() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Prevent body scroll when menu is open (simplified)
+  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -36,42 +31,46 @@ function MobileNav() {
     };
   }, [isMenuOpen]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId?: string) => {
     e.preventDefault();
     setIsMenuOpen(false);
     
-    // Small delay to allow menu to close
-    setTimeout(() => {
-      const targetElement = document.getElementById(targetId);
-      if (!targetElement) return;
-      
-      const header = document.querySelector('header');
-      const headerHeight = header ? header.offsetHeight : 80; // fallback height
-      
-      const targetPosition = targetElement.offsetTop - headerHeight;
-      
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }, 100);
+    if (targetId) {
+      // Small delay to allow menu to close
+      setTimeout(() => {
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
+        
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 80;
+        
+        const targetPosition = targetElement.offsetTop - headerHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
+    } else {
+      // For external links like blog
+      const href = (e.target as HTMLAnchorElement).getAttribute('href');
+      if (href && href.startsWith('/')) {
+        window.location.href = href;
+      }
+    }
   };
 
   const navItems = [
-    { href: '#our-solutions', label: 'Our Solutions' },
-    // { href: '#how-we-work', label: 'How We Work' },
-    { href: '#our-team', label: 'Our Team' },
-    // { href: '#contact', label: 'Contact' }
+    { href: '#our-solutions', label: 'Our Solutions', isHash: true },
+    { href: '#our-team', label: 'Our Team', isHash: true },
+    { href: '/blog', label: 'Blog', isHash: false },
   ];
 
   return (
     <div className="md:hidden">
-      {/* Mobile menu button - Always visible */}
+      {/* Mobile menu button */}
       <button 
-        onClick={() => {
-          console.log('Menu button clicked, current state:', isMenuOpen);
-          setIsMenuOpen(!isMenuOpen);
-        }}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="relative z-[100] text-secondary hover:text-accent transition-colors duration-200 p-2"
         aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         type="button"
@@ -79,7 +78,7 @@ function MobileNav() {
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Backdrop - Fixed positioning */}
+      {/* Backdrop and Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
@@ -92,7 +91,6 @@ function MobileNav() {
               onClick={() => setIsMenuOpen(false)}
             />
 
-            {/* Mobile Navigation Menu */}
             <motion.div 
               initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
@@ -123,7 +121,7 @@ function MobileNav() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 + 0.1 }}
                     className="flex items-center justify-between py-4 px-4 rounded-lg text-secondary hover:text-accent hover:bg-secondary/10 transition-all duration-200"
-                    onClick={(e) => handleNavClick(e, item.href.substring(1))}
+                    onClick={(e) => handleNavClick(e, item.isHash ? item.href.substring(1) : undefined)}
                   >
                     <span className="text-lg font-medium">{item.label}</span>
                     <svg 

@@ -1,0 +1,86 @@
+---
+// src/pages/blog/search.astro
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BlogSearchResults from '../../components/BlogSearchResults';
+import { getBlogArticles, getBlogCategories } from '../../utils/storyblok';
+
+// Get all articles for client-side searching
+const blogData = await getBlogArticles({ per_page: 100 });
+const categoriesData = await getBlogCategories();
+
+const articles = blogData?.stories || [];
+const categories = categoriesData || [];
+
+// Get search query from URL parameters
+const url = new URL(Astro.request.url);
+const searchQuery = url.searchParams.get('q') || '';
+const searchCategory = url.searchParams.get('category') || '';
+
+// SEO
+const seoTitle = searchQuery 
+  ? `Search Results for "${searchQuery}" | Day One Talent Advisory Blog`
+  : 'Search Blog | Day One Talent Advisory';
+const seoDescription = searchQuery 
+  ? `Find articles about "${searchQuery}" on Day One Talent Advisory blog.`
+  : 'Search through our collection of insights on executive search, leadership, and talent advisory.';
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <div class="min-h-screen font-serif">
+    <Header />
+    
+    <!-- Search Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-dark to-primary relative overflow-hidden">
+      <div class="absolute -right-20 -top-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl opacity-50"></div>
+      <div class="absolute -left-20 -bottom-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl opacity-50"></div>
+      
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Breadcrumb -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2 text-sm text-secondary/60">
+            <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li><a href="/blog" class="hover:text-accent transition-colors">Blog</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li class="text-secondary">Search</li>
+          </ol>
+        </nav>
+
+        <div class="text-center max-w-4xl mx-auto">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent">
+            {searchQuery ? `Search Results` : 'Search Our Blog'}
+          </h1>
+          
+          {searchQuery && (
+            <p class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed">
+              Results for: <span class="font-semibold text-accent">"{searchQuery}"</span>
+            </p>
+          )}
+          
+          {!searchQuery && (
+            <p class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed">
+              Find insights, trends, and expert perspectives from our team of talent advisory specialists.
+            </p>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="py-16 bg-secondary/20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <BlogSearchResults 
+          client:load 
+          articles={articles}
+          categories={categories}
+          initialQuery={searchQuery}
+          initialCategory={searchCategory}
+        />
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</Layout>

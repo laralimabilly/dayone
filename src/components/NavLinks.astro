@@ -1,5 +1,5 @@
 ---
-// src/components/NavLinks.astro
+// src/components/NavLinks.astro (Updated)
 export interface Props {
   classList: string;
 }
@@ -8,12 +8,12 @@ const { classList } = Astro.props;
 ---
 
 <a href="#our-solutions" class={classList}>Our Solutions</a>
-<!-- <a href="#how-we-work" class={classList}>How We Work</a> -->
 <a href="#our-team" class={classList}>Our Team</a>
+<a href="/blog" class={classList}>Blog</a>
 <!-- <a href="#contact" class={classList}>Contact</a> -->
 
 <script>
-  // Add smooth scrolling behavior to all navigation links
+  // Add smooth scrolling behavior to all navigation links (except external ones)
   function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
@@ -32,7 +32,7 @@ const { classList } = Astro.props;
         const headerHeight = header ? header.offsetHeight : 0;
         
         // Scroll to target with offset for fixed header
-        const targetPosition = targetElement.offsetTop - headerHeight; // 20px extra padding
+        const targetPosition = targetElement.offsetTop - headerHeight;
         
         window.scrollTo({
           top: targetPosition,

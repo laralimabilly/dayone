@@ -1,5 +1,5 @@
 ---
-// src/pages/index.astro
+// src/pages/index.astro (Updated)
 import "../styles/global.css";
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -9,7 +9,13 @@ import OurTeamSection from '../components/OurTeamSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
 import WhyChooseDayOneSection from "../components/WhyChooseDayOneSection";
+import BlogPreview from "../components/BlogPreview";
 import CookieConsent from "../components/CookieConsent";
+import { getFeaturedArticles } from '../utils/storyblok';
+
+// Fetch featured blog articles for homepage
+const featuredBlogData = await getFeaturedArticles(3);
+const featuredArticles = featuredBlogData?.stories || [];
 ---
 
 <Layout title="Day One | Talent Advisory">
@@ -19,6 +25,12 @@ import CookieConsent from "../components/CookieConsent";
     <OurSolutionsSection client:load />
     <OurTeamSection />
     <WhyChooseDayOneSection client:load />
+    
+    <!-- Blog Preview Section -->
+    {featuredArticles.length > 0 && (
+      <BlogPreview client:load articles={featuredArticles} />
+    )}
+    
     <ContactSection />
     <Footer />
 

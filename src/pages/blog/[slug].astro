@@ -1,0 +1,193 @@
+---
+// src/pages/blog/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Article from '../../storyblok/Article.astro';
+import RelatedArticles from '../../components/RelatedArticles';
+import { getStoryBySlug, getBlogArticles } from '../../utils/storyblok';
+import { generateExcerpt } from '../../utils/storyblok';
+import type { ArticleStoryblok } from '../../types/storyblok';
+
+export async function getStaticPaths() {
+  // Get all blog articles for static generation
+  const blogData = await getBlogArticles({ per_page: 100 });
+  const articles = blogData?.stories || [];
+
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+// Fetch the article
+const storyData = await getStoryBySlug(`blog/${slug}`);
+
+if (!storyData) {
+  return Astro.redirect('/404');
+}
+
+const story = storyData.story;
+const article = story.content as ArticleStoryblok;
+
+// Generate SEO data
+const excerpt = generateExcerpt(article.content, 160);
+const seoTitle = article.seo_title || `${article.title} | Day One Talent Advisory Blog`;
+const seoDescription = article.seo_description || excerpt;
+
+// Get related articles (same category, excluding current)
+const relatedData = await getBlogArticles({
+  category: article.category,
+  per_page: 3
+});
+const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(0, 3) || [];
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <div class="min-h-screen font-serif">
+    <Header />
+    
+    <!-- Article Content -->
+    <main class="pt-24 pb-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2 text-sm text-primary/60">
+            <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li><a href="/blog" class="hover:text-accent transition-colors">Blog</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li class="text-primary">{article.title}</li>
+          </ol>
+        </nav>
+
+        <!-- Article -->
+        <div class="max-w-4xl mx-auto">
+          <Article blok={article} />
+          
+          <!-- Article Footer -->
+          <footer class="mt-16 pt-8 border-t border-secondary/30">
+            <!-- Share Buttons -->
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold text-primary mb-4">Share this article</h3>
+              <div class="flex gap-3">
+                <a 
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm"
+                >
+                  Share on Twitter
+                </a>
+                <a 
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm"
+                >
+                  Share on LinkedIn
+                </a>
+                <button 
+                  onclick={`navigator.share ? navigator.share({ title: '${article.title}', url: '${Astro.url.href}' }) : navigator.clipboard.writeText('${Astro.url.href}')`}
+                  class="bg-secondary text-primary px-4 py-2 rounded-lg hover:bg-secondary/80 transition-colors text-sm"
+                >
+                  Copy Link
+                </button>
+              </div>
+            </div>
+
+            <!-- Author Info -->
+            {article.author && (
+              <div class="bg-secondary/30 p-6 rounded-xl border border-secondary">
+                <div class="flex items-start gap-4">
+                  <div class="bg-accent/20 p-3 rounded-full">
+                    <svg width="24" height="24" fill="currentColor" class="text-accent" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-lg font-semibold text-primary mb-1">Written by {article.author}</h4>
+                    <p class="text-primary/70 text-sm">
+                      Expert insights on executive search and talent advisory from the Day One team.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </footer>
+        </div>
+      </div>
+    </main>
+
+    <!-- Related Articles -->
+    {relatedArticles.length > 0 && (
+      <section class="py-16 bg-light border-t border-secondary/20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl md:text-3xl font-bold mb-12 text-accent text-center">
+            Related Articles
+          </h2>
+          
+          <RelatedArticles client:load articles={relatedArticles} />
+        </div>
+      </section>
+    )}
+
+    <!-- Newsletter CTA -->
+    <section class="py-16 bg-dark text-secondary">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center bg-primary/20 p-8 rounded-xl border border-primary/30 relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+          <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+          
+          <div class="relative z-10">
+            <h3 class="text-2xl font-bold text-accent mb-4">Stay Updated</h3>
+            <p class="text-secondary/80 mb-6">
+              Get the latest insights on talent trends and leadership strategies delivered to your inbox.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input 
+                type="email" 
+                placeholder="your.email@company.com"
+                class="flex-1 bg-secondary/20 text-secondary px-4 py-3 rounded-lg border border-secondary/30 focus:border-accent focus:outline-none"
+              />
+              <button class="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-3 rounded-lg font-medium whitespace-nowrap">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</Layout>
+
+<!-- Add structured data for SEO -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": article.title,
+  "description": excerpt,
+  "image": article.image?.filename ? `${article.image.filename}/m/1200x630/smart` : "",
+  "author": {
+    "@type": "Organization",
+    "name": article.author || "Day One Talent Advisory"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Day One Talent Advisory",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/DayOne_Logo_Light.png"
+    }
+  },
+  "datePublished": story.first_published_at,
+  "dateModified": story.published_at,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": Astro.url.href
+  }
+})} />
+</Layout>
