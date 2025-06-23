@@ -7,7 +7,7 @@ const persons = [
   {
     id: 'fernanda-amorim',
     name: 'Fernanda Amorim',
-    title: 'Founding Partner',
+    title: 'Managing Partner',
     image: '/img/Fernanda.png',
     linkedinUrl: 'https://www.linkedin.com/in/fernandaamorim/',
     description: `Fernanda Amorim brings over 20 years of experience in executive search, with a strong track record leading more than 400 projects, and a reputation of delivering tailored, high-impact solutions with assertiveness and a sharp insight into digital transformation and human connections.
@@ -19,7 +19,7 @@ const persons = [
   {
     id: 'claudio-guerreiro',
     name: 'Claudio Guerreiro',
-    title: 'Founding Partner',
+    title: 'Managing Partner',
     image: '/img/Claudio.png',
     linkedinUrl: 'https://www.linkedin.com/in/claudio-guerreiro/',
     description: `Bachelor's degree in Business Administration with a specialization in Foreign Trade and an Executive MBA from the Escola Superior de Propaganda e Marketing.​
@@ -31,18 +31,55 @@ const persons = [
                   Today, in addition to being a Partner and CEO of Find HR, where he leads the CEO and Board practices, he is an investor and Board Member of the startups FOHAT and Manyplaces.`
   },
   {
-    id: 'osvaldo-aranha',
-    name: 'Osvaldo Aranha',
-    title: 'Thought Leader',
-    image: '/img/Osvaldo.png',
-    linkedinUrl: 'https://www.linkedin.com/in/osvaldoaranha/',
-    description: `Osvaldo Aranha is recognized as one of the 100 best AI professionals in the world by PixieBrix. He has been working in the information technology sector for over 18 years. He has an MBA in Business Intelligence and a specialization in IT Management, Futures Studies and AI.
+    id: 'carla-viborny',
+    name: 'Carla Vyborny',
+    title: 'Associate',
+    image: '/img/Claudio.png',
+    linkedinUrl: 'https://www.linkedin.com/in/claudio-guerreiro/',
+    description: `Bachelor's degree in Business Administration with a specialization in Foreign Trade and an Executive MBA from the Escola Superior de Propaganda e Marketing.​
 
-      He has decades of experience in AI, Analytics, Cloud, Innovation and Digital Transformation. He is an AI specialist, having led areas at Microsoft, Deloitte and CSU Digital.
+                  He has taken several international courses at innovation schools such as Singularity University and Hyper Island.​
 
-      He has been teaching classes, courses and training since 2014, having supported over 6,000 executives in extensive courses, webinars, innovation projects, lectures and in-person and online training. He is a mentor for startups and also writes articles and publications on IT-related topics.`
-  }
+                  After 20 years of experience as an executive in the technology industry, in 2014 Guerreiro became an entrepreneur in the Executive Search segment, as well as an angel investor in digitally born companies.​
+
+                  Today, in addition to being a Partner and CEO of Find HR, where he leads the CEO and Board practices, he is an investor and Board Member of the startups FOHAT and Manyplaces.`
+  },
+  {
+    id: 'roberta-viborny',
+    name: 'Roberta Vyborny',
+    title: 'Associate',
+    image: '/img/Claudio.png',
+    linkedinUrl: 'https://www.linkedin.com/in/claudio-guerreiro/',
+    description: `Bachelor's degree in Business Administration with a specialization in Foreign Trade and an Executive MBA from the Escola Superior de Propaganda e Marketing.​
+
+                  He has taken several international courses at innovation schools such as Singularity University and Hyper Island.​
+
+                  After 20 years of experience as an executive in the technology industry, in 2014 Guerreiro became an entrepreneur in the Executive Search segment, as well as an angel investor in digitally born companies.​
+
+                  Today, in addition to being a Partner and CEO of Find HR, where he leads the CEO and Board practices, he is an investor and Board Member of the startups FOHAT and Manyplaces.`
+  },
+  // {
+  //   id: 'osvaldo-aranha',
+  //   name: 'Osvaldo Aranha',
+  //   title: 'Thought Leader',
+  //   image: '/img/Osvaldo.png',
+  //   linkedinUrl: 'https://www.linkedin.com/in/osvaldoaranha/',
+  //   description: `Osvaldo Aranha is recognized as one of the 100 best AI professionals in the world by PixieBrix. He has been working in the information technology sector for over 18 years. He has an MBA in Business Intelligence and a specialization in IT Management, Futures Studies and AI.
+
+  //     He has decades of experience in AI, Analytics, Cloud, Innovation and Digital Transformation. He is an AI specialist, having led areas at Microsoft, Deloitte and CSU Digital.
+
+  //     He has been teaching classes, courses and training since 2014, having supported over 6,000 executives in extensive courses, webinars, innovation projects, lectures and in-person and online training. He is a mentor for startups and also writes articles and publications on IT-related topics.`
+  // }
 ];
+
+// Group persons by their title
+const groupedPersons = persons.reduce((acc, person) => {
+  if (!acc[person.title]) {
+    acc[person.title] = [];
+  }
+  acc[person.title].push(person);
+  return acc;
+}, {} as Record<string, typeof persons>);
 
 const formatDescription = (text: string) => {
   return text.split('\n\n').map(paragraph => paragraph.trim()).filter(p => p.length > 0);
@@ -51,48 +88,123 @@ const formatDescription = (text: string) => {
 
 <section id="our-team" class="section bg-light">
   <div class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-accent">Our Team</h2>  
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-accent text-center">Our Team</h2> 
+    <p class="text-primary text-center max-w-1/2 m-auto mb-8">
+      At DAYONE, we believe that every great impact begins with the energy of the first day — and that true transformation happens when that
+      energy is renewed, every single day. We focus on identifying leaders who don’t just adapt — they drive the evolution of our clients.
+    </p>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 md:gap-x-8 items-start">
-      {persons.map((person) => (
-        <div class="grid grid-cols-1">
-          <div class="p-6 rounded-lg">
-            <div class="relative mb-6">
-              <img
-                src={person.image}
-                alt={person.name}
-                class="w-full object-cover rounded-lg p-8"
-              />
-            </div>
-          </div>
-          <div>
-            <a class="ml-4" href={person.linkedinUrl} target="_blank">
-              <h3 class="text-2xl text-accent hover:text-accent/40 font-semibold flex items-center">
-                {person.name}
-                <FaLinkedin className="ml-4" />
-              </h3>
-            </a>
-            <h4 class="text-xl font-bold text-primary mb-4">{person.title}</h4>
-            <div>
+    {/* Iterate through each title group */}
+    {Object.entries(groupedPersons).map(([title, groupPersons]) => (
+      <div class="mt-24 last:mb-0">
+        {/* Group Title */}
+        <h3 class="text-xl lg:text-2xl font-bold text-primary font-mono mb-8 text-center">
+          {title}s
+        </h3>
+        
+        {/* Team members grid - 2 per row */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          {groupPersons.map((person) => (
+            <div class="group overflow-hidden transition-all duration-300 relative">
+              
+              <div class="relative z-10">
+                {/* Image Section */}
+                <div class="p-6 pb-0">
+                  <div class="relative mb-6">
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      class="w-full max-w-xs mx-auto object-cover transition-shadow duration-300"
+                    />
+                  </div>
+                </div>
                 
+                {/* Content Section */}
+                <div class="p-6 pt-0">
+                  {/* Name and LinkedIn */}
+                  <div class="text-center mb-4">
+                    <a 
+                      href={person.linkedinUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-3 group-link"
+                    >
+                      <h4 class="text-xl lg:text-2xl text-accent hover:text-accent/80 font-semibold transition-colors duration-300">
+                        {person.name}
+                      </h4>
+                      <FaLinkedin className="text-accent hover:text-accent/80 transition-colors duration-300 text-lg lg:text-xl" />
+                    </a>
+                  </div>
+                  
+                  {/* Description */}
+                  <div class="text-dark text-sm hidden lg:text-base leading-relaxed space-y-3">
+                    {formatDescription(person.description).slice(0, 2).map((paragraph, index) => (
+                      <p class="text-justify">
+                        {paragraph}
+                      </p>
+                    ))}
+                    
+                    {/* Show more indicator if there are more paragraphs */}
+                    {formatDescription(person.description).length > 2 && (
+                      <div class="pt-2">
+                        <button class="text-accent hover:text-accent/80 flex items-center group-btn transition-colors duration-300 text-sm font-medium">
+                          Read More 
+                          <svg width="16" height="16" fill="currentColor" class="ml-1 group-btn-hover:ml-2 transition-all duration-300" viewBox="0 0 24 24">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Hover border effect */}
+              {/*<div class="absolute inset-0 border-2 border-transparent group-hover:border-accent/30 rounded-xl transition-all duration-300 pointer-events-none"></div>*/}
             </div>
-            <div class="text-dark mb-4">
-              {formatDescription(person.description).map((paragraph, index) => (
-                <p class={index > 0 ? 'mt-4' : ''}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-            <button class="text-accent hover:text-accent-light flex items-center group transition-colors">
-              Read More 
-              <svg width="16" height="16" fill="currentColor" class="ml-1 group-hover:ml-2 transition-all" viewBox="0 0 24 24">
-                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-              </svg>
-            </button>
-          </div>
+          ))}
+          
+          {/* If odd number of people in group, add empty spacer for centering */}
+          {groupPersons.length % 2 === 1 && (
+            <div class="hidden lg:block"></div>
+          )}
         </div>
-      ))}
+      </div>
+    ))}
+    
+    {/* Brand Symbol */}
+    <div class="text-center mt-24">
+      <img 
+        class="max-w-24 md:max-w-32 mx-auto opacity-60 hover:opacity-80 transition-opacity duration-300" 
+        src="/img/DayOne_Symbol.svg" 
+        alt="Day One Brain Symbol" 
+      />
     </div>
-    <img  class="max-w-1/2 md:max-w-1/8 m-auto mt-36" src="/img/DayOne_Symbol.svg" alt="Brain symbol" />
   </div>
 </section>
+
+<style>
+  /* Custom hover effects */
+  .group-link:hover h4 {
+    transform: translateY(-1px);
+  }
+  
+  .group-btn:hover svg {
+    margin-left: 0.5rem;
+  }
+  
+  /* Responsive adjustments for very small screens */
+  @media (max-width: 480px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  
+  /* Ensure proper spacing on mobile */
+  @media (max-width: 1024px) {
+    .grid-cols-1 {
+      gap: 2rem;
+    }
+  }
+</style>

@@ -17,6 +17,20 @@ const CookieConsent = () => {
         Date.now() - parseInt(consentTimestamp) > 6 * 30 * 24 * 60 * 60 * 1000) {
       setIsVisible(true);
     }
+
+    // Listen for cookie policy clicks to reopen the modal
+    const handleCookiePolicyClick = () => {
+      setIsVisible(true);
+      setShowDetails(false); // Reset details state when reopening
+    };
+
+    // Add event listener for cookie policy button
+    document.addEventListener('cookie-policy-click', handleCookiePolicyClick);
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('cookie-policy-click', handleCookiePolicyClick);
+    };
   }, []);
 
   const handleAcceptAll = () => {
