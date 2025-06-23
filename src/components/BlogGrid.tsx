@@ -1,4 +1,4 @@
-// src/components/BlogGrid.tsx
+// src/components/BlogGrid.tsx - Fixed version with safe tag handling
 import { useState, useEffect } from 'react';
 import { Search, Filter, Calendar, User, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { StoryblokStory } from '../types/storyblok';
@@ -10,6 +10,19 @@ interface BlogGridProps {
   currentPage: number;
   totalPages: number;
   total: number;
+}
+
+// Helper function to safely get tags as an array
+function getTagsArray(tags: any): string[] {
+  if (Array.isArray(tags)) {
+    return tags.filter(tag => tag && typeof tag === 'string' && tag.trim()).map(tag => tag.trim());
+  }
+  
+  if (typeof tags === 'string' && tags.trim()) {
+    return tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+  }
+  
+  return [];
 }
 
 function BlogGrid({ initialArticles, categories, currentPage: initialPage, totalPages: initialTotalPages, total }: BlogGridProps) {
@@ -38,12 +51,17 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
     // Filter by search term
     if (searchTerm) {
       const searchLower = searchTerm.toLowerCase();
-      filtered = filtered.filter(article =>
-        article.content.title.toLowerCase().includes(searchLower) ||
-        article.content.intro?.toLowerCase().includes(searchLower) ||
-        article.content.category?.toLowerCase().includes(searchLower) ||
-        article.content.tags?.some((tag: string) => tag.toLowerCase().includes(searchLower))
-      );
+      filtered = filtered.filter(article => {
+        // Get tags safely as an array
+        const tagsArray = getTagsArray(article.content.tags);
+        
+        return (
+          article.content.title.toLowerCase().includes(searchLower) ||
+          article.content.intro?.toLowerCase().includes(searchLower) ||
+          article.content.category?.toLowerCase().includes(searchLower) ||
+          tagsArray.some((tag: string) => tag.toLowerCase().includes(searchLower))
+        );
+      });
     }
 
     setFilteredArticles(filtered);

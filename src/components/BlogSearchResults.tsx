@@ -1,4 +1,4 @@
-// src/components/BlogSearchResults.tsx
+// src/components/BlogSearchResults.tsx - Fixed version with safe tag handling
 import { useState, useEffect } from 'react';
 import { Search, Filter, Calendar, User, ArrowRight, X } from 'lucide-react';
 import type { StoryblokStory } from '../types/storyblok';
@@ -9,6 +9,19 @@ interface BlogSearchResultsProps {
   categories: string[];
   initialQuery?: string;
   initialCategory?: string;
+}
+
+// Helper function to safely get tags as an array
+function getTagsArray(tags: any): string[] {
+  if (Array.isArray(tags)) {
+    return tags.filter(tag => tag && typeof tag === 'string' && tag.trim()).map(tag => tag.trim());
+  }
+  
+  if (typeof tags === 'string' && tags.trim()) {
+    return tags.split(',').map(tag => tag.trim()).filter(tag => tag);
+  }
+  
+  return [];
 }
 
 function BlogSearchResults({ articles, categories, initialQuery = '', initialCategory = '' }: BlogSearchResultsProps) {
@@ -28,13 +41,18 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
       // Filter by search query
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
-        filtered = filtered.filter(article =>
-          article.content.title.toLowerCase().includes(query) ||
-          article.content.intro?.toLowerCase().includes(query) ||
-          article.content.category?.toLowerCase().includes(query) ||
-          article.content.author?.toLowerCase().includes(query) ||
-          article.content.tags?.some((tag: string) => tag.toLowerCase().includes(query))
-        );
+        filtered = filtered.filter(article => {
+          // Get tags safely as an array
+          const tagsArray = getTagsArray(article.content.tags);
+          
+          return (
+            article.content.title.toLowerCase().includes(query) ||
+            article.content.intro?.toLowerCase().includes(query) ||
+            article.content.category?.toLowerCase().includes(query) ||
+            article.content.author?.toLowerCase().includes(query) ||
+            tagsArray.some((tag: string) => tag.toLowerCase().includes(query))
+          );
+        });
       }
 
       // Filter by category
@@ -259,9 +277,9 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
                   )}
 
                   {/* Tags */}
-                  {article.content.tags && article.content.tags.length > 0 && (
+                  {article.content.tags && getTagsArray(article.content.tags).length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {article.content.tags.slice(0, 3).map((tag: string) => (
+                      {getTagsArray(article.content.tags).slice(0, 3).map((tag: string) => (
                         <span key={tag} className="bg-secondary/50 text-primary px-2 py-1 rounded text-xs">
                           #{tag}
                         </span>

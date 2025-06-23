@@ -1,4 +1,5 @@
 ---
+import CookieConsent from '../components/CookieConsent';
 // src/layouts/Layout.astro
 export interface Props {
   title: string;
@@ -82,11 +83,15 @@ const { title, description = "Day One Talent Advisory - Executive Search" } = As
     <!-- End Google Tag Manager (noscript) -->
 
     <slot />
+
+    <!-- Cookie Consent - Available site-wide -->
+    <CookieConsent client:load />
+
     <script src="../utils/navigation.ts"></script>
   </body>
 </html>
 
 <style is:global>
-  @import '../styles/global.css';
+  /* @import '../styles/global.css'; */
   @reference "tailwindcss";
 </style>

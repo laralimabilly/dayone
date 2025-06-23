@@ -21,7 +21,7 @@ function BlogPreview({ articles }: BlogPreviewProps) {
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-light">
+    <section className="py-16 lg:py-24 bg-light folder-mask">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
