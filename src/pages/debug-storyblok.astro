@@ -167,13 +167,13 @@ const mode = import.meta.env.MODE;
     </ul>
   </div>
 
-  <script>
+  <script define:vars={{ articlesCount: articles.length, draftArticlesCount: draftArticles.length }}>
     // Add timestamp to show when page was generated
     console.log('Debug page generated at:', new Date().toISOString());
     
     // Show some helpful info in console
-    console.log('Published articles:', {articles}.length);
-    console.log('Draft articles:', {draftArticles}.length);
+    console.log('Published articles:', articlesCount);
+    console.log('Draft articles:', draftArticlesCount);
   </script>
 </body>
 </html>

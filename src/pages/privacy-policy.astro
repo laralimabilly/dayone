@@ -1,0 +1,304 @@
+---
+// src/pages/privacy-policy.astro
+import "../styles/global.css";
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = "June 24, 2025";
+const websiteName = "DayOne | Talent Advisory";
+const contactEmail = "contato@dayonetalent.com";
+const dataController = "Fernanda Amorim - Managing Partner";
+---
+
+<Layout 
+  title="Privacy Policy | Day One Talent Advisory" 
+  description="Learn how Day One Talent Advisory collects, uses, and protects your personal data in accordance with LGPD regulations."
+>
+  <div class="min-h-screen font-serif">
+    <Header />
+    
+    <!-- Privacy Policy Content -->
+    <main class="pt-24 pb-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2 text-sm text-primary/60">
+            <li><a href="/" class="hover:text-accent transition-colors" title="Home">Home</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li class="text-primary">Privacy Policy</li>
+          </ol>
+        </nav>
+
+        <!-- Header div -->
+        <div class="max-w-4xl mx-auto mb-16">
+          <div class="text-center mb-2">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent">
+              Privacy Policy
+            </h1>
+            <p class="text-lg text-primary/80 mb-4">
+              <strong>Last updated:</strong> {lastUpdated}
+            </p>
+            <div class="bg-secondary/30 p-6 rounded-xl border border-secondary/50 max-w-3xl mx-auto">
+              <p class="text-primary leading-relaxed">
+                The protection of your personal data is very important to us. This Privacy Policy describes how we collect, use, store and protect the information of users who visit our website <strong>{websiteName}</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Policy Content -->
+        <div class="max-w-4xl mx-auto prose prose-lg prose-primary">
+          
+          <!-- div 1 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">1</span>
+                  Information We Collect
+                </h2>
+                
+                <p class="text-primary/80 mb-4">We may collect the following information from users:</p>
+                
+                <ul class="ml-5 list-disc pl-6 mb-6 space-y-2 text-primary">
+                  <li>Name</li>
+                  <li>Email</li>
+                  <li>Phone</li>
+                  <li>Browsing data (e.g., IP address, browser type, pages visited)</li>
+                </ul>
+                
+                <p class="text-primary/80 mb-4">Collection may occur through:</p>
+                
+                <ul class="ml-5 list-disc pl-6 space-y-2 text-primary">
+                  <li>Contact forms</li>
+                  <li>Cookies and similar technologies</li>
+                  <li>Website traffic analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 2 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">2</span>
+                  Purpose of Data Use
+                </h2>
+                
+                <p class="text-primary/80 mb-4">The data collected has the following purposes:</p>
+                
+                <ul class="ml-5 list-disc pl-6 space-y-2 text-primary">
+                  <li>Responding to requests made by users</li>
+                  <li>Improving the browsing experience on the website</li>
+                  <li>Performing access analyses and metrics</li>
+                  <li>Sending relevant communications (when authorized by the user)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 3 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">3</span>
+                  Sharing Data
+                </h2>
+                
+                <p class="text-primary/80 mb-4">Your personal data will not be sold or shared with third parties, except:</p>
+                
+                <ul class="ml-5 list-disc pl-6 space-y-2 text-primary">
+                  <li>When necessary to comply with legal obligations</li>
+                  <li>When necessary for the execution of services contracted by you (e.g., hosting services or email marketing tools)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 4 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">4</span>
+                  Data Subject Rights (according to the LGPD)
+                </h2>
+                
+                <p class="text-primary/80 mb-4">You have the following rights in relation to your personal data:</p>
+                
+                <ul class="ml-5 list-disc pl-6 mb-6 space-y-2 text-primary">
+                  <li>Confirm the existence of processing</li>
+                  <li>Access your data</li>
+                  <li>Correct incomplete or incorrect data</li>
+                  <li>Request the anonymization, blocking or deletion of unnecessary data</li>
+                  <li>Data portability</li>
+                  <li>Revoke previously given consent</li>
+                  <li>Request the deletion of your data (when applicable)</li>
+                </ul>
+                
+                <div class="bg-accent/20 p-4 rounded-lg">
+                  <p class="text-primary font-medium">
+                    To exercise these rights, please contact us via email: 
+                    <a href={`mailto:${contactEmail}`} class="text-accent hover:text-accent-light underline" title={`Mail to:${contactEmail}`}>
+                      {contactEmail}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 5 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">5</span>
+                  Data Retention and Storage
+                </h2>
+                
+                <p class="text-primary">
+                  Your data will be stored only for the time necessary for the purposes described in this Policy or in accordance with legal obligations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 6 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">6</span>
+                  Information Security
+                </h2>
+                
+                <p class="text-primary">
+                  We adopt appropriate technical and organizational measures to protect your data against unauthorized access, loss, alteration or destruction.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 7 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">7</span>
+                  Cookies and Tracking Technologies
+                </h2>
+                
+                <p class="text-primary mb-4">
+                  We use cookies to improve navigation and understand how visitors interact with our website.
+                </p>
+                
+                <p class="text-primary">
+                  You can disable cookies directly in your browser settings.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 8 -->
+          <div class="mb-2">
+            <div class="backdrop-blur-sm p-8 relative overflow-hidden">
+              <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">8</span>
+                  Changes to this Privacy Policy
+                </h2>
+                
+                <p class="text-primary">
+                  We may update this Policy from time to time. We recommend that you review it periodically.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- div 9 -->
+          <div class="mb-2">
+            <div class="bg-accent/20 p-8 rounded-xl border border-accent/50 relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/20 rounded-full blur-2xl opacity-70"></div>
+              
+              <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
+                  <span class="bg-accent text-white p-2 rounded-lg font-bold">9</span>
+                  Contact
+                </h2>
+                
+                <p class="text-primary mb-4">
+                  If you have any questions about this Privacy Policy or wish to exercise your rights under the LGPD, please contact:
+                </p>
+                
+                <div class="space-y-3">
+                  <p class="text-primary">
+                    <strong>Email:</strong> 
+                    <a href={`mailto:${contactEmail}`} class="text-accent hover:text-accent-light underline ml-2" title={`Mail to:${contactEmail}`}>
+                      {contactEmail}
+                    </a>
+                  </p>
+                  
+                  <p class="text-primary">
+                    <strong>Data Controller:</strong> {dataController}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Back to Home CTA -->
+        <div class="text-center mt-16">
+          <a 
+            href="/" 
+            class="inline-flex items-center gap-3 bg-accent text-white hover:bg-accent-light transition-colors px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          >
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
+
+<!-- Add structured data for SEO -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "description": "Privacy Policy for Day One Talent Advisory website describing how we collect, use, and protect personal data.",
+  "url": "https://dayonetalent.com/privacy-policy",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Day One Talent Advisory"
+  },
+  "dateModified": lastUpdated
+})} />
+</script>

@@ -226,7 +226,7 @@ const CookieConsent = () => {
             <div className="mt-4 pt-4 border-t border-secondary/20">
               <p className="text-secondary/60 text-xs text-center">
                 You can change your preferences anytime in our{' '}
-                <a href="#privacy-policy" className="text-accent hover:text-accent-light underline">
+                <a href="/privacy-policy" title="Privacy Policy" className="text-accent hover:text-accent-light underline">
                   Privacy Policy
                 </a>
               </p>

@@ -86,7 +86,7 @@ console.log('Tags debug:', {
       
       {safeTags.length > 0 && (
         <div class="flex flex-wrap gap-2">
-          {safeTags.map((tag) => (
+          {safeTags.map((tag: any) => (
             <span class="bg-secondary/50 text-primary px-2 py-1 rounded text-sm">
               #{tag}
             </span>

@@ -3,7 +3,7 @@
 import NavLinks from './NavLinks.astro';
 import MobileNav from './MobileNav.tsx';
 import { Image } from 'astro:assets';
-import myImage from './public/img/DayOne_Logo_Light.png';
+import logo from '../assets/DayOne_Logo_Light.png';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-secondary/10">
@@ -12,7 +12,7 @@ import myImage from './public/img/DayOne_Logo_Light.png';
     <div class="flex items-center flex-shrink-0">
       <a href="/" aria-label="Day One Talent Advisory Home">
         <Image 
-          src={myImage} 
+          src={logo} 
           alt="Logo Day One" 
           class="max-w-28 sm:max-w-32 lg:max-w-36 h-auto" 
         />
@@ -29,6 +29,7 @@ import myImage from './public/img/DayOne_Logo_Light.png';
       <a 
         href="/#contact"
         class="btn-primary"
+        title="Contact"
       >
         Contact
       </a>

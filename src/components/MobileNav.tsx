@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Image } from 'astro:assets';
+import logo from '../assets/DayOne_Logo_Light.png';
 
 function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -129,10 +131,10 @@ function MobileNav() {
             >
               {/* Header */}
               <div className="flex justify-between items-center p-6 border-b border-secondary/20">
-                <img 
-                  src="/img/DayOne_Logo_Light.png" 
-                  alt="Day One Logo" 
-                  className="h-8 w-auto"
+                <Image 
+                  src={logo} 
+                  alt="Logo Day One" 
+                  class="h-8 w-auto" 
                 />
               </div>
 
@@ -178,12 +180,14 @@ function MobileNav() {
                   <a 
                     href="mailto:contato@dayonetalent.com"
                     className="block text-accent hover:text-accent/80 transition-colors text-sm font-medium"
+                    title="Mail to contato@dayonetalent.com"
                   >
                     contato@dayonetalent.com
                   </a>
                   <a 
                     href="tel:+5511997127227"
                     className="block text-accent hover:text-accent/80 transition-colors text-sm font-medium"
+                    title="Call +55 11 99712-7227"
                   >
                     +55 11 99712-7227
                   </a>

@@ -27,7 +27,7 @@ function RelatedArticles({ articles }: RelatedArticlesProps) {
           key={article.uuid}
           className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
         >
-          <a href={`/blog/${article.slug}`} className="block">
+          <a href={`/blog/${article.slug}`} className="block" title={article.content.title}>
             {/* Article Image */}
             {article.content.image && article.content.image.filename ? (
               <div className="aspect-video overflow-hidden">

@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const { category } = Astro.params;
+// const { category } = Astro.params;
 const { categoryName } = Astro.props;
 
 // Fetch articles for this category
@@ -50,9 +50,9 @@ const seoDescription = `Explore our latest insights and articles about ${categor
         <!-- Breadcrumb -->
         <nav class="mb-8" aria-label="Breadcrumb">
           <ol class="flex items-center space-x-2 text-sm text-secondary/60">
-            <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+            <li><a href="/" class="hover:text-accent transition-colors" title="Home">Home</a></li>
             <li><span class="mx-2">/</span></li>
-            <li><a href="/blog" class="hover:text-accent transition-colors">Blog</a></li>
+            <li><a href="/blog" class="hover:text-accent transition-colors" title="Blog">Blog</a></li>
             <li><span class="mx-2">/</span></li>
             <li class="text-secondary">{categoryName}</li>
           </ol>
@@ -114,6 +114,7 @@ const seoDescription = `Explore our latest insights and articles about ${categor
               <a 
                 href="/blog" 
                 class="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-2 rounded-lg font-medium inline-flex items-center gap-2"
+                title="Browse All Articles"
               >
                 Browse All Articles
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -142,6 +143,7 @@ const seoDescription = `Explore our latest insights and articles about ${categor
                 <a 
                   href={`/blog/category/${cat.toLowerCase().replace(/\s+/g, '-')}`}
                   class="group bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-secondary/30 hover:border-accent/50 transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
+                  title={cat.toLowerCase().replace(/\s+/g, '-')}
                 >
                   <div class="flex items-center justify-between">
                     <div>
@@ -167,6 +169,7 @@ const seoDescription = `Explore our latest insights and articles about ${categor
             <a 
               href="/blog" 
               class="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2"
+              title="View All Articles"
             >
               View All Articles
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">

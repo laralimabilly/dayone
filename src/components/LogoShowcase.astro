@@ -1,5 +1,7 @@
 ---
 // src/components/LogoShowcase.astro
+import { Image } from 'astro:assets';
+import logo from '../assets/DayOne_Logo_Light.png';
 ---
 
 <section class="section bg-dark rounded-section">
@@ -20,10 +22,10 @@
           <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
           
           <div class="relative z-10 text-center">
-            <img
-              src="/img/DayOne_Logo_Light.png"
-              alt="Primary Logo"
-              class="w-full max-w-md mx-auto h-auto rounded-lg mb-4"
+            <Image 
+              src={logo} 
+              alt="Logo Day One" 
+              class="w-full max-w-md mx-auto h-auto rounded-lg mb-4" 
             />
             <div class="mt-6 p-4 bg-dark/50 rounded-lg backdrop-blur-sm">
               <h3 class="text-lg font-semibold text-accent mb-2">Primary Logo</h3>

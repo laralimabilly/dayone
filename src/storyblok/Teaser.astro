@@ -10,7 +10,7 @@ const { blok } = Astro.props;
 ---
 
 <div {...storyblokEditable(blok)} class="group cursor-pointer">
-  <a href={`/${blok.link.cached_url}`} class="block">
+  <a href={`/${blok.link.cached_url}`} class="block" title={blok.headline}>
     {blok.image && blok.image.filename && (
       <div class="mb-4 overflow-hidden rounded-lg">
         <img

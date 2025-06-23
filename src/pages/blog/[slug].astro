@@ -55,9 +55,9 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
         <!-- Breadcrumb -->
         <nav class="mb-8" aria-label="Breadcrumb">
           <ol class="flex items-center space-x-2 text-sm text-primary/60">
-            <li><a href="/" class="hover:text-accent transition-colors">Home</a></li>
+            <li><a href="/" class="hover:text-accent transition-colors" title="Home">Home</a></li>
             <li><span class="mx-2">/</span></li>
-            <li><a href="/blog" class="hover:text-accent transition-colors">Blog</a></li>
+            <li><a href="/blog" class="hover:text-accent transition-colors" title="Blog">Blog</a></li>
             <li><span class="mx-2">/</span></li>
             <li class="text-primary">{article.title}</li>
           </ol>
@@ -78,6 +78,7 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
                   target="_blank"
                   rel="noopener noreferrer"
                   class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm"
+                  title="Share on Twitter"
                 >
                   Share on Twitter
                 </a>
@@ -86,6 +87,7 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
                   target="_blank"
                   rel="noopener noreferrer"
                   class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm"
+                  title="Share on LinkedIn"
                 >
                   Share on LinkedIn
                 </a>
@@ -166,7 +168,7 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
 </Layout>
 
 <!-- Add structured data for SEO -->
-<script type="application/ld+json" set:html={JSON.stringify({
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": article.title,
@@ -181,7 +183,7 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
     "name": "Day One Talent Advisory",
     "logo": {
       "@type": "ImageObject",
-      "url": "/img/DayOne_Logo_Light.png"
+      "url": "/assets/DayOne_Logo_Light.png"
     }
   },
   "datePublished": story.first_published_at,
