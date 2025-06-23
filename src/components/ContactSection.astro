@@ -17,9 +17,9 @@ const { t } = useTranslations();
         <h3 class="text-lg sm:text-xl mb-4 sm:mb-6 text-[#E0DFD5]">
           {t('contact.h3')}
         </h3>
-        <p class="text-secondary/80 mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
+        <!-- <p class="text-secondary/80 mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
           {t('contact.p')}
-        </p>
+        </p> -->
         
         <div class="bg-[#414F59]/30 p-4 sm:p-6 rounded-xl border border-[#414F59] relative overflow-hidden mb-6 sm:mb-8">
           <div class="absolute -right-16 -top-16 w-32 h-32 bg-[#E2A86B]/10 rounded-full blur-2xl opacity-70"></div>
@@ -34,7 +34,9 @@ const { t } = useTranslations();
               </div>
               <div class="min-w-0 flex-1">
                 <h4 class="font-medium text-secondary text-sm sm:text-base">{t('contact.label.email')}</h4>
-                <p class="text-[#E0DFD5]/80 text-sm sm:text-base break-all">fernanda.amorim@dayonetalent.com</p>
+                <a href="mailto:contato@dayonetalent.com" title="Mail to contato@dayonetalent.com">
+                  <p class="text-[#E0DFD5]/80 text-sm sm:text-base break-all">contato@dayonetalent.com</p>
+                </a>
               </div>
             </div>
             
@@ -46,7 +48,9 @@ const { t } = useTranslations();
               </div>
               <div class="min-w-0 flex-1">
                 <h4 class="font-medium text-secondary text-sm sm:text-base">{t('contact.label.phone')}</h4>
-                <p class="text-[#E0DFD5]/80 text-sm sm:text-base">+55 11 99712-7227</p>
+                <a href="tel:+5511997127227" title="Call +55 11 99712-7227">
+                  <p class="text-[#E0DFD5]/80 text-sm sm:text-base">+55 11 99712-7227</p>
+                </a>
               </div>
             </div>
             

@@ -11,6 +11,30 @@ const { title, description = "Day One Talent Advisory - Executive Search" } = As
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Cookie Consent Initialization -->
+    <script is:inline>
+      // Initialize consent mode before GTM loads
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      // Check existing consent
+      const consent = localStorage.getItem('cookie-consent');
+      
+      if (consent === 'accepted') {
+        // User has accepted cookies
+        gtag('consent', 'default', {
+          'analytics_storage': 'granted',
+          'ad_storage': 'granted'
+        });
+      } else {
+        // Default to denied until user makes choice
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied'
+        });
+      }
+    </script>
+
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

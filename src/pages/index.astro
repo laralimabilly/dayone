@@ -4,22 +4,24 @@ import "../styles/global.css";
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import AboutUsSection from '../components/AboutUsSection.astro';
-import CTASection from '../components/CTASection.astro';
+import OurSolutionsSection from "../components/OurSolutionsSection";
+import OurTeamSection from '../components/OurTeamSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
+import WhyChooseDayOneSection from "../components/WhyChooseDayOneSection";
+import CookieConsent from "../components/CookieConsent";
 ---
 
 <Layout title="Day One | Talent Advisory">
   <div class="min-h-screen font-serif">
     <Header />
     <Hero />
-    <!-- <SolutionsSection />
-    <MethodologySection /> -->
-    <!-- <LogoShowcase /> -->
-    <AboutUsSection />
-    <CTASection />
+    <OurSolutionsSection client:load />
+    <OurTeamSection />
+    <WhyChooseDayOneSection client:load />
     <ContactSection />
     <Footer />
+
+    <CookieConsent client:load />
   </div>
 </Layout>

@@ -1,5 +1,5 @@
 ---
-// src/components/AboutUsSection.astro
+// src/components/OurTeamSection.astro
 
 import { FaLinkedin } from "react-icons/fa";
 
@@ -49,9 +49,9 @@ const formatDescription = (text: string) => {
 };
 ---
 
-<section id="about-us" class="section bg-light">
+<section id="our-team" class="section bg-light">
   <div class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-accent">About Us</h2>  
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-accent">Our Team</h2>  
     
     <div class="grid grid-cols-1 md:grid-cols-3 md:gap-x-8 items-start">
       {persons.map((person) => (
