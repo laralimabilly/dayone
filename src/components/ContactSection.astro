@@ -1,7 +1,7 @@
 ---
 // src/components/ContactSection.astro
 import { useTranslations } from '../utils/i18n';
-import ContactForm from './ContactForm.jsx';
+import ContactForm from './ContactForm';
 
 const { t } = useTranslations();
 ---
@@ -11,58 +11,58 @@ const { t } = useTranslations();
     <div class="flex flex-col xl:flex-row gap-8 lg:gap-12 xl:gap-16 items-start">
       <!-- Contact information -->
       <div class="w-full xl:w-2/5">
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-[#E2A86B]">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-accent">
           {t('contact.h2')}
         </h2>
-        <h3 class="text-lg sm:text-xl mb-4 sm:mb-6 text-[#E0DFD5]">
+        <h3 class="text-lg sm:text-xl mb-4 sm:mb-6 text-secondary">
           {t('contact.h3')}
         </h3>
         <!-- <p class="text-secondary/80 mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
           {t('contact.p')}
         </p> -->
         
-        <div class="bg-[#414F59]/30 p-4 sm:p-6 rounded-xl border border-[#414F59] relative overflow-hidden mb-6 sm:mb-8">
-          <div class="absolute -right-16 -top-16 w-32 h-32 bg-[#E2A86B]/10 rounded-full blur-2xl opacity-70"></div>
-          <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-[#E2A86B]/10 rounded-full blur-2xl opacity-70"></div>
+        <div class="bg-primary/30 p-4 sm:p-6 rounded-xl border border-primary relative overflow-hidden mb-6 sm:mb-8">
+          <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
+          <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
           
           <div class="relative z-10 space-y-4 sm:space-y-6">
             <div class="flex items-start gap-3 sm:gap-4">
-              <div class="bg-[#E2A86B]/20 p-2 rounded-lg flex items-center justify-center mt-0.5 flex-shrink-0">
-                <svg width="16" height="16" fill="currentColor" class="text-[#E2A86B] sm:w-5 sm:h-5" viewBox="0 0 24 24">
+              <div class="bg-accent/20 p-2 rounded-lg flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg width="16" height="16" fill="currentColor" class="text-accent sm:w-5 sm:h-5" viewBox="0 0 24 24">
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
               </div>
               <div class="min-w-0 flex-1">
                 <h4 class="font-medium text-secondary text-sm sm:text-base">{t('contact.label.email')}</h4>
                 <a href="mailto:contato@dayonetalent.com" title="Mail to contato@dayonetalent.com">
-                  <p class="text-[#E0DFD5]/80 text-sm sm:text-base break-all">contato@dayonetalent.com</p>
+                  <p class="text-secondary/80 text-sm sm:text-base break-all">contato@dayonetalent.com</p>
                 </a>
               </div>
             </div>
             
             <div class="flex items-start gap-3 sm:gap-4">
-              <div class="bg-[#E2A86B]/20 p-2 rounded-lg flex items-center justify-center mt-0.5 flex-shrink-0">
-                <svg width="16" height="16" fill="currentColor" class="text-[#E2A86B] sm:w-5 sm:h-5" viewBox="0 0 24 24">
+              <div class="bg-accent/20 p-2 rounded-lg flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg width="16" height="16" fill="currentColor" class="text-accent sm:w-5 sm:h-5" viewBox="0 0 24 24">
                   <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                 </svg>
               </div>
               <div class="min-w-0 flex-1">
                 <h4 class="font-medium text-secondary text-sm sm:text-base">{t('contact.label.phone')}</h4>
                 <a href="tel:+5511997127227" title="Call +55 11 99712-7227">
-                  <p class="text-[#E0DFD5]/80 text-sm sm:text-base">+55 11 99712-7227</p>
+                  <p class="text-secondary/80 text-sm sm:text-base">+55 11 99712-7227</p>
                 </a>
               </div>
             </div>
             
             <div class="flex items-start gap-3 sm:gap-4">
-              <div class="bg-[#E2A86B]/20 p-2 rounded-lg flex items-center justify-center mt-0.5 flex-shrink-0">
-                <svg width="16" height="16" fill="currentColor" class="text-[#E2A86B] sm:w-5 sm:h-5" viewBox="0 0 24 24">
+              <div class="bg-accent/20 p-2 rounded-lg flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg width="16" height="16" fill="currentColor" class="text-accent sm:w-5 sm:h-5" viewBox="0 0 24 24">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
               </div>
               <div class="min-w-0 flex-1">
                 <h4 class="font-medium text-secondary text-sm sm:text-base">{t('contact.label.office')}</h4>
-                <p class="text-[#E0DFD5]/80 text-sm sm:text-base" set:html={t('contact.address')}></p>
+                <p class="text-secondary/80 text-sm sm:text-base" set:html={t('contact.address')}></p>
               </div>
             </div>
           </div>
