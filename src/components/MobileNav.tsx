@@ -98,7 +98,7 @@ function MobileNav() {
       {/* Mobile menu button */}
       <button 
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="relative z-[100] text-secondary hover:text-accent transition-colors duration-200 p-2"
+        className="relative z-[100] text-accent hover:text-dark transition-colors duration-200 p-2"
         aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         type="button"
       >
@@ -133,7 +133,7 @@ function MobileNav() {
               <div className="flex justify-between items-center p-6 border-b border-secondary/20">
                 <Image 
                   src={logo} 
-                  alt="Logo Day One" 
+                  alt="Logo DayOne" 
                   class="h-8 w-auto" 
                 />
               </div>

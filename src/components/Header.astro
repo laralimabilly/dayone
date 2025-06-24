@@ -11,15 +11,15 @@ import logoLight from '../assets/DayOne_Logo_Light.png';
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
     <!-- Logo -->
     <div class="flex items-center flex-shrink-0 logo-container">
-      <a href="/" aria-label="Day One Talent Advisory Home">
+      <a href="/" aria-label="DayOne Talent Advisory Home">
         <Image 
           src={logo} 
-          alt="Logo Day One" 
+          alt="Logo DayOne" 
           class="max-w-28 sm:max-w-32 lg:max-w-36 h-auto logo-dark" 
         />
         <Image 
           src={logoLight} 
-          alt="Logo Day One" 
+          alt="Logo DayOne" 
           class="max-w-28 sm:max-w-32 lg:max-w-36 h-auto logo-light" 
         />
       </a>
@@ -53,8 +53,8 @@ import logoLight from '../assets/DayOne_Logo_Light.png';
     const header = document.querySelector('.adaptive-header');
     if (!header) return;
     
-    const darkSections = ['contact', 'footer', 'blog-hero']; // Add your dark section IDs
-    const lightSections = ['hero', 'our-solutions', 'our-team', 'why-choose', 'blog-featured', 'blog-featured-articles', 'blog-main']; // Add your light section IDs
+    const darkSections = ['contact', 'footer', 'blog-hero', 'newsletter']; // Add your dark section IDs
+    const lightSections = ['hero', 'our-solutions', 'our-team', 'why-choose', 'blog-featured', 'blog-featured-articles', 'blog-main', 'blog-article']; // Add your light section IDs
 
     function updateHeaderMode() {
 
@@ -63,7 +63,6 @@ import logoLight from '../assets/DayOne_Logo_Light.png';
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id;
-            console.log(sectionId, entry.isIntersecting);
             if (darkSections.includes(sectionId)) {
               header?.setAttribute('data-theme', 'light-text');
             } else if (lightSections.includes(sectionId)) {
@@ -72,7 +71,7 @@ import logoLight from '../assets/DayOne_Logo_Light.png';
           }
         });
       }, {
-        threshold: 0.3, // Trigger when 30% of section is visible
+        threshold: 0.1, // Trigger when 30% of section is visible
         rootMargin: '-80px 0px -50% 0px' // Account for header height
       });
 

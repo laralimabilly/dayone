@@ -2,11 +2,17 @@
 import CookieConsent from '../components/CookieConsent';
 // src/layouts/Layout.astro
 export interface Props {
-  title: string;
+  title?: string;
   description?: string;
 }
 
-const { title, description = "Day One Talent Advisory - Executive Search" } = Astro.props;
+const {
+
+  title = "DayOne | Talent Advisory - Executive Search & Career Development", 
+  description = "Our Talent Advisory and Executive Search firm specializes in building AI-ready leadership teams for companies undergoing expansion and market entry.",
+
+} = Astro.props;
+
 ---
 
 <!DOCTYPE html>
@@ -51,9 +57,9 @@ const { title, description = "Day One Talent Advisory - Executive Search" } = As
     <meta name="google-adsense-account" content="">
     <meta name="twitter:card" content="summary" />
     <meta property="fb:app_id" content="">
-    <meta property="og:title" content="Day One | Talent Advisory">
+    <meta property="og:title" content={title}>
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dayone.com/">
+    <meta property="og:url" content="https://dayonetalent.com/">
     <meta property="og:description" content={description}>
     <meta property="og:image" content="https://i.postimg.cc/1XrTKGLR/Logo-Link-Preview-1200x627.jpg">
     <meta property="og:image:type" content="image/jpeg">
@@ -63,7 +69,7 @@ const { title, description = "Day One Talent Advisory - Executive Search" } = As
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="500">
     <meta property="og:image:height" content="500">
-    <meta property="og:site_name" content="Day One | Talent Advisory">
+    <meta property="og:site_name" content={title}>
     <meta name="description" content={description}>
     <meta name="keywords" content="executive search, talent advisory, leadership recruitment, C-suite hiring, executive headhunting">
     <meta name="robots" content="all" />
@@ -72,7 +78,7 @@ const { title, description = "Day One Talent Advisory - Executive Search" } = As
     <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/favicon-16x16.png">
     <!-- <link rel="manifest" href="/img/icon/manifest.json" /> -->
-    <link rel="canonical" href="http://dayonetalent.com/">
+    <link rel="canonical" href="https://dayonetalent.com/">
 
     <title>{title}</title>
   </head>

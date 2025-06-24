@@ -34,7 +34,7 @@ const article = story.content as ArticleStoryblok;
 
 // Generate SEO data
 const excerpt = generateExcerpt(article.content, 160);
-const seoTitle = article.seo_title || `${article.title} | Day One Talent Advisory Blog`;
+const seoTitle = article.seo_title || `${article.title} | DayOne Talent Advisory Blog`;
 const seoDescription = article.seo_description || excerpt;
 
 // Get related articles (same category, excluding current)
@@ -50,7 +50,7 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
     <Header />
     
     <!-- Article Content -->
-    <main class="pt-24 pb-16">
+    <main id="blog-article" class="pt-24 pb-16 bg-light">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Breadcrumb -->
         <nav class="mb-8" aria-label="Breadcrumb">
@@ -74,26 +74,26 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
               <h3 class="text-lg font-semibold text-primary mb-4">Share this article</h3>
               <div class="flex gap-3">
                 <a 
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+                  href={`https://x.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(Astro.url.href)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm"
-                  title="Share on Twitter"
+                  class="bg-black text-white px-4 py-2 rounded-lg hover:bg-white transition-colors text-sm"
+                  title="Share on X"
                 >
-                  Share on Twitter
+                  Share on X
                 </a>
                 <a 
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm"
+                  class="bg-[#0073b1] text-white px-4 py-2 rounded-lg hover:bg-white transition-colors text-sm"
                   title="Share on LinkedIn"
                 >
                   Share on LinkedIn
                 </a>
                 <button 
                   onclick={`navigator.share ? navigator.share({ title: '${article.title}', url: '${Astro.url.href}' }) : navigator.clipboard.writeText('${Astro.url.href}')`}
-                  class="bg-secondary text-primary px-4 py-2 rounded-lg hover:bg-secondary/80 transition-colors text-sm"
+                  class="bg-secondary text-primary px-4 py-2 rounded-lg hover:bg-white transition-colors text-sm"
                 >
                   Copy Link
                 </button>
@@ -112,7 +112,7 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
                   <div>
                     <h4 class="text-lg font-semibold text-primary mb-1">Written by {article.author}</h4>
                     <p class="text-primary/70 text-sm">
-                      Expert insights on executive search and talent advisory from the Day One team.
+                      Expert insights on executive search and talent advisory from the DayOne team.
                     </p>
                   </div>
                 </div>
@@ -137,7 +137,8 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
     )}
 
     <!-- Newsletter CTA -->
-    <section class="py-16 bg-dark text-secondary">
+    {/*
+    <section id="newsletter" class="py-16 bg-dark text-secondary">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto text-center bg-primary/20 p-8 rounded-xl border border-primary/30 relative overflow-hidden">
           <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -162,7 +163,7 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
         </div>
       </div>
     </section>
-
+    */}
     <Footer />
   </div>
 </Layout>
@@ -176,11 +177,11 @@ const relatedArticles = relatedData?.stories.filter(a => a.slug !== slug).slice(
   "image": article.image?.filename ? `${article.image.filename}/m/1200x630/smart` : "",
   "author": {
     "@type": "Organization",
-    "name": article.author || "Day One Talent Advisory"
+    "name": article.author || "DayOne Talent Advisory"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Day One Talent Advisory",
+    "name": "DayOne Talent Advisory",
     "logo": {
       "@type": "ImageObject",
       "url": "/assets/DayOne_Logo_Light.png"

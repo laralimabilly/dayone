@@ -18,17 +18,18 @@ const featured = featuredData?.stories || [];
 const total = blogData?.total || blogData?.stories.length || 0;
 const currentPage = 1;
 const totalPages = Math.ceil(total / 12);
+console.log(articles);
 ---
 
 <Layout 
-  title="Blog | Day One Talent Advisory" 
-  description="Insights on talent trends, leadership strategies, and executive search best practices from Day One Talent Advisory."
+  title="Blog | DayOne Talent Advisory - Sharing powerful insights on executive search and careers" 
+  description="Insights on talent trends, leadership strategies, and executive search best practices from DayOne Talent Advisory."
 >
   <div class="min-h-screen font-serif">
     <Header />
     
     <!-- Blog Hero Section -->
-    <section id="blog-hero" class="pt-24 pb-16 bg-gradient-to-br from-dark/80 to-primary/80 relative overflow-hidden">
+    <section id="blog-hero" class="pt-24 pb-16 bg-gradient-to-br from-dark/80 to-primary/80 relative overflow-hidden min-h-[80vh] flex items-center">
       <div class="absolute -right-20 -top-20 w-60 h-60 bg-accent/30 rounded-full blur-3xl opacity-50"></div>
       <div class="absolute -left-20 -bottom-20 w-60 h-60 bg-accent/30 rounded-full blur-3xl opacity-50"></div>
       
