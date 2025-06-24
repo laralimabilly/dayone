@@ -1,7 +1,7 @@
 ---
 // src/components/Footer.astro
 import NavLinks from './NavLinks.astro';
-import SocialLinks from './SocialLinks.tsx';
+import SocialLinks from './SocialLinks';
 import { Image } from 'astro:assets';
 import logo from '../assets/DayOne_Logo_Light.png';
 ---
@@ -49,7 +49,7 @@ import logo from '../assets/DayOne_Logo_Light.png';
       
       <!-- Social Links -->
       <div class="flex space-x-4">
-        <SocialLinks />
+        <SocialLinks colorClass='text-secondary/60 hover:text-accent' />
       </div>
     </div>
     

@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import node from '@astrojs/node';
 import tailwindcss from '@tailwindcss/vite';
 import { storyblok } from '@storyblok/astro';
 import { loadEnv } from 'vite';
@@ -47,10 +46,10 @@ export default defineConfig({
   server: {
     https: true
   },
-  output: 'server',
-  adapter: node({
-    mode: 'standalone'
-  }),
+  // output: 'server',
+  // adapter: node({
+  //   mode: 'standalone'
+  // }),
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'pt'],

@@ -10,7 +10,7 @@ export const EMAILJS_CONFIG: EmailJSConfig = {
 };
 
 // Convert form data to EmailJS template parameters
-export const createTemplateParams = (formData: FormData): EmailJSTemplateParams => {
+export const createTemplateParams = (formData: FormData): Record<string, unknown> => {
   const sanitizedData = sanitizeFormData(formData);
   
   return {

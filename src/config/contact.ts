@@ -1,5 +1,6 @@
 // src/config/contact.ts
 import { User, Mail, Phone, Building, MessageSquare } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import type { FormFieldConfig } from '../types/contact';
 
 // Form field configurations for dynamic rendering (if needed)

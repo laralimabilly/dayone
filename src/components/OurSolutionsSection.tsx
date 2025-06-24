@@ -113,7 +113,7 @@ const OurSolutionsSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 md:mt-48">
           <div className="bg-secondary/30 p-6 sm:p-8 rounded-xl border border-secondary/50 inline-block relative overflow-hidden max-w-2xl">
             <div className="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
             <div className="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>

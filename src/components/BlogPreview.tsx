@@ -120,7 +120,7 @@ function BlogPreview({ articles }: BlogPreviewProps) {
         <div className="text-center">
           <a 
             href="/blog" 
-            className="inline-flex items-center gap-3 bg-accent text-white hover:bg-accent-light transition-colors px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-flex items-center gap-3 bg-accent text-white hover:bg-white hover:text-dark transition-colors px-8 py-4 rounded-full font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             <BookOpen size={20} />
             View All Articles

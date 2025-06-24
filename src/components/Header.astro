@@ -3,10 +3,12 @@
 import NavLinks from './NavLinks.astro';
 import MobileNav from './MobileNav.tsx';
 import { Image } from 'astro:assets';
-import logo from '../assets/DayOne_Logo_Light.png';
+import logo from '../assets/DayOne_Logo_Dark.png';
+
+const classList = 'text-dark hover:text-accent transition-colors cursor-pointer text-sm xl:text-base font-medium';
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-sm border-b border-secondary/10">
+<header class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm border-b border-secondary/10">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
     <!-- Logo -->
     <div class="flex items-center flex-shrink-0">
@@ -21,14 +23,14 @@ import logo from '../assets/DayOne_Logo_Light.png';
     
     <!-- Desktop Navigation -->
     <div class="hidden lg:flex space-x-6 xl:space-x-8">
-      <NavLinks classList="nav-link" />
+      <NavLinks classList={classList} />
     </div>
     
     <!-- Desktop CTA Button -->
     <div class="hidden lg:block">
       <a 
         href="/#contact"
-        class="btn-primary"
+        class="bg-accent text-light hover:bg-white hover:text-dark transition-colors px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-medium cursor-pointer text-sm xl:text-base"
         title="Contact"
       >
         Contact
@@ -41,14 +43,6 @@ import logo from '../assets/DayOne_Logo_Light.png';
 </header>
 
 <style>
-  .nav-link {
-    @reference text-secondary hover:text-accent transition-colors cursor-pointer text-sm xl:text-base font-medium;
-  }
-  
-  .btn-primary {
-    @reference bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-medium cursor-pointer text-sm xl:text-base;
-  }
-  
   /* Ensure header doesn't interfere with content */
   header {
     backdrop-filter: blur(8px);
