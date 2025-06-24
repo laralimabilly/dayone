@@ -26,7 +26,7 @@ const WhyChooseDayOneSection = () => {
   ];
 
   return (
-    <section className="bg-light py-24 text-primary">
+    <section id="why-choose" className="bg-light py-24 text-primary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">

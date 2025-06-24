@@ -151,7 +151,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
   };
 
   return (
-    <div className="space-y-8">
+    <section id="search" className="space-y-8">
       {/* Search Interface */}
       <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-secondary/30 sticky top-24 z-40">
         {/* Search Input */}
@@ -322,7 +322,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

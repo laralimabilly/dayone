@@ -32,7 +32,6 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [totalPages, setTotalPages] = useState(initialTotalPages);
-  const [isLoading, setIsLoading] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   
   const articlesPerPage = 12;

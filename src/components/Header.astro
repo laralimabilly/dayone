@@ -1,29 +1,35 @@
 ---
-// src/components/Header.astro (Fixed)
+// src/components/Header.astro (Simple adaptive version)
 import NavLinks from './NavLinks.astro';
 import MobileNav from './MobileNav.tsx';
 import { Image } from 'astro:assets';
 import logo from '../assets/DayOne_Logo_Dark.png';
-
-const classList = 'text-dark hover:text-accent transition-colors cursor-pointer text-sm xl:text-base font-medium';
+import logoLight from '../assets/DayOne_Logo_Light.png';
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm border-b border-secondary/10">
+<header class="adaptive-header">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
     <!-- Logo -->
-    <div class="flex items-center flex-shrink-0">
+    <div class="flex items-center flex-shrink-0 logo-container">
       <a href="/" aria-label="Day One Talent Advisory Home">
         <Image 
           src={logo} 
           alt="Logo Day One" 
-          class="max-w-28 sm:max-w-32 lg:max-w-36 h-auto" 
+          class="max-w-28 sm:max-w-32 lg:max-w-36 h-auto logo-dark" 
+        />
+        <Image 
+          src={logoLight} 
+          alt="Logo Day One" 
+          class="max-w-28 sm:max-w-32 lg:max-w-36 h-auto logo-light" 
         />
       </a>
     </div>
     
     <!-- Desktop Navigation -->
     <div class="hidden lg:flex space-x-6 xl:space-x-8">
-      <NavLinks classList={classList} />
+      <a href="/#our-solutions" class="nav-link" title="Our Solutions">Our Solutions</a>
+      <a href="/#our-team" class="nav-link" title="Our Team">Our Team</a>
+      <a href="/blog" class="nav-link" title="Blog">Blog</a>
     </div>
     
     <!-- Desktop CTA Button -->
@@ -42,16 +48,132 @@ const classList = 'text-dark hover:text-accent transition-colors cursor-pointer 
   </nav>
 </header>
 
+<script>
+  function initSimpleAdaptiveHeader() {
+    const header = document.querySelector('.adaptive-header');
+    if (!header) return;
+    
+    const darkSections = ['contact', 'footer', 'blog-hero']; // Add your dark section IDs
+    const lightSections = ['hero', 'our-solutions', 'our-team', 'why-choose', 'blog-featured', 'blog-featured-articles', 'blog-main']; // Add your light section IDs
+
+    function updateHeaderMode() {
+
+      // Create intersection observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            console.log(sectionId, entry.isIntersecting);
+            if (darkSections.includes(sectionId)) {
+              header?.setAttribute('data-theme', 'light-text');
+            } else if (lightSections.includes(sectionId)) {
+              header?.setAttribute('data-theme', 'dark-text');
+            }
+          }
+        });
+      }, {
+        threshold: 0.3, // Trigger when 30% of section is visible
+        rootMargin: '-80px 0px -50% 0px' // Account for header height
+      });
+
+      // Observe all major sections
+      const sections = document.querySelectorAll('section[id], main[id], footer[id]');
+      sections.forEach(section => observer.observe(section));
+      
+      // Cleanup
+      return () => observer.disconnect();
+
+    }
+    
+    // Initial call
+    updateHeaderMode();
+    
+    // Update on scroll with throttling
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateHeaderMode();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+  
+  document.addEventListener('DOMContentLoaded', initSimpleAdaptiveHeader);
+  document.addEventListener('astro:after-swap', initSimpleAdaptiveHeader);
+</script>
+
 <style>
-  /* Ensure header doesn't interfere with content */
-  header {
+  .adaptive-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: transparent;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Logo container for positioning */
+  .logo-container {
+    position: relative;
+  }
+  
+  /* Default state - light text (for dark backgrounds) */
+  .logo-dark {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .logo-light {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-link {
+    color: #E0DFD5; /* Light text */
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #E2A86B; /* Accent color */
+  }
+  
+  @media (min-width: 1280px) {
+    .nav-link {
+      font-size: 1rem;
+    }
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .logo-dark {
+    opacity: 1;
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .logo-light {
+    opacity: 0;
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .nav-link {
+    color: #414F59; /* Dark text */
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .nav-link:hover {
+    color: #E2A86B; /* Accent color stays the same */
   }
   
   /* Mobile landscape adjustments */
   @media (max-height: 500px) and (orientation: landscape) {
-    nav {
+    .adaptive-header nav {
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
     }
