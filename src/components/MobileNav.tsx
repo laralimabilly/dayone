@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Image } from 'astro:assets';
-import logo from '../assets/DayOne_Logo_Light.png';
+// import { Image } from 'astro:assets';
+// import logo from '../assets/DayOne_Logo_Light.png';
 
 function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -131,10 +131,10 @@ function MobileNav() {
             >
               {/* Header */}
               <div className="flex justify-between items-center p-6 border-b border-secondary/20">
-                <Image 
-                  src={logo} 
+                <img 
+                  src="./src/assets/DayOne_Logo_Light.png" 
                   alt="Logo DayOne" 
-                  class="h-8 w-auto" 
+                  className="h-8 w-auto" 
                 />
               </div>
 
@@ -167,7 +167,7 @@ function MobileNav() {
               {/* CTA Section */}
               <div className="p-6 border-t border-secondary/20">
                 <button 
-                  className="w-full bg-accent text-white hover:bg-accent/90 transition-colors px-6 py-4 rounded-full font-medium text-lg"
+                  className="w-full bg-accent text-white hover:bg-accent/90 transition-colors px-3 py-2 md:px-6 md:py-4 rounded-full font-medium text-lg"
                   onClick={handleContactClick}
                   type="button"
                 >

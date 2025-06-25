@@ -5,7 +5,8 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import OurSolutionsSection from "../components/OurSolutionsSection";
-import OurTeamSection from '../components/OurTeamSection.astro';
+// import OurTeamSection from '../components/OurTeamSection.astro';
+import OurTeamSection from "../components/OurTeamSection";
 import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
 import WhyChooseDayOneSection from "../components/WhyChooseDayOneSection";
@@ -22,7 +23,8 @@ const featuredArticles = featuredBlogData?.stories || [];
     <Header />
     <Hero />
     <OurSolutionsSection client:load />
-    <OurTeamSection />
+    <!-- <OurTeamSection /> -->
+    <OurTeamSection client:load />
     <WhyChooseDayOneSection client:load />
     
     <!-- Blog Preview Section -->

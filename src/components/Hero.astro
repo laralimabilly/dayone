@@ -5,11 +5,15 @@ import HeroAnimation from './HeroAnimation.tsx';
 ---
 
 <section id="hero" class="relative min-h-screen lg:h-screen overflow-hidden flex items-center">
-  <div class="absolute inset-0 bg-cover bg-center bg-light city-mask">
-  </div>
+  <!-- <div class="absolute inset-0 bg-cover bg-center bg-light city-mask"></div>
   <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/15 rounded-full blur-2xl opacity-70"></div>
-  <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/15 rounded-full blur-2xl opacity-70"></div>
-  <!-- <div class="absolute inset-0 bg-light/60"></div> -->
+  <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/15 rounded-full blur-2xl opacity-70"></div> -->
+  <div 
+    class="absolute inset-0 bg-cover bg-top bg-light bg-blend-multiply"
+    style="background-image: url('/img/skyline_2.jpg')"
+  >
+  </div>
+  <div class="absolute inset-0 bg-light/40"></div>
   
   <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center min-h-screen lg:h-auto">
     <div class="w-full max-w-4xl mx-auto lg:mx-0 lg:max-w-3xl xl:max-w-4xl text-center lg:text-left">

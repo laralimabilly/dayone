@@ -4,5 +4,9 @@ Disallow:
 
 User-agent: facebookexternalhit
 Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: GPTBot
+Allow: /
 
-Sitemap: https://d1hc.com/sitemap.xml
+Sitemap: https://dayonetalent.com/sitemap.xml
