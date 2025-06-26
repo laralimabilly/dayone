@@ -200,7 +200,7 @@ const TeamMember = ({ person }: { person: Person }) => {
                     <img 
                       src={person.image} 
                       alt={person.name}
-                      className="absolute w-[110px] -left-[20px] -top-[22px] md:w-[150px] md:-left-[50px] md:top-0"
+                      className="absolute w-[110px] -left-[20px] -top-[22px] md:w-[150px] md:-left-[50px] md:top-auto"
                     />
                     <div className="ml-[65px] md:ml-[80px]">
                       <h3 className="text-xl font-semibold text-secondary">{person.name}</h3>
