@@ -14,8 +14,9 @@ import BlogPreview from "../components/BlogPreview";
 import { getFeaturedArticles } from '../utils/storyblok';
 
 // Fetch featured blog articles for homepage
-const featuredBlogData = await getFeaturedArticles(3);
-const featuredArticles = featuredBlogData?.stories || [];
+const featuredBlogData  = await getFeaturedArticles(3);
+const featuredArticles  = featuredBlogData?.stories || [];
+const useFolderMask     = featuredArticles.length > 0 ? true : false;
 ---
 
 <Layout>
@@ -25,7 +26,7 @@ const featuredArticles = featuredBlogData?.stories || [];
     <OurSolutionsSection client:load />
     <!-- <OurTeamSection /> -->
     <OurTeamSection client:load />
-    <WhyChooseDayOneSection client:load />
+    <WhyChooseDayOneSection useFolderMask={useFolderMask} client:load />
     
     <!-- Blog Preview Section -->
     {featuredArticles.length > 0 && (

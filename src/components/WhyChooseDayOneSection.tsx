@@ -1,7 +1,11 @@
 // src/components/WhyChooseDayOneSection.tsx
 import { Heart, Target, Users, TrendingUp } from 'lucide-react';
 
-const WhyChooseDayOneSection = () => {
+interface WhyChooseDayOneSectionProps {
+  useFolderMask?: boolean
+}
+
+const WhyChooseDayOneSection = (useFolderMask: WhyChooseDayOneSectionProps) => {
   const features = [
     {
       icon: Users,
@@ -26,7 +30,7 @@ const WhyChooseDayOneSection = () => {
   ];
 
   return (
-    <section id="why-choose" className="bg-light py-24 text-primary">
+    <section id="why-choose" className={`bg-light py-24 text-primary ${useFolderMask ? 'folder-mask' : ''}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
