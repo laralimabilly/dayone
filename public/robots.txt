@@ -4,9 +4,48 @@ Disallow:
 
 User-agent: facebookexternalhit
 Allow: /
+
 User-agent: Bingbot
 Allow: /
+
 User-agent: GPTBot
 Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# 👋 Block undesired or training-only AI bots
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
 
 Sitemap: https://dayonetalent.com/sitemap.xml

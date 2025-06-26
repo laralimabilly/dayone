@@ -1,0 +1,19 @@
+# DayOne | Talent Advisory
+
+> Executive Search and Talent Advisory firm specializing in building AI‑ready leadership teams for companies undergoing expansion, transformation, and market entry in Brazil and beyond.
+
+## Core Content
+- https://dayonetalent.com/ : Homepage – mission, core services, and firm overview.
+- https://dayonetalent.com/#our-solutions : Our Solutions – detailed descriptions of services offered.
+- https://dayonetalent.com/#our-team : Our Team – managing partners and associates profiles.
+- https://dayonetalent.com/#contact : Contact – email, phone, office location, contact form.
+- https://dayonetalent.com/privacy-policy : Privacy Policy – data protection and legal information.
+
+## Blog & Insights
+- https://dayonetalent.com/blog : Blog – insights on executive search, leadership, AI-ready leadership.
+- https://dayonetalent.com/blog/category/executive-search : Executive Search category – curated articles on C‑suite hires and best practices.
+- https://dayonetalent.com/blog/category/talent-intelligence : Market Intelligence & Transformation – deep-dive thought leadership.
+
+## Optional / Supporting
+- https://dayonetalent.com/blog/category/career-transition : Career Transition – guidance for senior executives.
+- https://linkedin.com/company/dayonetalentadvisory : LinkedIn – social profile, network presence.
