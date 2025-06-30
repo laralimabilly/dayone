@@ -2,8 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { Image } from 'astro:assets';
-// import logo from '../assets/DayOne_Logo_Light.png';
+import logoLight from '../assets/DayOne_Logo_Light.png';
 
 function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -132,7 +131,7 @@ function MobileNav() {
               {/* Header */}
               <div className="flex justify-between items-center p-6 border-b border-secondary/20">
                 <img 
-                  src="./src/assets/DayOne_Logo_Light.png" 
+                  src={logoLight.src}
                   alt="Logo DayOne" 
                   className="h-8 w-auto" 
                 />
