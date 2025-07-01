@@ -20,6 +20,7 @@ export default function SocialLinks({
                 href="https://linkedin.com/company/dayonetalentadvisory" 
                 className={linkClasses}
                 title="LinkedIn"
+                target="_blank"
             >
                 <FaLinkedin />
             </a>
@@ -27,6 +28,7 @@ export default function SocialLinks({
                 href="https://wa.me/5511997127227?Hey%2C%20I%20would%20like%20to%20know%20more%20about..." 
                 className={linkClasses}
                 title="WhatsApp"
+                target="_blank"
             >
                 <FaWhatsapp />
             </a>
