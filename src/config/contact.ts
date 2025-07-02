@@ -27,7 +27,7 @@ export const FORM_FIELDS: FormFieldConfig[] = [
     name: 'phone',
     label: 'Phone',
     type: 'tel',
-    placeholder: '(555) 123-4567',
+    placeholder: '(11) 91234-5678',
     icon: Phone,
     required: true
   },

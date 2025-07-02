@@ -260,7 +260,7 @@ function ContactForm() {
                       ? FORM_CONFIG.STYLES.input.error
                       : FORM_CONFIG.STYLES.input.normal
                   }`}
-                  placeholder="(555) 123-4567"
+                  placeholder="(11) 91234-5678"
                 />
               </div>
               {getFieldError('phone') && (
