@@ -62,7 +62,7 @@ const OurSolutionsSection = () => {
 
                 {/* Placeholder content when no image */}
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/80 to-accent/60">
-                  <solution.icon size={48} className="text-white/30" />
+                  <solution.icon size={48} className="text-white/10" />
                 </div>
               </div>
 

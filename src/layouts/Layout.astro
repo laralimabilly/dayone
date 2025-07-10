@@ -4,12 +4,16 @@ import CookieConsent from '../components/CookieConsent';
 export interface Props {
   title?: string;
   description?: string;
+  origin?: string;
+  pathname?: string;
 }
 
 const {
 
   title = "DayOne | Talent Advisory - Executive Search & Career Development", 
   description = "Our Talent Advisory and Executive Search firm specializes in building AI-ready leadership teams for companies undergoing expansion and market entry.",
+  origin = Astro.url.origin,
+  pathname = Astro.url.pathname,
 
 } = Astro.props;
 
@@ -59,7 +63,7 @@ const {
     <meta property="fb:app_id" content="">
     <meta property="og:title" content={title}>
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dayonetalent.com/">
+    <meta property="og:url" content={origin}>
     <meta property="og:description" content={description}>
     <meta property="og:image" content="https://i.postimg.cc/1XrTKGLR/Logo-Link-Preview-1200x627.jpg">
     <meta property="og:image:type" content="image/jpeg">
@@ -78,7 +82,7 @@ const {
     <link rel="icon" type="image/png" sizes="32x32" href="/img/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/icon/favicon-16x16.png">
     <!-- <link rel="manifest" href="/img/icon/manifest.json" /> -->
-    <link rel="canonical" href="https://dayonetalent.com/">
+    <link rel="canonical" href={origin + pathname}>
 
     <title>{title}</title>
   </head>
