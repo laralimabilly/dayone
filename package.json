@@ -29,7 +29,6 @@
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-i18next": "^15.5.2",
     "react-icons": "^5.5.0",
     "storyblok-rich-text-react-renderer": "^3.0.1",
     "tailwindcss": "^4.1.8",

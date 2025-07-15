@@ -1,6 +1,7 @@
 ---
 import CookieConsent from '../components/CookieConsent';
-// src/layouts/Layout.astro
+import { initializeLocale, getCurrentLocale } from '../utils/i18n';
+
 export interface Props {
   title?: string;
   description?: string;
@@ -17,10 +18,13 @@ const {
 
 } = Astro.props;
 
+initializeLocale();
+const currentLocale = getCurrentLocale();
+
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={currentLocale}>
   <head>
     <!-- Cookie Consent Initialization -->
     <script is:inline>
@@ -85,6 +89,20 @@ const {
     <link rel="canonical" href={origin + pathname}>
 
     <title>{title}</title>
+
+    <!-- Initialize translations first -->
+    <script is:inline>
+      // Initialize locale system early
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem('locale');
+        const browserLang = navigator.language.split('-')[0];
+        
+        if (!stored) {
+          const defaultLang = ['en', 'pt'].includes(browserLang) ? browserLang : 'en';
+          localStorage.setItem('locale', defaultLang);
+        }
+      }
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -96,6 +114,21 @@ const {
 
     <!-- Cookie Consent - Available site-wide -->
     <CookieConsent client:load />
+
+    <!-- Translation initialization -->
+    <script>
+      import { initializeLocale } from '../utils/i18n.ts';
+      
+      // Initialize locale when page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeLocale();
+      });
+      
+      // Re-initialize after navigation
+      document.addEventListener('astro:after-swap', () => {
+        initializeLocale();
+      });
+    </script>
 
     <script src="../utils/navigation.ts"></script>
   </body>

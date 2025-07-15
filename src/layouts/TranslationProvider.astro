@@ -1,0 +1,25 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class={className}>
+  <slot />
+</div>
+
+<script>
+  import { initializeLocale } from '../utils/i18n.ts';
+  
+  // Initialize locale when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeLocale();
+  });
+  
+  // Re-initialize after Astro navigation
+  document.addEventListener('astro:after-swap', () => {
+    initializeLocale();
+  });
+</script>
