@@ -1,4 +1,4 @@
-// src/utils/i18n.ts - Global solution for static sites
+// src/utils/i18n.ts - Fixed TypeScript types
 import en from '../locales/en.json';
 import pt from '../locales/pt.json';
 
@@ -112,10 +112,10 @@ export function initializeGlobalTranslations(): void {
     // Get the current locale to ensure it's set
     const currentLocale = getCurrentLocale();
     
-    // Set up global listener for locale changes
-    window.addEventListener('localeChanged', (event: CustomEvent) => {
+    // Set up global listener for locale changes - FIXED TYPE CASTING
+    window.addEventListener('localeChanged', ((event: CustomEvent<Locale>) => {
       updateAstroTranslations(event.detail);
-    });
+    }) as EventListener);
     
     // Update translations immediately based on stored locale
     // Use a small delay to ensure DOM is ready
