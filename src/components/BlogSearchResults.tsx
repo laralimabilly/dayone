@@ -1,8 +1,9 @@
-// src/components/BlogSearchResults.tsx - Fixed version with safe tag handling
+// src/components/BlogSearchResults.tsx - Updated with translation support
 import { useState, useEffect } from 'react';
 import { Search, Filter, Calendar, User, ArrowRight, X } from 'lucide-react';
 import type { StoryblokStory } from '../types/storyblok';
 import type { ArticleStoryblok } from '../types/storyblok';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface BlogSearchResultsProps {
   articles: (StoryblokStory & { content: ArticleStoryblok })[];
@@ -25,6 +26,8 @@ function getTagsArray(tags: any): string[] {
 }
 
 function BlogSearchResults({ articles, categories, initialQuery = '', initialCategory = '' }: BlogSearchResultsProps) {
+  const { t } = useTranslation();
+  
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory || 'All');
   const [searchResults, setSearchResults] = useState<typeof articles>([]);
@@ -138,7 +141,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
   const highlightText = (text: string, query: string) => {
     if (!query.trim()) return text;
     
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\                    className={`px-3 py-2 rounde')})`, 'gi');
     const parts = text.split(regex);
     
     return parts.map((part, index) => 
@@ -161,7 +164,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
           </div>
           <input
             type="text"
-            placeholder="Search articles, topics, authors..."
+            placeholder={t('blog.messages.searchInputPlaceholder')}
             value={searchQuery}
             onChange={handleSearch}
             className="w-full pl-12 pr-12 py-4 bg-secondary/50 text-primary rounded-lg border border-secondary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all duration-200 text-lg"
@@ -178,14 +181,14 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
 
         {/* Category Filter */}
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-primary/70 text-sm font-medium">Filter by category:</span>
+          <span className="text-primary/70 text-sm font-medium">{t('blog.messages.filterByCategory')}:</span>
           <div className="flex gap-2 flex-wrap">
-            {['All', ...categories].map((category) => (
+            {[t('blog.allCategories'), ...categories].map((category, index) => (
               <button
                 key={category}
-                onClick={() => handleCategoryChange(category)}
+                onClick={() => handleCategoryChange(index === 0 ? 'All' : category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  selectedCategory === category
+                  selectedCategory === (index === 0 ? 'All' : category)
                     ? 'bg-accent text-white shadow-lg'
                     : 'bg-secondary/50 text-primary hover:bg-secondary hover:text-accent'
                 }`}
@@ -200,7 +203,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
         <div className="mt-4 pt-4 border-t border-secondary/30 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="text-sm text-primary/60">
-              {isSearching ? 'Searching...' : `${searchResults.length} results found`}
+              {isSearching ? t('common.loading') : `${searchResults.length} ${t('blog.messages.resultsFound')}`}
             </span>
             
             {(searchQuery || selectedCategory !== 'All') && (
@@ -209,7 +212,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
                 className="text-sm text-accent hover:text-accent-light transition-colors flex items-center gap-1"
               >
                 <X size={14} />
-                Clear all filters
+                {t('blog.clearFilters')}
               </button>
             )}
           </div>
@@ -292,7 +295,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
                     href={`/blog/${article.slug}`}
                     className="inline-flex items-center text-accent hover:text-accent-light transition-colors duration-200 font-medium"
                   >
-                    Read Full Article
+                    {t('blog.readArticle')}
                     <ArrowRight size={16} className="ml-2" />
                   </a>
                 </div>
@@ -304,11 +307,11 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
         <div className="text-center py-16">
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-xl border border-secondary/30 inline-block max-w-md">
             <Search size={64} className="text-primary/30 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-primary mb-2">No results found</h3>
+            <h3 className="text-xl font-semibold text-primary mb-2">{t('blog.messages.searchEmpty')}</h3>
             <p className="text-primary/60 mb-4">
               {searchQuery 
-                ? `We couldn't find any articles matching "${searchQuery}"`
-                : 'Try entering a search term to find relevant articles'
+                ? t('blog.messages.noResultsForQuery').replace('{query}', searchQuery)
+                : t('blog.messages.enterSearchTerm')
               }
             </p>
             {(searchQuery || selectedCategory !== 'All') && (
@@ -316,7 +319,7 @@ function BlogSearchResults({ articles, categories, initialQuery = '', initialCat
                 onClick={clearSearch}
                 className="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-2 rounded-lg font-medium"
               >
-                Clear Search
+                {t('blog.clearFilters')}
               </button>
             )}
           </div>

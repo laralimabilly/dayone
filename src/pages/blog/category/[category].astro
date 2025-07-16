@@ -1,10 +1,13 @@
 ---
-// src/pages/blog/category/[category].astro
+// src/pages/blog/category/[category].astro - Updated with translation support
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import BlogGrid from '../../../components/BlogGrid';
 import { getBlogArticles, getBlogCategories } from '../../../utils/storyblok';
+import { useTranslations } from '../../../utils/i18n';
+
+const { t } = useTranslations();
 
 export async function getStaticPaths() {
   // Get all categories for static generation
@@ -16,7 +19,6 @@ export async function getStaticPaths() {
   }));
 }
 
-// const { category } = Astro.params;
 const { categoryName } = Astro.props;
 
 // Fetch articles for this category
@@ -32,8 +34,8 @@ const categories = categoriesData || [];
 const total = articles.length;
 const totalPages = Math.ceil(total / 12);
 
-// SEO
-const seoTitle = `${categoryName} Articles | DayOne Talent Advisory Blog`;
+// SEO with translations
+const seoTitle = `${categoryName} ${t('blog.meta.articles')} | DayOne Talent Advisory Blog`;
 const seoDescription = `Explore our latest insights and articles about ${categoryName} from DayOne Talent Advisory's expert team.`;
 ---
 
@@ -50,9 +52,16 @@ const seoDescription = `Explore our latest insights and articles about ${categor
         <!-- Breadcrumb -->
         <nav class="mb-8" aria-label="Breadcrumb">
           <ol class="flex items-center space-x-2 text-sm text-secondary/60">
-            <li><a href="/" class="hover:text-accent transition-colors" title="Home">Home</a></li>
-            <li><span class="mx-2">/</span></li>
-            <li><a href="/blog" class="hover:text-accent transition-colors" title="Blog">Blog</a></li>
+            <li>
+              <a 
+                href="/blog" 
+                class="hover:text-accent transition-colors" 
+                title={t('blog.navigation.breadcrumb.blog')}
+                data-translate-key="blog.navigation.breadcrumb.blog"
+              >
+                {t('blog.navigation.breadcrumb.blog')}
+              </a>
+            </li>
             <li><span class="mx-2">/</span></li>
             <li class="text-secondary">{categoryName}</li>
           </ol>
@@ -60,7 +69,7 @@ const seoDescription = `Explore our latest insights and articles about ${categor
 
         <div class="text-center max-w-4xl mx-auto">
           <div class="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
-            Category
+            <span data-translate-key="blog.category">{t('blog.category')}</span>
           </div>
           
           <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent">
@@ -68,19 +77,19 @@ const seoDescription = `Explore our latest insights and articles about ${categor
           </h1>
           
           <p class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed">
-            Discover insights, trends, and expert perspectives on {categoryName.toLowerCase()} 
-            from our team of talent advisory specialists.
+            <span data-translate-key="blog.messages.categoryIntro">Discover insights, trends, and expert perspectives on</span> {categoryName.toLowerCase()} 
+            <span data-translate-key="blog.messages.categoryTeam">from our team of talent advisory specialists.</span>
           </p>
           
-          <!-- Stats -->}
+          <!-- Stats -->
           <div class="flex flex-wrap justify-center gap-8 mt-12">
             <div class="text-center">
               <div class="text-2xl md:text-3xl font-bold text-accent">{total}</div>
-              <div class="text-sm text-secondary/70">Articles</div>
+              <div class="text-sm text-secondary/70" data-translate-key="blog.meta.articles">Articles</div>
             </div>
             <div class="text-center">
               <div class="text-2xl md:text-3xl font-bold text-accent">{categories.length}</div>
-              <div class="text-sm text-secondary/70">Categories</div>
+              <div class="text-sm text-secondary/70" data-translate-key="blog.category">Categories</div>
             </div>
           </div>
         </div>
@@ -107,16 +116,22 @@ const seoDescription = `Explore our latest insights and articles about ${categor
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                 </svg>
               </div>
-              <h3 class="text-xl font-semibold text-primary mb-2">No articles found</h3>
+              <h3 
+                class="text-xl font-semibold text-primary mb-2"
+                data-translate-key="blog.messages.categoryEmpty"
+              >
+                {t('blog.messages.categoryEmpty')}
+              </h3>
               <p class="text-primary/60 mb-4">
-                We haven't published any articles in the {categoryName} category yet.
+                <span data-translate-key="blog.messages.categoryEmptyDesc">We haven't published any articles in the</span> {categoryName} <span data-translate-key="blog.messages.categoryEmptyDesc2">category yet.</span>
               </p>
               <a 
                 href="/blog" 
                 class="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-2 rounded-lg font-medium inline-flex items-center gap-2"
-                title="Browse All Articles"
+                title={t('blog.viewAllArticles')}
+                data-translate-key="blog.viewAllArticles"
               >
-                Browse All Articles
+                {t('blog.viewAllArticles')}
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -131,8 +146,11 @@ const seoDescription = `Explore our latest insights and articles about ${categor
     {categories.length > 1 && (
       <section class="py-16 bg-light border-t border-secondary/20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-2xl md:text-3xl font-bold mb-12 text-accent text-center">
-            Explore Other Categories
+          <h2 
+            class="text-2xl md:text-3xl font-bold mb-12 text-accent text-center"
+            data-translate-key="blog.exploreCategories"
+          >
+            {t('blog.exploreCategories')}
           </h2>
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -143,7 +161,7 @@ const seoDescription = `Explore our latest insights and articles about ${categor
                 <a 
                   href={`/blog/category/${cat.toLowerCase().replace(/\s+/g, '-')}`}
                   class="group bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-secondary/30 hover:border-accent/50 transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
-                  title={cat.toLowerCase().replace(/\s+/g, '-')}
+                  title={cat}
                 >
                   <div class="flex items-center justify-between">
                     <div>
@@ -151,7 +169,7 @@ const seoDescription = `Explore our latest insights and articles about ${categor
                         {cat}
                       </h3>
                       <p class="text-primary/60 text-sm">
-                        Explore {cat.toLowerCase()} insights
+                        <span data-translate-key="blog.messages.exploreCategory">Explore</span> {cat.toLowerCase()} <span data-translate-key="blog.latestInsights">insights</span>
                       </p>
                     </div>
                     <div class="text-accent/50 group-hover:text-accent group-hover:translate-x-1 transition-all duration-200">
@@ -169,9 +187,10 @@ const seoDescription = `Explore our latest insights and articles about ${categor
             <a 
               href="/blog" 
               class="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2"
-              title="View All Articles"
+              title={t('blog.viewAllArticles')}
+              data-translate-key="blog.viewAllArticles"
             >
-              View All Articles
+              {t('blog.viewAllArticles')}
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>

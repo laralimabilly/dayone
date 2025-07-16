@@ -1,8 +1,9 @@
-// src/components/BlogGrid.tsx - Fixed version with safe tag handling
+// src/components/BlogGrid.tsx - Updated with translation support
 import { useState, useEffect } from 'react';
 import { Search, Filter, Calendar, User, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { StoryblokStory } from '../types/storyblok';
 import type { ArticleStoryblok } from '../types/storyblok';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface BlogGridProps {
   initialArticles: (StoryblokStory & { content: ArticleStoryblok })[];
@@ -26,6 +27,8 @@ function getTagsArray(tags: any): string[] {
 }
 
 function BlogGrid({ initialArticles, categories, currentPage: initialPage, totalPages: initialTotalPages, total }: BlogGridProps) {
+  const { t } = useTranslation();
+  
   const [articles, setArticles] = useState(initialArticles);
   const [filteredArticles, setFilteredArticles] = useState(initialArticles);
   const [searchTerm, setSearchTerm] = useState('');
@@ -112,7 +115,7 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
             </div>
             <input
               type="text"
-              placeholder="Search articles..."
+              placeholder={t('blog.searchPlaceholder')}
               value={searchTerm}
               onChange={handleSearch}
               className="w-full pl-10 pr-4 py-3 bg-secondary/50 text-primary rounded-lg border border-secondary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all duration-200"
@@ -121,14 +124,14 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
 
           {/* Category Filter - Desktop */}
           <div className="hidden lg:flex items-center gap-2">
-            <span className="text-primary/70 text-sm font-medium mr-2">Category:</span>
+            <span className="text-primary/70 text-sm font-medium mr-2">{t('blog.category')}:</span>
             <div className="flex gap-2 flex-wrap">
-              {['All', ...categories].map((category) => (
+              {[t('blog.allCategories'), ...categories].map((category, index) => (
                 <button
                   key={category}
-                  onClick={() => handleCategoryChange(category)}
+                  onClick={() => handleCategoryChange(index === 0 ? 'All' : category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    selectedCategory === category
+                    selectedCategory === (index === 0 ? 'All' : category)
                       ? 'bg-accent text-white shadow-lg'
                       : 'bg-secondary/50 text-primary hover:bg-secondary hover:text-accent'
                   }`}
@@ -145,7 +148,7 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
             className="lg:hidden flex items-center gap-2 bg-secondary/50 text-primary px-4 py-3 rounded-lg border border-secondary hover:bg-secondary transition-colors"
           >
             <Filter size={16} />
-            Filters
+            {t('common.filter')}
           </button>
         </div>
 
@@ -153,14 +156,14 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
         {showFilters && (
           <div className="lg:hidden mt-4 pt-4 border-t border-secondary/30">
             <div className="space-y-3">
-              <span className="text-primary/70 text-sm font-medium">Category:</span>
+              <span className="text-primary/70 text-sm font-medium">{t('blog.category')}:</span>
               <div className="flex gap-2 flex-wrap">
-                {['All', ...categories].map((category) => (
+                {[t('blog.allCategories'), ...categories].map((category, index) => (
                   <button
                     key={category}
-                    onClick={() => handleCategoryChange(category)}
+                    onClick={() => handleCategoryChange(index === 0 ? 'All' : category)}
                     className={`px-3 py-2 rounded-full text-xs font-medium transition-all duration-200 ${
-                      selectedCategory === category
+                      selectedCategory === (index === 0 ? 'All' : category)
                         ? 'bg-accent text-white'
                         : 'bg-secondary/50 text-primary hover:bg-secondary'
                     }`}
@@ -176,8 +179,8 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
         {/* Results Info */}
         <div className="mt-4 pt-4 border-t border-secondary/30 flex items-center justify-between text-sm text-primary/60">
           <span>
-            Showing {currentArticles.length} of {filteredArticles.length} articles
-            {searchTerm && ` for "${searchTerm}"`}
+            {t('blog.resultsCount').replace('{count}', currentArticles.length.toString()).replace('{total}', filteredArticles.length.toString())}
+            {searchTerm && ` ${t('blog.searchFor').replace('"{query}"', `"${searchTerm}"`)}`}
             {selectedCategory !== 'All' && ` in "${selectedCategory}"`}
           </span>
         </div>
@@ -253,7 +256,7 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
 
                   {/* Read More */}
                   <div className="flex items-center text-accent text-sm font-medium group-hover:text-accent-light transition-colors duration-200">
-                    Read Article
+                    {t('blog.readArticle')}
                     <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
@@ -265,9 +268,9 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
         <div className="text-center py-16">
           <div className="bg-secondary/30 p-8 rounded-xl border border-secondary/50 inline-block">
             <Search size={48} className="text-primary/30 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-primary mb-2">No articles found</h3>
+            <h3 className="text-xl font-semibold text-primary mb-2">{t('blog.noResults')}</h3>
             <p className="text-primary/60 mb-4">
-              Try adjusting your search terms or category filter.
+              {t('blog.noResultsMessage')}
             </p>
             <button
               onClick={() => {
@@ -276,7 +279,7 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
               }}
               className="bg-accent text-white hover:bg-accent-light transition-colors px-6 py-2 rounded-lg font-medium"
             >
-              Clear Filters
+              {t('blog.clearFilters')}
             </button>
           </div>
         </div>
@@ -295,7 +298,7 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
             }`}
           >
             <ChevronLeft size={16} />
-            Previous
+            {t('blog.navigation.pagination.previous')}
           </button>
 
           <div className="flex gap-1">
@@ -336,7 +339,7 @@ function BlogGrid({ initialArticles, categories, currentPage: initialPage, total
                 : 'bg-secondary text-primary hover:bg-accent hover:text-white'
             }`}
           >
-            Next
+            {t('blog.navigation.pagination.next')}
             <ChevronRight size={16} />
           </button>
         </div>

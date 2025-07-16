@@ -12,6 +12,7 @@
       "clear": "Clear",
       "back": "Back",
       "next": "Next",
+      "more": "More",
       "previous": "Previous",
       "home": "Home",
       "blog": "Blog",
@@ -118,27 +119,6 @@
       },
       "quote": "Because Leadership begins every day.",
       "cta": "Start Your Leadership Journey"
-    },
-    "blog": {
-      "title": "Insights & Perspectives",
-      "subtitle": "Stay ahead with the latest trends in executive search, leadership development, and digital transformation strategies from our team of experts.",
-      "featured": "Featured Articles",
-      "latestInsights": "Latest Insights",
-      "fromOurBlog": "From Our Blog",
-      "viewAllArticles": "View All Articles",
-      "searchPlaceholder": "Search articles...",
-      "noResults": "No articles found",
-      "noResultsMessage": "Try adjusting your search terms or category filter.",
-      "clearFilters": "Clear Filters",
-      "resultsCount": "Showing {count} of {total} articles",
-      "readArticle": "Read Article",
-      "shareArticle": "Share this article",
-      "relatedArticles": "Related Articles",
-      "category": "Category",
-      "allCategories": "All",
-      "searchResults": "Search Results",
-      "searchFor": "Results for: \"{query}\"",
-      "exploreCategories": "Explore Other Categories"
     },
     "contact": {
       "title": "Get in touch",
@@ -249,40 +229,147 @@
       "sections": {
         "information": {
           "title": "Information We Collect",
-          "description": "Learn what information we collect and how."
+          "description": "Learn what information we collect and how.",
+          "intro": "We may collect the following information from users:",
+          "browsing": "Browsing data (e.g., IP address, browser type, pages visited)",
+          "collectionMethods": "Collection may occur through:",
+          "contactForms": "Contact forms",
+          "cookies": "Cookies and similar technologies",
+          "analytics": "Website traffic analysis"
         },
         "purpose": {
           "title": "Purpose of Data Use",
-          "description": "Understand how we use your data."
+          "description": "Understand how we use your data.",
+          "intro": "The data collected has the following purposes:",
+          "responding": "Responding to requests made by users",
+          "improving": "Improving the browsing experience on the website",
+          "analytics": "Performing access analyses and metrics",
+          "communications": "Sending relevant communications (when authorized by the user)"
         },
         "sharing": {
-          "title": "Sharing Data", 
-          "description": "Know when and how we share information."
+          "title": "Sharing Data",
+          "description": "Know when and how we share information.",
+          "intro": "Your personal data will not be sold or shared with third parties, except:",
+          "legal": "When necessary to comply with legal obligations",
+          "services": "When necessary for the execution of services contracted by you (e.g., hosting services or email marketing tools)"
         },
         "rights": {
           "title": "Data Subject Rights (according to the LGPD)",
-          "description": "Your rights regarding your personal data."
+          "description": "Your rights regarding your personal data.",
+          "intro": "You have the following rights in relation to your personal data:",
+          "confirm": "Confirm the existence of processing",
+          "access": "Access your data",
+          "correct": "Correct incomplete or incorrect data",
+          "delete": "Request the anonymization, blocking or deletion of unnecessary data",
+          "portability": "Data portability",
+          "revoke": "Revoke previously given consent",
+          "deletion": "Request the deletion of your data (when applicable)",
+          "contact": "To exercise these rights, please contact us via email:"
         },
         "retention": {
           "title": "Data Retention and Storage",
-          "description": "How long we keep your data."
+          "description": "How long we keep your data.",
+          "content": "Your data will be stored only for the time necessary for the purposes described in this Policy or in accordance with legal obligations."
         },
         "security": {
           "title": "Information Security",
-          "description": "How we protect your information."
+          "description": "How we protect your information.",
+          "content": "We adopt appropriate technical and organizational measures to protect your data against unauthorized access, loss, alteration or destruction."
         },
         "cookies": {
           "title": "Cookies and Tracking Technologies",
-          "description": "Our use of cookies and similar technologies."
+          "description": "Our use of cookies and similar technologies.",
+          "usage": "We use cookies to improve navigation and understand how visitors interact with our website.",
+          "disable": "You can disable cookies directly in your browser settings."
         },
         "changes": {
           "title": "Changes to this Privacy Policy",
-          "description": "How we handle policy updates."
+          "description": "How we handle policy updates.",
+          "content": "We may update this Policy from time to time. We recommend that you review it periodically."
         },
         "contact": {
           "title": "Contact",
-          "description": "How to reach us with questions."
+          "description": "How to reach us with questions.",
+          "intro": "If you have any questions about this Privacy Policy or wish to exercise your rights under the LGPD, please contact:"
         }
+      },
+      "content": {
+        "introduction": "The protection of your personal data is very important to us. This Privacy Policy describes how we collect, use, store and protect the information of users who visit our website",
+        "dataController": "Data Controller",
+        "backToHome": "Back to Home"
+      }
+    },
+    "blog": {
+      "title": "Insights & Perspectives",
+      "subtitle": "Stay ahead with the latest trends in executive search, leadership development, and digital transformation strategies from our team of experts.",
+      "featured": "Featured Articles",
+      "latestInsights": "Latest Insights",
+      "fromOurBlog": "From Our Blog",
+      "viewAllArticles": "View All Articles",
+      "searchPlaceholder": "Search articles...",
+      "noResults": "No articles found",
+      "noResultsMessage": "Try adjusting your search terms or category filter.",
+      "clearFilters": "Clear Filters",
+      "resultsCount": "Showing {count} of {total} articles",
+      "readArticle": "Read Article",
+      "shareArticle": "Share this article",
+      "relatedArticles": "Related Articles",
+      "category": "Category",
+      "allCategories": "All",
+      "searchResults": "Search Results",
+      "searchFor": "Results for: \"{query}\"",
+      "exploreCategories": "Explore Other Categories",
+      "meta": {
+        "author": "Author",
+        "publishedOn": "Published on",
+        "readingTime": "min read",
+        "lastUpdated": "Last updated",
+        "tags": "Tags",
+        "articles": "Articles",
+        "writtenBy": "Written by",
+        "authorBio": "Expert insights on executive search and talent advisory from the DayOne team."
+      },
+      "navigation": {
+        "breadcrumb": {
+          "home": "Home",
+          "blog": "Blog",
+          "search": "Search",
+          "category": "Category"
+        },
+        "pagination": {
+          "previous": "Previous",
+          "next": "Next",
+          "page": "Page",
+          "of": "of"
+        }
+      },
+      "actions": {
+        "backToBlog": "Back to Blog",
+        "copyLink": "Copy Link",
+        "shareOn": "Share on",
+        "linkedin": "LinkedIn",
+        "twitter": "X (Twitter)"
+      },
+      "placeholders": {
+        "noImage": "Article image not available"
+      },
+      "messages": {
+        "articleNotFound": "Article not found",
+        "categoryEmpty": "No articles found in this category",
+        "categoryEmptyDesc": "We haven't published any articles in the",
+        "categoryEmptyDesc2": "category yet.",
+        "categoryIntro": "Discover insights, trends, and expert perspectives on",
+        "categoryTeam": "from our team of talent advisory specialists.",
+        "searchEmpty": "No articles found for your search",
+        "searchDescription": "Find insights, trends, and expert perspectives from our team of talent advisory specialists.",
+        "searchOurBlog": "Search Our Blog",
+        "searchInputPlaceholder": "Search articles, topics, authors...",
+        "filterByCategory": "Filter by category",
+        "resultsFound": "results found",
+        "noResultsForQuery": "We couldn't find any articles matching \"{query}\"",
+        "enterSearchTerm": "Try entering a search term to find relevant articles",
+        "exploreCategory": "Explore",
+        "tryDifferentSearch": "Try different search terms or browse our categories"
       }
     }
   }

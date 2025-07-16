@@ -1,13 +1,16 @@
-// src/components/BlogPreview.tsx
+// src/components/BlogPreview.tsx - Updated with translation support
 import { Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
 import type { StoryblokStory } from '../types/storyblok';
 import type { ArticleStoryblok } from '../types/storyblok';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface BlogPreviewProps {
   articles: (StoryblokStory & { content: ArticleStoryblok })[];
 }
 
 function BlogPreview({ articles }: BlogPreviewProps) {
+  const { t } = useTranslation();
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -27,16 +30,15 @@ function BlogPreview({ articles }: BlogPreviewProps) {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
             <BookOpen size={16} />
-            Latest Insights
+            {t('blog.latestInsights')}
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-accent">
-            From Our Blog
+            {t('blog.fromOurBlog')}
           </h2>
           
           <p className="text-lg text-primary/80 max-w-2xl mx-auto leading-relaxed">
-            Stay ahead with the latest trends in executive search, leadership development, 
-            and digital transformation strategies.
+            {t('blog.subtitle')}
           </p>
         </div>
 
@@ -107,7 +109,7 @@ function BlogPreview({ articles }: BlogPreviewProps) {
 
                   {/* Read More */}
                   <div className="flex items-center text-accent text-sm font-medium group-hover:text-accent-light transition-colors duration-200">
-                    Read Article
+                    {t('blog.readArticle')}
                     <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </div>
                 </div>
@@ -123,7 +125,7 @@ function BlogPreview({ articles }: BlogPreviewProps) {
             className="inline-flex items-center gap-3 bg-accent text-white hover:bg-white hover:text-dark transition-colors px-8 py-4 rounded-full font-medium text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             <BookOpen size={20} />
-            View All Articles
+            {t('blog.viewAllArticles')}
             <ArrowRight size={20} />
           </a>
         </div>

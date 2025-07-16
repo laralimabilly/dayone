@@ -1,19 +1,26 @@
 ---
-// src/pages/privacy-policy.astro
+// src/pages/privacy-policy.astro - Updated with translation support
 import "../styles/global.css";
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { useTranslations } from '../utils/i18n';
+
+const { t } = useTranslations();
 
 const lastUpdated = "June 24, 2025";
 const websiteName = "DayOne | Talent Advisory";
 const contactEmail = "contato@dayonetalent.com";
 const dataController = "Fernanda Amorim - Managing Partner";
+
+// Generate SEO data with translations
+const seoTitle = `${t('privacy.title')} | DayOne Talent Advisory`;
+const seoDescription = t('privacy.sections.information.description');
 ---
 
 <Layout 
-  title="Privacy Policy | DayOne Talent Advisory" 
-  description="Learn how DayOne Talent Advisory collects, uses, and protects your personal data in accordance with LGPD regulations."
+  title={seoTitle} 
+  description={seoDescription}
 >
   <div class="min-h-screen font-serif">
     <Header />
@@ -24,24 +31,44 @@ const dataController = "Fernanda Amorim - Managing Partner";
         <!-- Breadcrumb -->
         <nav class="mb-8" aria-label="Breadcrumb">
           <ol class="flex items-center space-x-2 text-sm text-primary/60">
-            <li><a href="/" class="hover:text-accent transition-colors" title="Home">Home</a></li>
+            <li>
+              <a 
+                href="/" 
+                class="hover:text-accent transition-colors" 
+                title={t('blog.navigation.breadcrumb.home')}
+                data-translate-key="blog.navigation.breadcrumb.home"
+              >
+                {t('blog.navigation.breadcrumb.home')}
+              </a>
+            </li>
             <li><span class="mx-2">/</span></li>
-            <li class="text-primary">Privacy Policy</li>
+            <li 
+              class="text-primary"
+              data-translate-key="privacy.title"
+            >
+              {t('privacy.title')}
+            </li>
           </ol>
         </nav>
 
-        <!-- Header div -->
+        <!-- Header -->
         <div class="max-w-4xl mx-auto mb-16">
           <div class="text-center mb-2">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent">
-              Privacy Policy
+            <h1 
+              class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent"
+              data-translate-key="privacy.title"
+            >
+              {t('privacy.title')}
             </h1>
             <p class="text-lg text-primary/80 mb-4">
-              <strong>Last updated:</strong> {lastUpdated}
+              <strong data-translate-key="privacy.lastUpdated">{t('privacy.lastUpdated')}:</strong> {lastUpdated}
             </p>
             <div class="bg-secondary/30 p-6 rounded-xl border border-secondary/50 max-w-3xl mx-auto">
-              <p class="text-primary leading-relaxed">
-                The protection of your personal data is very important to us. This Privacy Policy describes how we collect, use, store and protect the information of users who visit our website <strong>{websiteName}</strong>.
+              <p 
+                class="text-primary leading-relaxed"
+                data-translate-key="privacy.content.introduction"
+              >
+                {t('privacy.content.introduction')} <strong>{websiteName}</strong>.
               </p>
             </div>
           </div>
@@ -50,7 +77,7 @@ const dataController = "Fernanda Amorim - Managing Partner";
         <!-- Policy Content -->
         <div class="max-w-4xl mx-auto prose prose-lg prose-primary">
           
-          <!-- div 1 -->
+          <!-- Section 1: Information We Collect -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -58,30 +85,42 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">1</span>
-                  Information We Collect
+                  <span data-translate-key="privacy.sections.information.title">
+                    {t('privacy.sections.information.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary/80 mb-4">We may collect the following information from users:</p>
+                <p 
+                  class="text-primary/80 mb-4"
+                  data-translate-key="privacy.sections.information.intro"
+                >
+                  {t('privacy.sections.information.intro')}
+                </p>
                 
                 <ul class="ml-5 list-disc pl-6 mb-6 space-y-2 text-primary">
-                  <li>Name</li>
-                  <li>Email</li>
-                  <li>Phone</li>
-                  <li>Browsing data (e.g., IP address, browser type, pages visited)</li>
+                  <li data-translate-key="contact.form.name.label">{t('contact.form.name.label')}</li>
+                  <li data-translate-key="contact.form.email.label">{t('contact.form.email.label')}</li>
+                  <li data-translate-key="contact.form.phone.label">{t('contact.form.phone.label')}</li>
+                  <li data-translate-key="privacy.sections.information.browsing">{t('privacy.sections.information.browsing')}</li>
                 </ul>
                 
-                <p class="text-primary/80 mb-4">Collection may occur through:</p>
+                <p 
+                  class="text-primary/80 mb-4"
+                  data-translate-key="privacy.sections.information.collectionMethods"
+                >
+                  {t('privacy.sections.information.collectionMethods')}
+                </p>
                 
                 <ul class="ml-5 list-disc pl-6 space-y-2 text-primary">
-                  <li>Contact forms</li>
-                  <li>Cookies and similar technologies</li>
-                  <li>Website traffic analysis</li>
+                  <li data-translate-key="privacy.sections.information.contactForms">{t('privacy.sections.information.contactForms')}</li>
+                  <li data-translate-key="privacy.sections.information.cookies">{t('privacy.sections.information.cookies')}</li>
+                  <li data-translate-key="privacy.sections.information.analytics">{t('privacy.sections.information.analytics')}</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- div 2 -->
+          <!-- Section 2: Purpose of Data Use -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -89,22 +128,29 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">2</span>
-                  Purpose of Data Use
+                  <span data-translate-key="privacy.sections.purpose.title">
+                    {t('privacy.sections.purpose.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary/80 mb-4">The data collected has the following purposes:</p>
+                <p 
+                  class="text-primary/80 mb-4"
+                  data-translate-key="privacy.sections.purpose.intro"
+                >
+                  {t('privacy.sections.purpose.intro')}
+                </p>
                 
                 <ul class="ml-5 list-disc pl-6 space-y-2 text-primary">
-                  <li>Responding to requests made by users</li>
-                  <li>Improving the browsing experience on the website</li>
-                  <li>Performing access analyses and metrics</li>
-                  <li>Sending relevant communications (when authorized by the user)</li>
+                  <li data-translate-key="privacy.sections.purpose.responding">{t('privacy.sections.purpose.responding')}</li>
+                  <li data-translate-key="privacy.sections.purpose.improving">{t('privacy.sections.purpose.improving')}</li>
+                  <li data-translate-key="privacy.sections.purpose.analytics">{t('privacy.sections.purpose.analytics')}</li>
+                  <li data-translate-key="privacy.sections.purpose.communications">{t('privacy.sections.purpose.communications')}</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- div 3 -->
+          <!-- Section 3: Sharing Data -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -112,20 +158,27 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">3</span>
-                  Sharing Data
+                  <span data-translate-key="privacy.sections.sharing.title">
+                    {t('privacy.sections.sharing.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary/80 mb-4">Your personal data will not be sold or shared with third parties, except:</p>
+                <p 
+                  class="text-primary/80 mb-4"
+                  data-translate-key="privacy.sections.sharing.intro"
+                >
+                  {t('privacy.sections.sharing.intro')}
+                </p>
                 
                 <ul class="ml-5 list-disc pl-6 space-y-2 text-primary">
-                  <li>When necessary to comply with legal obligations</li>
-                  <li>When necessary for the execution of services contracted by you (e.g., hosting services or email marketing tools)</li>
+                  <li data-translate-key="privacy.sections.sharing.legal">{t('privacy.sections.sharing.legal')}</li>
+                  <li data-translate-key="privacy.sections.sharing.services">{t('privacy.sections.sharing.services')}</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- div 4 -->
+          <!-- Section 4: Data Subject Rights -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -133,25 +186,38 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">4</span>
-                  Data Subject Rights (according to the LGPD)
+                  <span data-translate-key="privacy.sections.rights.title">
+                    {t('privacy.sections.rights.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary/80 mb-4">You have the following rights in relation to your personal data:</p>
+                <p 
+                  class="text-primary/80 mb-4"
+                  data-translate-key="privacy.sections.rights.intro"
+                >
+                  {t('privacy.sections.rights.intro')}
+                </p>
                 
                 <ul class="ml-5 list-disc pl-6 mb-6 space-y-2 text-primary">
-                  <li>Confirm the existence of processing</li>
-                  <li>Access your data</li>
-                  <li>Correct incomplete or incorrect data</li>
-                  <li>Request the anonymization, blocking or deletion of unnecessary data</li>
-                  <li>Data portability</li>
-                  <li>Revoke previously given consent</li>
-                  <li>Request the deletion of your data (when applicable)</li>
+                  <li data-translate-key="privacy.sections.rights.confirm">{t('privacy.sections.rights.confirm')}</li>
+                  <li data-translate-key="privacy.sections.rights.access">{t('privacy.sections.rights.access')}</li>
+                  <li data-translate-key="privacy.sections.rights.correct">{t('privacy.sections.rights.correct')}</li>
+                  <li data-translate-key="privacy.sections.rights.delete">{t('privacy.sections.rights.delete')}</li>
+                  <li data-translate-key="privacy.sections.rights.portability">{t('privacy.sections.rights.portability')}</li>
+                  <li data-translate-key="privacy.sections.rights.revoke">{t('privacy.sections.rights.revoke')}</li>
+                  <li data-translate-key="privacy.sections.rights.deletion">{t('privacy.sections.rights.deletion')}</li>
                 </ul>
                 
                 <div class="bg-accent/20 p-4 rounded-lg">
                   <p class="text-primary font-medium">
-                    To exercise these rights, please contact us via email: 
-                    <a href={`mailto:${contactEmail}`} class="text-accent hover:text-accent-light underline" title={`Mail to:${contactEmail}`}>
+                    <span data-translate-key="privacy.sections.rights.contact">
+                      {t('privacy.sections.rights.contact')}
+                    </span>
+                    <a 
+                      href={`mailto:${contactEmail}`} 
+                      class="text-accent hover:text-accent-light underline ml-2" 
+                      title={`Mail to: ${contactEmail}`}
+                    >
                       {contactEmail}
                     </a>
                   </p>
@@ -160,7 +226,7 @@ const dataController = "Fernanda Amorim - Managing Partner";
             </div>
           </div>
 
-          <!-- div 5 -->
+          <!-- Section 5: Data Retention -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -168,17 +234,22 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">5</span>
-                  Data Retention and Storage
+                  <span data-translate-key="privacy.sections.retention.title">
+                    {t('privacy.sections.retention.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary">
-                  Your data will be stored only for the time necessary for the purposes described in this Policy or in accordance with legal obligations.
+                <p 
+                  class="text-primary"
+                  data-translate-key="privacy.sections.retention.content"
+                >
+                  {t('privacy.sections.retention.content')}
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- div 6 -->
+          <!-- Section 6: Information Security -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -186,17 +257,22 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">6</span>
-                  Information Security
+                  <span data-translate-key="privacy.sections.security.title">
+                    {t('privacy.sections.security.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary">
-                  We adopt appropriate technical and organizational measures to protect your data against unauthorized access, loss, alteration or destruction.
+                <p 
+                  class="text-primary"
+                  data-translate-key="privacy.sections.security.content"
+                >
+                  {t('privacy.sections.security.content')}
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- div 7 -->
+          <!-- Section 7: Cookies -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -204,21 +280,29 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">7</span>
-                  Cookies and Tracking Technologies
+                  <span data-translate-key="privacy.sections.cookies.title">
+                    {t('privacy.sections.cookies.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary mb-4">
-                  We use cookies to improve navigation and understand how visitors interact with our website.
+                <p 
+                  class="text-primary mb-4"
+                  data-translate-key="privacy.sections.cookies.usage"
+                >
+                  {t('privacy.sections.cookies.usage')}
                 </p>
                 
-                <p class="text-primary">
-                  You can disable cookies directly in your browser settings.
+                <p 
+                  class="text-primary"
+                  data-translate-key="privacy.sections.cookies.disable"
+                >
+                  {t('privacy.sections.cookies.disable')}
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- div 8 -->
+          <!-- Section 8: Changes -->
           <div class="mb-2">
             <div class="backdrop-blur-sm p-8 relative overflow-hidden">
               <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl opacity-70"></div>
@@ -226,17 +310,22 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent/20 p-2 rounded-lg text-accent font-bold">8</span>
-                  Changes to this Privacy Policy
+                  <span data-translate-key="privacy.sections.changes.title">
+                    {t('privacy.sections.changes.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary">
-                  We may update this Policy from time to time. We recommend that you review it periodically.
+                <p 
+                  class="text-primary"
+                  data-translate-key="privacy.sections.changes.content"
+                >
+                  {t('privacy.sections.changes.content')}
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- div 9 -->
+          <!-- Section 9: Contact -->
           <div class="mb-2">
             <div class="bg-accent/20 p-8 rounded-xl border border-accent/50 relative overflow-hidden">
               <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent/20 rounded-full blur-2xl opacity-70"></div>
@@ -244,23 +333,32 @@ const dataController = "Fernanda Amorim - Managing Partner";
               <div class="relative z-10">
                 <h2 class="text-2xl font-bold text-accent mb-6 flex items-center gap-3">
                   <span class="bg-accent text-white p-2 rounded-lg font-bold">9</span>
-                  Contact
+                  <span data-translate-key="privacy.sections.contact.title">
+                    {t('privacy.sections.contact.title')}
+                  </span>
                 </h2>
                 
-                <p class="text-primary mb-4">
-                  If you have any questions about this Privacy Policy or wish to exercise your rights under the LGPD, please contact:
+                <p 
+                  class="text-primary mb-4"
+                  data-translate-key="privacy.sections.contact.intro"
+                >
+                  {t('privacy.sections.contact.intro')}
                 </p>
                 
                 <div class="space-y-3">
                   <p class="text-primary">
-                    <strong>Email:</strong> 
-                    <a href={`mailto:${contactEmail}`} class="text-accent hover:text-accent-light underline ml-2" title={`Mail to:${contactEmail}`}>
+                    <strong data-translate-key="contact.form.email.label">{t('contact.form.email.label')}:</strong> 
+                    <a 
+                      href={`mailto:${contactEmail}`} 
+                      class="text-accent hover:text-accent-light underline ml-2" 
+                      title={`Mail to: ${contactEmail}`}
+                    >
                       {contactEmail}
                     </a>
                   </p>
                   
                   <p class="text-primary">
-                    <strong>Data Controller:</strong> {dataController}
+                    <strong data-translate-key="privacy.content.dataController">{t('privacy.content.dataController')}:</strong> {dataController}
                   </p>
                 </div>
               </div>
@@ -274,11 +372,13 @@ const dataController = "Fernanda Amorim - Managing Partner";
           <a 
             href="/" 
             class="inline-flex items-center gap-3 bg-accent text-white hover:bg-accent-light transition-colors px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            data-translate-key="privacy.content.backToHome"
+            title={t('privacy.content.backToHome')}
           >
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to Home
+            {t('privacy.content.backToHome')}
           </a>
         </div>
       </div>
@@ -296,8 +396,8 @@ const dataController = "Fernanda Amorim - Managing Partner";
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Privacy Policy",
-  "description": "Privacy Policy for DayOne Talent Advisory website describing how we collect, use, and protect personal data.",
+  "name": t('privacy.title'),
+  "description": t('privacy.sections.information.description'),
   "url": "https://dayonetalent.com/privacy-policy",
   "publisher": {
     "@type": "Organization",
@@ -305,4 +405,4 @@ const dataController = "Fernanda Amorim - Managing Partner";
   },
   "dateModified": lastUpdated
 })} />
-</script>
+</Layout>

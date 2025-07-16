@@ -1,11 +1,14 @@
 ---
-// src/pages/blog/index.astro
+// src/pages/blog/index.astro - Updated with translation support
 import "../../styles/global.css";
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BlogGrid from '../../components/BlogGrid';
 import { getBlogArticles, getBlogCategories, getFeaturedArticles } from '../../utils/storyblok';
+import { useTranslations } from '../../utils/i18n';
+
+const { t } = useTranslations();
 
 // Fetch blog data
 const blogData = await getBlogArticles({ per_page: 12 });
@@ -18,11 +21,15 @@ const featured = featuredData?.stories || [];
 const total = blogData?.total || blogData?.stories.length || 0;
 const currentPage = 1;
 const totalPages = Math.ceil(total / 12);
+
+// Generate SEO data with translations
+const seoTitle = `${t('blog.title')} | DayOne Talent Advisory`;
+const seoDescription = t('blog.subtitle');
 ---
 
 <Layout 
-  title="Blog | DayOne Talent Advisory - Sharing powerful insights on executive search and careers" 
-  description="Insights on talent trends, leadership strategies, and executive search best practices from DayOne Talent Advisory."
+  title={seoTitle} 
+  description={seoDescription}
 >
   <div class="min-h-screen font-serif">
     <Header />
@@ -34,27 +41,32 @@ const totalPages = Math.ceil(total / 12);
       
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent">
-            Insights & Perspectives
+          <h1 
+            class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent"
+            data-translate-key="blog.title"
+          >
+            {t('blog.title')}
           </h1>
-          <p class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed">
-            Stay ahead with the latest trends in executive search, leadership development, 
-            and digital transformation strategies from our team of experts.
+          <p 
+            class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed"
+            data-translate-key="blog.subtitle"
+          >
+            {t('blog.subtitle')}
           </p>
           
           <!-- Quick Stats -->
           <div class="flex flex-wrap justify-center gap-8 mt-12">
             <div class="text-center">
               <div class="text-2xl md:text-3xl font-bold text-accent">{total}</div>
-              <div class="text-sm text-secondary/70">Articles</div>
+              <div class="text-sm text-secondary/70" data-translate-key="blog.articles">{t('blog.articles')}</div>
             </div>
             <div class="text-center">
               <div class="text-2xl md:text-3xl font-bold text-accent">{categories.length}</div>
-              <div class="text-sm text-secondary/70">Categories</div>
+              <div class="text-sm text-secondary/70" data-translate-key="blog.category">{t('blog.category')}</div>
             </div>
             <div class="text-center">
               <div class="text-2xl md:text-3xl font-bold text-accent">{featured.length}</div>
-              <div class="text-sm text-secondary/70">Featured</div>
+              <div class="text-sm text-secondary/70" data-translate-key="blog.featured">{t('blog.featured')}</div>
             </div>
           </div>
         </div>
@@ -65,8 +77,11 @@ const totalPages = Math.ceil(total / 12);
     {featured.length > 0 && (
       <section id="blog-featured-articles" class="py-16 bg-light">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-2xl md:text-3xl font-bold mb-12 text-accent text-center">
-            Featured Articles
+          <h2 
+            class="text-2xl md:text-3xl font-bold mb-12 text-accent text-center"
+            data-translate-key="blog.featured"
+          >
+            {t('blog.featured')}
           </h2>
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -104,7 +119,7 @@ const totalPages = Math.ceil(total / 12);
                     <div class="flex items-center justify-between text-xs text-primary/60">
                       <span>{new Date(article.first_published_at).toLocaleDateString()}</span>
                       {article.content.author && (
-                        <span>By {article.content.author}</span>
+                        <span data-translate-key="blog.meta.author">By {article.content.author}</span>
                       )}
                     </div>
                   </div>

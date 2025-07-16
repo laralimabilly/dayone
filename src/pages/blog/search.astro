@@ -1,10 +1,13 @@
 ---
-// src/pages/blog/search.astro
+// src/pages/blog/search.astro - Updated with translation support
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import BlogSearchResults from '../../components/BlogSearchResults';
 import { getBlogArticles, getBlogCategories } from '../../utils/storyblok';
+import { useTranslations } from '../../utils/i18n';
+
+const { t } = useTranslations();
 
 // Get all articles for client-side searching
 const blogData = await getBlogArticles({ per_page: 100 });
@@ -18,13 +21,13 @@ const url = new URL(Astro.request.url);
 const searchQuery = url.searchParams.get('q') || '';
 const searchCategory = url.searchParams.get('category') || '';
 
-// SEO
+// SEO with translations
 const seoTitle = searchQuery 
-  ? `Search Results for "${searchQuery}" | DayOne Talent Advisory Blog`
-  : 'Search Blog | DayOne Talent Advisory';
+  ? `${t('blog.searchFor').replace('"{query}"', `"${searchQuery}"`)} | DayOne Talent Advisory Blog`
+  : `${t('blog.searchResults')} | DayOne Talent Advisory`;
 const seoDescription = searchQuery 
   ? `Find articles about "${searchQuery}" on DayOne Talent Advisory blog.`
-  : 'Search through our collection of insights on executive search, leadership, and talent advisory.';
+  : t('blog.messages.searchDescription');
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
@@ -40,27 +43,58 @@ const seoDescription = searchQuery
         <!-- Breadcrumb -->
         <nav class="mb-8" aria-label="Breadcrumb">
           <ol class="flex items-center space-x-2 text-sm text-secondary/60">
-            <li><a href="/" class="hover:text-accent transition-colors" title="Home">Home</a></li>
+            <li>
+              <a 
+                href="/" 
+                class="hover:text-accent transition-colors" 
+                title={t('blog.navigation.breadcrumb.home')}
+                data-translate-key="blog.navigation.breadcrumb.home"
+              >
+                {t('blog.navigation.breadcrumb.home')}
+              </a>
+            </li>
             <li><span class="mx-2">/</span></li>
-            <li><a href="/blog" class="hover:text-accent transition-colors" title="Blog">Blog</a></li>
+            <li>
+              <a 
+                href="/blog" 
+                class="hover:text-accent transition-colors" 
+                title={t('blog.navigation.breadcrumb.blog')}
+                data-translate-key="blog.navigation.breadcrumb.blog"
+              >
+                {t('blog.navigation.breadcrumb.blog')}
+              </a>
+            </li>
             <li><span class="mx-2">/</span></li>
-            <li class="text-secondary">Search</li>
+            <li 
+              class="text-secondary"
+              data-translate-key="blog.navigation.breadcrumb.search"
+            >
+              {t('blog.navigation.breadcrumb.search')}
+            </li>
           </ol>
         </nav>
 
         <div class="text-center max-w-4xl mx-auto">
           <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-accent">
-            {searchQuery ? `Search Results` : 'Search Our Blog'}
+            {searchQuery ? (
+              <span data-translate-key="blog.searchResults">{t('blog.searchResults')}</span>
+            ) : (
+              <span data-translate-key="blog.messages.searchOurBlog">Search Our Blog</span>
+            )}
           </h1>
           
           {searchQuery && (
             <p class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed">
-              Results for: <span class="font-semibold text-accent">"{searchQuery}"</span>
+              <span data-translate-key="blog.searchFor">{t('blog.searchFor').replace('"{query}"', '')}</span>
+              <span class="font-semibold text-accent">"{searchQuery}"</span>
             </p>
           )}
           
           {!searchQuery && (
-            <p class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed">
+            <p 
+              class="text-lg md:text-xl text-secondary/90 mb-8 leading-relaxed"
+              data-translate-key="blog.messages.searchDescription"
+            >
               Find insights, trends, and expert perspectives from our team of talent advisory specialists.
             </p>
           )}

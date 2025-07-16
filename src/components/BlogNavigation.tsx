@@ -1,6 +1,7 @@
-// src/components/BlogNavigation.tsx
+// src/components/BlogNavigation.tsx - Updated with translation support
 import { useState, useEffect } from 'react';
 import { BookOpen, ChevronDown } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface BlogNavigationProps {
   categories: string[];
@@ -8,6 +9,7 @@ interface BlogNavigationProps {
 }
 
 function BlogNavigation({ categories, currentCategory }: BlogNavigationProps) {
+  const { t } = useTranslation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Close dropdown when clicking outside
@@ -37,8 +39,8 @@ function BlogNavigation({ categories, currentCategory }: BlogNavigationProps) {
               <BookOpen size={20} className="text-accent" />
             </div>
             <div>
-              <h2 className="font-bold text-primary">Blog</h2>
-              <p className="text-xs text-primary/60">Insights & Perspectives</p>
+              <h2 className="font-bold text-primary">{t('navigation.blog')}</h2>
+              <p className="text-xs text-primary/60">{t('blog.latestInsights')}</p>
             </div>
           </div>
 
@@ -52,7 +54,7 @@ function BlogNavigation({ categories, currentCategory }: BlogNavigationProps) {
                   : 'text-primary hover:text-accent hover:bg-accent/10'
               }`}
             >
-              All Articles
+              {t('blog.viewAllArticles')}
             </a>
 
             {categories.slice(0, 4).map((category) => (
@@ -75,7 +77,7 @@ function BlogNavigation({ categories, currentCategory }: BlogNavigationProps) {
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-primary hover:text-accent hover:bg-accent/10 transition-all duration-200"
                 >
-                  More
+                  {t('common.more')}
                   <ChevronDown 
                     size={16} 
                     className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} 
@@ -112,7 +114,7 @@ function BlogNavigation({ categories, currentCategory }: BlogNavigationProps) {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-primary hover:text-accent hover:bg-accent/10 transition-all duration-200"
             >
-              Categories
+              {t('blog.category')}
               <ChevronDown 
                 size={16} 
                 className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} 
@@ -131,7 +133,7 @@ function BlogNavigation({ categories, currentCategory }: BlogNavigationProps) {
                     }`}
                     onClick={() => setIsDropdownOpen(false)}
                   >
-                    All Articles
+                    {t('blog.viewAllArticles')}
                   </a>
 
                   {categories.map((category) => (

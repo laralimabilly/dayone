@@ -12,6 +12,7 @@
     "clear": "Limpar",
     "back": "Voltar",
     "next": "Próximo",
+    "more": "Mais",
     "previous": "Anterior",
     "home": "Página Inicial",
     "blog": "Blog",
@@ -118,27 +119,6 @@
     },
     "quote": "Porque a liderança começa todos os dias.",
     "cta": "Comece sua jornada de liderança"
-  },
-  "blog": {
-    "title": "Insights e Perspectivas",
-    "subtitle": "Fique por dentro das últimas tendências em busca de executivos, desenvolvimento de liderança e estratégias de transformação digital da nossa equipe de especialistas.",
-    "featured": "Artigos em destaque",
-    "latestInsights": "Últimos insights",
-    "fromOurBlog": "Do nosso blog",
-    "viewAllArticles": "Ver todos os artigos",
-    "searchPlaceholder": "Pesquisar artigos...",
-    "noResults": "Nenhum artigo encontrado",
-    "noResultsMessage": "Tente ajustar seus termos de busca ou filtro de categoria.",
-    "clearFilters": "Limpar filtros",
-    "resultsCount": "Exibindo {count} de {total} artigos",
-    "readArticle": "Ler Artigo",
-    "shareArticle": "Compartilhe este artigo",
-    "relatedArticles": "Artigos Relacionados",
-    "category": "Categoria",
-    "allCategories": "Todos",
-    "searchResults": "Resultados da Pesquisa",
-    "searchFor": "Resultados para: \"{query}\"",
-    "exploreCategories": "Explorar Outras Categorias"
   },
   "contact": {
     "title": "Entre em contato",
@@ -249,40 +229,147 @@
     "sections": {
       "information": {
         "title": "Informações que Coletamos",
-        "description": "Saiba quais informações coletamos e como."
+        "description": "Saiba quais informações coletamos e como.",
+        "intro": "Podemos coletar as seguintes informações dos usuários:",
+        "browsing": "Dados de navegação (ex: endereço IP, tipo de navegador, páginas visitadas)",
+        "collectionMethods": "A coleta pode ocorrer através de:",
+        "contactForms": "Formulários de contato",
+        "cookies": "Cookies e tecnologias similares",
+        "analytics": "Análise de tráfego do site"
       },
       "purpose": {
         "title": "Finalidade do Uso de Dados",
-        "description": "Entenda como usamos seus dados."
+        "description": "Entenda como usamos seus dados.",
+        "intro": "Os dados coletados têm as seguintes finalidades:",
+        "responding": "Responder às solicitações feitas pelos usuários",
+        "improving": "Melhorar a experiência de navegação no site",
+        "analytics": "Realizar análises de acesso e métricas",
+        "communications": "Enviar comunicações relevantes (quando autorizado pelo usuário)"
       },
       "sharing": {
         "title": "Compartilhamento de Dados",
-        "description": "Saiba quando e como compartilhamos informações."
+        "description": "Saiba quando e como compartilhamos informações.",
+        "intro": "Seus dados pessoais não serão vendidos ou compartilhados com terceiros, exceto:",
+        "legal": "Quando necessário para cumprir obrigações legais",
+        "services": "Quando necessário para a execução de serviços contratados por você (ex: serviços de hospedagem ou ferramentas de email marketing)"
       },
       "rights": {
         "title": "Direitos do Titular dos Dados (de acordo com a LGPD)",
-        "description": "Seus direitos em relação aos seus dados pessoais."
+        "description": "Seus direitos em relação aos seus dados pessoais.",
+        "intro": "Você tem os seguintes direitos em relação aos seus dados pessoais:",
+        "confirm": "Confirmar a existência de tratamento",
+        "access": "Acessar seus dados",
+        "correct": "Corrigir dados incompletos ou incorretos",
+        "delete": "Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários",
+        "portability": "Portabilidade dos dados",
+        "revoke": "Revogar consentimento previamente dado",
+        "deletion": "Solicitar a eliminação dos seus dados (quando aplicável)",
+        "contact": "Para exercer esses direitos, entre em contato conosco via email:"
       },
       "retention": {
         "title": "Retenção e Armazenamento de Dados",
-        "description": "Por quanto tempo mantemos seus dados."
+        "description": "Por quanto tempo mantemos seus dados.",
+        "content": "Seus dados serão armazenados apenas pelo tempo necessário para as finalidades descritas nesta Política ou de acordo com obrigações legais."
       },
       "security": {
         "title": "Segurança da Informação",
-        "description": "Como protegemos suas informações."
+        "description": "Como protegemos suas informações.",
+        "content": "Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados contra acesso não autorizado, perda, alteração ou destruição."
       },
       "cookies": {
         "title": "Cookies e Tecnologias de Rastreamento",
-        "description": "Nosso uso de cookies e tecnologias semelhantes."
+        "description": "Nosso uso de cookies e tecnologias semelhantes.",
+        "usage": "Utilizamos cookies para melhorar a navegação e entender como os visitantes interagem com nosso site.",
+        "disable": "Você pode desabilitar cookies diretamente nas configurações do seu navegador."
       },
       "changes": {
         "title": "Alterações nesta Política de Privacidade",
-        "description": "Como lidamos com as atualizações da política."
+        "description": "Como lidamos com as atualizações da política.",
+        "content": "Podemos atualizar esta Política de tempos em tempos. Recomendamos que você a revise periodicamente."
       },
       "contact": {
         "title": "Contato",
-        "description": "Como entrar em contato conosco em caso de dúvidas."
+        "description": "Como entrar em contato conosco em caso de dúvidas.",
+        "intro": "Se você tiver alguma dúvida sobre esta Política de Privacidade ou desejar exercer seus direitos sob a LGPD, entre em contato:"
       }
+    },
+    "content": {
+      "introduction": "A proteção dos seus dados pessoais é muito importante para nós. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos as informações dos usuários que visitam nosso site",
+      "dataController": "Controlador de Dados",
+      "backToHome": "Voltar ao Início"
+    }
+  },
+  "blog": {
+    "title": "Insights e Perspectivas",
+    "subtitle": "Fique por dentro das últimas tendências em busca de executivos, desenvolvimento de liderança e estratégias de transformação digital da nossa equipe de especialistas.",
+    "featured": "Artigos em destaque",
+    "latestInsights": "Últimos insights",
+    "fromOurBlog": "Do nosso blog",
+    "viewAllArticles": "Ver todos os artigos",
+    "searchPlaceholder": "Pesquisar artigos...",
+    "noResults": "Nenhum artigo encontrado",
+    "noResultsMessage": "Tente ajustar seus termos de busca ou filtro de categoria.",
+    "clearFilters": "Limpar filtros",
+    "resultsCount": "Exibindo {count} de {total} artigos",
+    "readArticle": "Ler Artigo",
+    "shareArticle": "Compartilhe este artigo",
+    "relatedArticles": "Artigos Relacionados",
+    "category": "Categoria",
+    "allCategories": "Todos",
+    "searchResults": "Resultados da Pesquisa",
+    "searchFor": "Resultados para: \"{query}\"",
+    "exploreCategories": "Explorar Outras Categorias",
+    "meta": {
+      "author": "Autor",
+      "publishedOn": "Publicado em",
+      "readingTime": "min de leitura",
+      "lastUpdated": "Última atualização",
+      "tags": "Tags",
+      "articles": "Artigos",
+      "writtenBy": "Escrito por",
+      "authorBio": "Insights especializados sobre busca de executivos e consultoria de talentos da equipe DayOne."
+    },
+    "navigation": {
+      "breadcrumb": {
+        "home": "Início",
+        "blog": "Blog",
+        "search": "Busca",
+        "category": "Categoria"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Próximo",
+        "page": "Página",
+        "of": "de"
+      }
+    },
+    "actions": {
+      "backToBlog": "Voltar ao Blog",
+      "copyLink": "Copiar Link",
+      "shareOn": "Compartilhar no",
+      "linkedin": "LinkedIn",
+      "twitter": "X (Twitter)"
+    },
+    "placeholders": {
+      "noImage": "Imagem do artigo não disponível"
+    },
+    "messages": {
+      "articleNotFound": "Artigo não encontrado",
+      "categoryEmpty": "Nenhum artigo encontrado nesta categoria",
+      "categoryEmptyDesc": "Ainda não publicamos artigos na categoria",
+      "categoryEmptyDesc2": ".",
+      "categoryIntro": "Descubra insights, tendências e perspectivas especializadas sobre",
+      "categoryTeam": "da nossa equipe de especialistas em consultoria de talentos.",
+      "searchEmpty": "Nenhum artigo encontrado para sua busca",
+      "searchDescription": "Encontre insights, tendências e perspectivas especializadas da nossa equipe de especialistas em consultoria de talentos.",
+      "searchOurBlog": "Pesquisar Nosso Blog",
+      "searchInputPlaceholder": "Pesquisar artigos, tópicos, autores...",
+      "filterByCategory": "Filtrar por categoria",
+      "resultsFound": "resultados encontrados",
+      "noResultsForQuery": "Não conseguimos encontrar artigos correspondentes a \"{query}\"",
+      "enterSearchTerm": "Tente inserir um termo de busca para encontrar artigos relevantes",
+      "exploreCategory": "Explorar",
+      "tryDifferentSearch": "Tente termos de busca diferentes ou navegue por nossas categorias"
     }
   }
 }
