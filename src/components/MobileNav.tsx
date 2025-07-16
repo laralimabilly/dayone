@@ -2,9 +2,11 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../hooks/useTranslation';
 
 function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {t} = useTranslation();
 
   // Close menu when window is resized to desktop size
   useEffect(() => {
@@ -86,9 +88,9 @@ function MobileNav() {
   };
 
   const navItems = [
-    { href: '/#our-solutions', label: 'Our Solutions', isHash: true },
-    { href: '/#our-team', label: 'Our Team', isHash: true },
-    { href: '/blog', label: 'Blog', isHash: false },
+    { href: '/#our-solutions', label: t('navigation.ourSolutions'), isHash: true },
+    { href: '/#our-team', label: t('navigation.ourTeam'), isHash: true },
+    { href: '/blog', label: t('navigation.blog'), isHash: false },
   ];
 
   return (
@@ -169,12 +171,12 @@ function MobileNav() {
                   onClick={handleContactClick}
                   type="button"
                 >
-                  Get Started
+                  {t('common.getStarted')}
                 </button>
                 
                 {/* Contact Info */}
                 <div className="mt-6 text-center space-y-2">
-                  <p className="text-secondary/60 text-sm">Let's Talk!</p>
+                  <p className="text-secondary/60 text-sm">{t('common.letsTalk')}</p>
                   <a 
                     href="mailto:contato@dayonetalent.com"
                     className="block text-accent hover:text-accent/80 transition-colors text-sm font-medium"

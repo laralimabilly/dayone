@@ -1,56 +1,288 @@
 {
-    "solutions": {
-        "h2": "How DayOne can support your people needs",
-        "h3": "From Executive Search & Talent Advisory to Career Transition Support, we provide detailed market insights to improve your strategic hiring decisions.",
-        "p": "Transform your organization with leaders who don't just adapt — they drive evolution. Our comprehensive executive search service goes beyond traditional recruitment to deliver strategic leaders with digital DNA who can navigate complexity and accelerate growth.",
-        "services": {
-            "role": {
-                "title": "Roles Definition",
-                "description": "From Organizational architecture, roles definition, executive search to further onboarding and 100-day plan and reviews"
-            },
-            "market": {
-                "title": "Market Mapping",
-                "description": "Active market mapping and targeted executive hunting"
-            },
-            "assessment": {
-                "title": "Fit Assessment",
-                "description": "Assessment of technical and behavioral fit at leadership level"
-            },
-            "resume": {
-                "title": "Profile Optimization",
-                "description": "Resume and digital profile optimization, personal brand development and market positioning"
-            },
-            "skills": {
-                "title": "Skills Mapping",
-                "description": "Skills mapping, leadership style assessment and self knowledge"
-            },
-            "programs": {
-                "title": "Tailored Programs",
-                "description": "Short and practical tailor-made programs for Executives who want to feel better prepared for their career transition stages"
-            }
-        }
+    "common": {
+      "loading": "Loading...",
+      "error": "Error",
+      "success": "Success",
+      "cancel": "Cancel",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "search": "Search",
+      "filter": "Filter",
+      "clear": "Clear",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "home": "Home",
+      "blog": "Blog",
+      "contact": "Contact",
+      "about": "About",
+      "readMore": "Read More",
+      "viewAll": "View All",
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "letsTalk": "Let's Talk"
     },
-    "methodology": {
-        "h2": "Our Executive Search Methodology",
-        "h3": "The DayOne Approach: Every Day Like the First",
-        "p": "We believe that every great transformation begins with Day One energy—and that true success happens when that energy is renewed daily. Our proven methodology ensures we identify leaders who maintain the spirit of innovation, dedication, and purpose as if every challenge were their first and most meaningful."
+    "navigation": {
+      "home": "Home",
+      "ourSolutions": "Our Solutions",
+      "ourTeam": "Our Team",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "hero": {
+      "title": {
+        "line1": "Connecting",
+        "line2": "Great Companies with",
+        "line3": "Exceptional Talent"
+      },
+      "subtitle": "Our Talent Advisory and Executive Search firm specializes in building AI-ready leadership teams for companies undergoing expansion, transformation, and market entry.",
+      "cta": {
+        "companies": "Executive Search & Talent Advisory",
+        "companiesNote": "*For Companies",
+        "executives": "Career Transition Support",
+        "executivesNote": "*For Executives"
+      },
+      "social": {
+        "whatsapp": "https://wa.me/5511997127227?text=Hey%2C%20I%20would%20like%20to%20know%20more%20about..."
+      }
+    },
+    "solutions": {
+      "title": "Our Solutions",
+      "subtitle": "Transform your organization with leaders who don't just adapt — they drive change.",
+      "executiveSearch": {
+        "title": "EXECUTIVE SEARCH",
+        "description": "Transform your organization with leaders who don't just adapt — they drive change.",
+        "subtitle": "We go beyond recruitment to deliver tailored, strategic AI-ready executives who lead transformation and scale impact."
+      },
+      "talentAdvisory": {
+        "title": "TALENT ADVISORY", 
+        "description": "From organizational design and competitive mapping to leadership assessments and role definitions - we help build future-ready teams.",
+        "subtitle": "We help anticipate challenges and accelerate leadership evolution."
+      },
+      "careerTransition": {
+        "title": "CAREER TRANSITION SUPPORT",
+        "description": "Tailor-made guidance for senior professionals navigating transitions, searching for reinvention, and in career transformation.",
+        "subtitle": "We deliver human insight backed by market intelligence."
+      },
+      "cta": {
+        "title": "Ready to Transform Your Leadership?",
+        "subtitle": "Let's discuss how our solutions can help you build the executive team your organization needs to thrive in the digital age.",
+        "button": "Get Started"
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "At DAYONE, we believe that every great impact begins with the energy of the first day — and that true transformation happens when that energy is renewed, every single day. We focus on identifying leaders who don't just adapt — they drive the evolution of our clients.",
+      "person": {
+        "fernanda": {
+          "title": "Managing Partner",
+          "description": "Fernanda Amorim brings over 20 years of experience in executive search, with a strong track record leading more than 400 projects, and a reputation of delivering tailored, high-impact solutions with assertiveness and a sharp insight into digital transformation and human connections.<br>She built her career in global firms such as KPMG, Michael Page, Page Executive, Oracle, and Indeed, where she developed deep expertise in business strategy and strategic hiring, as well as consultative B2B leadership.<br>Most recently, as a Sr. Executive Partner at FIND HR, she led top management recruitment across players in tech, telecom and digital and championed diversity in leadership."
+        },
+        "claudio": {
+          "title": "Managing Partner",
+          "description": "With over 20 years of experience in the technology sector, acquired at companies such as SAP and IBM, Claudio Guerreiro built a solid career as an executive before becoming an entrepreneur and entering the executive search market, where he worked as a partner at renowned consultancies such as 2Get and Heidrick & Struggles, in addition to being a board member of innovative companies.<br>At FIND HR, he led the company's strategic expansion, expanding its service offering and strengthening its presence in executive recruitment for technology and digital transformation roles.<br>His approach combines deep industry knowledge with a strong results-oriented mindset, focusing on assertiveness and excellence in executive recruitment."
+        },
+        "carla": {
+          "title": "Associate",
+          "description": "Carla has over 15 years of experience in executive recruitment, with a strong focus on leadership and senior management roles. She is recognized for her ability to deliver highly accurate, tailored solutions by combining business acumen, deep market knowledge, and a human-centered approach to professional connections.<br>She built her career in specialized recruitment consultancies and executive search firms, working with companies such as Michael Page, Hays, Robert Walters, FIND, and Vyborny’s Consulting. She has contributed to strategic projects for major groups in the technology, industrial, and retail sectors.<br>Throughout her career, she has developed expertise in building high-performance teams and supporting companies during moments of transformation, growth, or restructuring—always with a focus on strategic leadership and diversity. Her work emphasizes innovation, agility, and real business impact."
+        },
+        "roberta": {
+          "title": "Associate",
+          "description": "An experienced professional with over 10 years in recruitment and selection, Roberta has a strong track record in strategic and leadership roles. Throughout her career, she has developed solid expertise in attracting, selecting, and developing talent for mid- and senior-level positions, directly contributing to the formation of high-performance teams and the strengthening of organizational culture in major companies.<br>Her experience includes working as a Manager at Calzedonia Group, a global Italian retail company, where she led recruitment processes and market mapping initiatives. In addition, she has collaborated with specialized recruitment consultancies, delivering strategic projects for leading groups in the retail, industrial, and technology sectors—always focused on results, agility, and excellence in delivery.<br>She is recognized for her analytical mindset, organizational diagnostic skills, and ability to align professional profiles with the unique needs of each business."
+        }
+      },
+      "connect": "Connect on LinkedIn"
+    },
+    "whyChoose": {
+      "title": "Why Choose DayOne",
+      "subtitle": "Not just search. Not just advice. A true leadership partner.",
+      "features": {
+        "boutique": {
+          "title": "Boutique mindset. Senior attention.",
+          "description": "Personalized service with experienced partners leading every engagement"
+        },
+        "expertise": {
+          "title": "Deep industry expertise in Tech, Digital Products, Marketing and Sales.",
+          "description": "Specialized knowledge in the sectors that drive digital transformation"
+        },
+        "humanFocused": {
+          "title": "Human-focused. Strategy-driven.",
+          "description": "Balancing analytical precision with genuine human connection and empathy"
+        },
+        "tailored": {
+          "title": "Tailored journeys. Tangible outcomes.",
+          "description": "Customized approaches that deliver measurable results for your organization"
+        }
+      },
+      "quote": "Because Leadership begins every day.",
+      "cta": "Start Your Leadership Journey"
+    },
+    "blog": {
+      "title": "Insights & Perspectives",
+      "subtitle": "Stay ahead with the latest trends in executive search, leadership development, and digital transformation strategies from our team of experts.",
+      "featured": "Featured Articles",
+      "latestInsights": "Latest Insights",
+      "fromOurBlog": "From Our Blog",
+      "viewAllArticles": "View All Articles",
+      "searchPlaceholder": "Search articles...",
+      "noResults": "No articles found",
+      "noResultsMessage": "Try adjusting your search terms or category filter.",
+      "clearFilters": "Clear Filters",
+      "resultsCount": "Showing {count} of {total} articles",
+      "readArticle": "Read Article",
+      "shareArticle": "Share this article",
+      "relatedArticles": "Related Articles",
+      "category": "Category",
+      "allCategories": "All",
+      "searchResults": "Search Results",
+      "searchFor": "Results for: \"{query}\"",
+      "exploreCategories": "Explore Other Categories"
     },
     "contact": {
-        "h2": "Get in touch",
-        "h3": "DayOne - every day like the first, working towards building the extraordinary.",
-        "p": "Reach out to our team to learn more about our services or to schedule a consultation. We're ready to help you optimize your hiring operations.",
-        "label": {
-            "email": "Email",
-            "phone": "Phone",
-            "office": "Office"
+      "title": "Get in touch",
+      "subtitle": "DayOne - every day like the first, working towards building the extraordinary.",
+      "sendMessage": "Send us a message",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Your name"
         },
-        "input": {
-            "name": "Name",
-            "email": "Email",
-            "phone": "Phone",
-            "company": "Company",
-            "message": "Message"
+        "email": {
+          "label": "Email",
+          "placeholder": "your.email@company.com"
+        }, 
+        "phone": {
+          "label": "Phone",
+          "placeholder": "(11) 91234-5678"
         },
-        "address": "Av. Brigadeiro Faria Lima, 1.811,<br />Suite 1119<br />01452-001<br />São Paulo, SP - Brazil"
+        "company": {
+          "label": "Company",
+          "placeholder": "Your company name"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "How can we help you? Please provide details about your needs..."
+        },
+        "messagePlaceholder": "How can we help you? Please provide details about your needs...",
+        "submit": "Send Message",
+        "sending": "Sending...",
+        "required": "*",
+        "success": {
+          "title": "Message sent successfully!",
+          "description": "We'll get back to you within 24 hours."
+        },
+        "error": {
+          "title": "Failed to send message",
+          "description": "An unexpected error occurred. Please try again."
+        },
+        "privacy": {
+          "text": "By submitting this form, you agree to our",
+          "linkText": "Privacy Policy"
+        }
+      },
+      "info": {
+        "email": "Email",
+        "phone": "Phone", 
+        "office": "Office"
+      },
+      "address": "Av. Brigadeiro Faria Lima, 1.811,<br />Suite 1119<br />01452-001<br />São Paulo, SP - Brazil"
+    },
+    "FORM_CONFIG": {
+      "MESSAGES": {
+        "success": {
+          "title": "Message sent successfully!",
+          "description": "We'll get back to you within 24 hours."
+        },
+        "error": {
+          "title": "Failed to send message",
+          "fallback": "An unexpected error occurred. Please try again."
+        },
+        "loading": "Sending...",
+        "submit": "Send Message",
+        "privacy": {
+          "text": "By submitting this form, you agree to our",
+          "linkText": "Privacy Policy"
+        }
+      }
+    },
+    "footer": {
+      "brand": "Global Talent Network",
+      "copyright": "DayOne | Talent Advisory. All rights reserved.",
+      "links": {
+        "privacyPolicy": "Privacy Policy",
+        "cookiePolicy": "Cookie Policy"
+      },
+      "newsletter": {
+        "title": "Stay Updated",
+        "description": "Get insights on talent trends and leadership strategies.",
+        "placeholder": "your.email@company.com",
+        "subscribe": "Subscribe"
+      }
+    },
+    "cookies": {
+      "title": "Cookie Preferences",
+      "description": "We use cookies to enhance your experience, analyze site usage, and assist in our marketing efforts. Choose your preferences below or accept all to continue.",
+      "showDetails": "Show cookie details",
+      "hideDetails": "Hide cookie details", 
+      "acceptAll": "Accept All",
+      "necessaryOnly": "Necessary Only",
+      "declineAll": "Decline All",
+      "necessary": {
+        "title": "Necessary Cookies",
+        "description": "Required for basic site functionality. Cannot be disabled."
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "description": "Help us understand how visitors interact with our website through Google Analytics."
+      },
+      "marketing": {
+        "title": "Marketing Cookies", 
+        "description": "Used to track visitors across websites for marketing and advertising purposes."
+      },
+      "footer": "You can change your preferences anytime in our"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated",
+      "sections": {
+        "information": {
+          "title": "Information We Collect",
+          "description": "Learn what information we collect and how."
+        },
+        "purpose": {
+          "title": "Purpose of Data Use",
+          "description": "Understand how we use your data."
+        },
+        "sharing": {
+          "title": "Sharing Data", 
+          "description": "Know when and how we share information."
+        },
+        "rights": {
+          "title": "Data Subject Rights (according to the LGPD)",
+          "description": "Your rights regarding your personal data."
+        },
+        "retention": {
+          "title": "Data Retention and Storage",
+          "description": "How long we keep your data."
+        },
+        "security": {
+          "title": "Information Security",
+          "description": "How we protect your information."
+        },
+        "cookies": {
+          "title": "Cookies and Tracking Technologies",
+          "description": "Our use of cookies and similar technologies."
+        },
+        "changes": {
+          "title": "Changes to this Privacy Policy",
+          "description": "How we handle policy updates."
+        },
+        "contact": {
+          "title": "Contact",
+          "description": "How to reach us with questions."
+        }
+      }
     }
-}
+  }

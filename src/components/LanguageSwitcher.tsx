@@ -16,15 +16,25 @@ const LanguageSelector = ({ variant = 'header', showIcon = true }: LanguageSelec
     // Initialize locale
     setCurrentLocaleState(getCurrentLocale());
 
+    // Listen for clicks outside of the dropdown
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('[data-language-selector]')) {
+        setIsOpen(false);
+      }
+    };
+
     // Listen for locale changes
     const handleLocaleChange = (event: CustomEvent<Locale>) => {
       setCurrentLocaleState(event.detail);
     };
 
+    window.addEventListener('click', handleClickOutside);
     window.addEventListener('localeChanged', handleLocaleChange as EventListener);
     
     return () => {
       window.removeEventListener('localeChanged', handleLocaleChange as EventListener);
+      window.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
@@ -41,7 +51,7 @@ const LanguageSelector = ({ variant = 'header', showIcon = true }: LanguageSelec
     : "relative w-full sm:w-auto";
 
   const buttonClasses = variant === 'header'
-    ? "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-white/10"
+    ? "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium nav-link transition-colors duration-200 hover:bg-white/10"
     : "flex items-center justify-between gap-2 px-4 py-2 bg-white/10 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-white/20 w-full sm:w-auto";
 
   const dropdownClasses = variant === 'header'
@@ -49,7 +59,7 @@ const LanguageSelector = ({ variant = 'header', showIcon = true }: LanguageSelec
     : "absolute bottom-full left-0 mb-2 w-full sm:w-48 bg-white rounded-lg shadow-xl border border-secondary/20 overflow-hidden z-50";
 
   return (
-    <div className={baseClasses}>
+    <div data-language-selector className={baseClasses}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className={buttonClasses}

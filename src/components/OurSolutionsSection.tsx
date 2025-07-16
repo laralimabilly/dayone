@@ -1,27 +1,31 @@
 // src/components/OurSolutionsSection.tsx
 import { Search, Users, TrendingUp } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 const OurSolutionsSection = () => {
+
+  const { t } = useTranslation();
+
   const solutions = [
     {
       icon: Search,
-      title: "EXECUTIVE SEARCH",
-      description: "Transform your organization with leaders who don't just adapt — they drive change.",
-      subtitle: "We go beyond recruitment to deliver tailored, strategic executive AI-ready executives who lead transformation and scale impact.",
+      title: t('solutions.executiveSearch.title'),
+      description: t('solutions.executiveSearch.description'),
+      subtitle: t('solutions.executiveSearch.subtitle'),
       imagePlaceholder: "/img/methodology/methodology-kickoff.jpg" // Placeholder for actual image
     },
     {
       icon: Users,
-      title: "TALENT ADVISORY",
-      description: "From organizational design and competitive mapping to leadership assessments and role definitions - we help build future-ready teams.",
-      subtitle: "We help anticipate challenges and accelerate leadership evolution.",
+      title: t('solutions.talentAdvisory.title'),
+      description: t('solutions.talentAdvisory.description'),
+      subtitle: t('solutions.talentAdvisory.subtitle'),
       imagePlaceholder: "/img/methodology/methodology-assessment.jpg" // Placeholder for actual image
     },
     {
       icon: TrendingUp,
-      title: "CAREER TRANSITION SUPPORT",
-      description: "Tailor-made guidance for senior professionals navigating transitions, searching for reinvention, and in career transformation.",
-      subtitle: "We deliver human insight backed by market intelligence.",
+      title: t('solutions.careerTransition.title'),
+      description: t('solutions.careerTransition.description'),
+      subtitle: t('solutions.careerTransition.subtitle'),
       imagePlaceholder: "/img/methodology/methodology-closing.jpg" // Placeholder for actual image
     }
   ];
@@ -32,7 +36,7 @@ const OurSolutionsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-accent">
-            Our Solutions
+            {t('solutions.title')}
           </h2>
         </div>
 
@@ -120,16 +124,17 @@ const OurSolutionsSection = () => {
             
             <div className="relative z-10">
               <h3 className="text-xl lg:text-2xl font-bold text-primary mb-4">
-                Ready to Transform Your Leadership?
+                {t('solutions.cta.title')}
               </h3>
               <p className="text-primary/80 mb-6 text-sm lg:text-base">
-                Let's discuss how our solutions can help you build the executive team your organization needs to thrive in the digital age.
+                {t('solutions.cta.subtitle')}
               </p>
               <button 
                 className="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 lg:px-8 py-3 lg:py-4 rounded-full font-medium inline-flex items-center gap-2 text-sm lg:text-base"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                title={t('common.getStarted')}
               >
-                Get Started
+                {t('common.getStarted')}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

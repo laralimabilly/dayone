@@ -1,31 +1,35 @@
 // src/components/WhyChooseDayOneSection.tsx
 import { Heart, Target, Users, TrendingUp } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface WhyChooseDayOneSectionProps {
   useFolderMask?: boolean
 }
 
 const WhyChooseDayOneSection = (useFolderMask: WhyChooseDayOneSectionProps) => {
+
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: Users,
-      title: "Boutique mindset. Senior attention.",
-      description: "Personalized service with experienced partners leading every engagement"
+      title: t('whyChoose.features.boutique.title'),
+      description: t('whyChoose.features.boutique.description')
     },
     {
       icon: Target,
-      title: "Deep industry expertise in Tech, Digital Products, Marketing and Sales.",
-      description: "Specialized knowledge in the sectors that drive digital transformation"
+      title: t('whyChoose.features.expertise.title'),
+      description: t('whyChoose.features.expertise.description')
     },
     {
       icon: Heart,
-      title: "Human-focused. Strategy-driven.",
-      description: "Balancing analytical precision with genuine human connection and empathy"
+      title: t('whyChoose.features.humanFocused.title'),
+      description: t('whyChoose.features.humanFocused.description')
     },
     {
       icon: TrendingUp,
-      title: "Tailored journeys. Tangible outcomes.",
-      description: "Customized approaches that deliver measurable results for your organization"
+      title: t('whyChoose.features.tailored.title'),
+      description: t('whyChoose.features.tailored.description')
     }
   ];
 
@@ -35,13 +39,13 @@ const WhyChooseDayOneSection = (useFolderMask: WhyChooseDayOneSectionProps) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-accent">
-            Why Choose DayOne
+            {t('whyChoose.title')}
           </h2>
           
           {/* Subtitle */}
           <div className="max-w-4xl mx-auto mb-12">
             <p className="text-xl lg:text-2xl font-medium text-primary/90 leading-relaxed">
-              Not just search. Not just advice. A true leadership partner.
+              {t('whyChoose.subtitle')}
             </p>
           </div>
         </div>
@@ -84,7 +88,7 @@ const WhyChooseDayOneSection = (useFolderMask: WhyChooseDayOneSectionProps) => {
         <div className="text-center">
             <div className="max-w-4xl mx-auto mb-12">
                 <p className="text-xl lg:text-2xl font-medium text-primary/90 leading-relaxed">
-                    Because Leadership begins every day.
+                    {t('whyChoose.quote')}
                 </p>
           </div>
         </div>
@@ -95,7 +99,7 @@ const WhyChooseDayOneSection = (useFolderMask: WhyChooseDayOneSectionProps) => {
             className="bg-accent text-white hover:bg-white hover:text-primary px-6 lg:px-8 py-3 lg:py-4 rounded-full font-medium inline-flex items-center gap-2 text-sm lg:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           >
-            Start Your Leadership Journey
+            {t('whyChoose.cta')}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

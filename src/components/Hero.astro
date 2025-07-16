@@ -2,6 +2,9 @@
 // src/components/Hero.astro (Fixed)
 import SocialLinks from './SocialLinks.tsx';
 import HeroAnimation from './HeroAnimation.tsx';
+import { useTranslations } from '../utils/i18n';
+
+const {t} = useTranslations();
 ---
 
 <section id="hero" class="relative min-h-screen lg:h-screen overflow-hidden flex items-center">
@@ -24,21 +27,23 @@ import HeroAnimation from './HeroAnimation.tsx';
           <a 
             href="/#our-solutions"
             class="bg-accent text-white hover:bg-white hover:text-primary transition-colors px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto inline-block text-center"
-            title="Our Solutions"
+            title={t('hero.cta.companies')} 
+            data-translate-key="hero.cta.companies"
           >
-            Executive Search & Talent Advisory 
+            {t('hero.cta.companies')} 
           </a>
-          <p class="text-dark font-mono mt-2 text-center">*For Companies</p>
+          <p class="text-dark font-mono mt-2 text-center" data-translate-key="hero.cta.companiesNote">{t('hero.cta.companiesNote')}</p>
         </div>
         <div>
           <a 
             href="/#our-solutions"
             class="hover:bg-white hover:text-primary bg-primary text-light transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto inline-block text-center"
-            title="Our Solutions"
+            title={t('hero.cta.executives')}
+            data-translate-key="hero.cta.executives"
           >
-            Career Transition Support 
+            {t('hero.cta.executives')}
           </a>
-          <p class="text-dark font-mono mt-2 text-center">*For Executives</p>
+          <p class="text-dark font-mono mt-2 text-center" data-translate-key="hero.cta.executivesNote">{t('hero.cta.executivesNote')}</p>
         </div>
       </div>
     </div>
@@ -48,7 +53,7 @@ import HeroAnimation from './HeroAnimation.tsx';
       <div class="flex lg:flex-col items-center gap-4 lg:gap-6">
         <div class="hidden lg:block w-px h-16 bg-dark/30"></div>
         <div class="flex lg:flex-col gap-4 lg:gap-6">
-          <SocialLinks />
+          <SocialLinks client:load />
         </div>
         <div class="hidden lg:block w-px h-16 bg-dark/30"></div>
       </div>

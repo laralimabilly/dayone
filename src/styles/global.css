@@ -337,3 +337,84 @@ html, body {
         color: black !important;
     }
 }
+
+.adaptive-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Logo container for positioning */
+  .logo-container {
+    position: relative;
+  }
+  
+  /* Default state - light text (for dark backgrounds) */
+  .logo-dark {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .logo-light {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-link {
+    color: #E0DFD5; /* Light text */
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #E2A86B; /* Accent color */
+  }
+  
+  @media (min-width: 1280px) {
+    .nav-link {
+      font-size: 1rem;
+    }
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .logo-dark {
+    opacity: 1;
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .logo-light {
+    opacity: 0;
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .nav-link {
+    color: #414F59; /* Dark text */
+  }
+  
+  .adaptive-header[data-theme="dark-text"] .nav-link:hover {
+    color: #E2A86B; /* Accent color stays the same */
+  }
+  
+  /* Mobile landscape adjustments */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .adaptive-header nav {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    
+    .max-w-28 {
+      max-width: 6rem;
+    }
+    
+    .max-w-32 {
+      max-width: 7rem;
+    }
+  }

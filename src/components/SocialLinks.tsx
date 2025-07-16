@@ -1,5 +1,6 @@
 // src/components/SocialLinks.tsx - Enhanced version
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { useTranslation } from "../hooks/useTranslation";
 
 interface SocialLinksProps {
     colorClass?: string;
@@ -13,6 +14,8 @@ export default function SocialLinks({
     className = ""
 }: SocialLinksProps) {
     const linkClasses = `${colorClass} ${size} transition-colors duration-200 ${className}`;
+
+    const { t } = useTranslation();
     
     return (
         <>
@@ -25,7 +28,7 @@ export default function SocialLinks({
                 <FaLinkedin />
             </a>
             <a 
-                href="https://wa.me/5511997127227?Hey%2C%20I%20would%20like%20to%20know%20more%20about..." 
+                href={t('hero.social.whatsapp')} 
                 className={linkClasses}
                 title="WhatsApp"
                 target="_blank"

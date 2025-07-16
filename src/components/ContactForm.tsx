@@ -14,8 +14,12 @@ import {
 } from '../utils/contactValidation';
 import { sendContactEmail } from '../utils/emailjs';
 import { FORM_CONFIG } from '../config/contact';
+import { useTranslation } from '../hooks/useTranslation';
 
 function ContactForm() {
+
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState<FormData>(FORM_CONFIG.DEFAULT_FORM_DATA);
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -125,7 +129,7 @@ function ContactForm() {
       setSubmission({
         isSubmitting: false,
         isSuccess: false,
-        error: FORM_CONFIG.MESSAGES.error.fallback
+        error: t('FORM_CONFIG.MESSAGES.error.fallback')
       });
     }
   };
@@ -144,15 +148,15 @@ function ContactForm() {
       <div className="absolute -left-20 -bottom-20 w-40 h-40 bg-[#E2A86B]/10 rounded-full blur-2xl"></div>
       
       <div className="relative z-10">
-        <h3 className="text-xl sm:text-2xl font-bold text-secondary mb-4 sm:mb-6">Send us a message</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-secondary mb-4 sm:mb-6">{t('contact.sendMessage')}</h3>
         
         {/* Success Message */}
         {submission.isSuccess && (
           <div className="mb-6 p-4 bg-green-100 border border-green-400 rounded-lg flex items-center gap-3">
             <Check size={20} className="text-green-600 flex-shrink-0" />
             <div>
-              <p className="text-green-800 font-medium">Message sent successfully!</p>
-              <p className="text-green-700 text-sm">We'll get back to you within 24 hours.</p>
+              <p className="text-green-800 font-medium">{t('contact.form.success.title')}</p>
+              <p className="text-green-700 text-sm">{t('contact.form.success.description')}</p>
             </div>
           </div>
         )}
@@ -162,7 +166,7 @@ function ContactForm() {
           <div className="mb-6 p-4 bg-red-100 border border-red-400 rounded-lg flex items-start gap-3">
             <AlertCircle size={20} className="text-red-600 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-red-800 font-medium">{FORM_CONFIG.MESSAGES.error.title}</p>
+              <p className="text-red-800 font-medium">{t('FORM_CONFIG.MESSAGES.error.title')}</p>
               <p className="text-red-700 text-sm">{submission.error}</p>
             </div>
           </div>
@@ -173,7 +177,7 @@ function ContactForm() {
             {/* Name field */}
             <div className="space-y-2">
               <label htmlFor="name" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
-                Name <span className="text-[#E2A86B]">*</span>
+                {t('contact.form.name.label')} <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -192,7 +196,7 @@ function ContactForm() {
                       ? FORM_CONFIG.STYLES.input.error
                       : FORM_CONFIG.STYLES.input.normal
                   }`}
-                  placeholder="Your name"
+                  placeholder={t('contact.form.name.placeholder')}
                   maxLength={50}
                 />
               </div>
@@ -207,7 +211,7 @@ function ContactForm() {
             {/* Email field */}
             <div className="space-y-2">
               <label htmlFor="email" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
-                Email <span className="text-[#E2A86B]">*</span>
+                {t('contact.form.email.label')} <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -226,7 +230,7 @@ function ContactForm() {
                       ? FORM_CONFIG.STYLES.input.error
                       : FORM_CONFIG.STYLES.input.normal
                   }`}
-                  placeholder="your.email@company.com"
+                  placeholder={t('contact.form.email.placeholder')}
                   maxLength={100}
                 />
               </div>
@@ -241,7 +245,7 @@ function ContactForm() {
             {/* Phone field */}
             <div className="space-y-2">
               <label htmlFor="phone" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
-                Phone <span className="text-[#E2A86B]">*</span>
+                {t('contact.form.phone.label')} <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -260,7 +264,7 @@ function ContactForm() {
                       ? FORM_CONFIG.STYLES.input.error
                       : FORM_CONFIG.STYLES.input.normal
                   }`}
-                  placeholder="(11) 91234-5678"
+                  placeholder={t('contact.form.phone.placeholder')}
                 />
               </div>
               {getFieldError('phone') && (
@@ -274,7 +278,7 @@ function ContactForm() {
             {/* Company field */}
             <div className="space-y-2">
               <label htmlFor="company" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
-                Company <span className="text-[#E2A86B]">*</span>
+                {t('contact.form.company.label')} <span className="text-[#E2A86B]">*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -293,7 +297,7 @@ function ContactForm() {
                       ? FORM_CONFIG.STYLES.input.error
                       : FORM_CONFIG.STYLES.input.normal
                   }`}
-                  placeholder="Your company name"
+                  placeholder={t('contact.form.company.placeholder')}
                   maxLength={100}
                 />
               </div>
@@ -309,7 +313,7 @@ function ContactForm() {
           {/* Message field */}
           <div className="space-y-2">
             <label htmlFor="message" className="block text-[#E0DFD5] font-medium text-sm sm:text-base">
-              Message <span className="text-[#E2A86B]">*</span>
+              {t('contact.form.message.label')} <span className="text-[#E2A86B]">*</span>
               <span className="text-[#E0DFD5]/60 text-xs ml-2">
                 ({formData.message.length}/1000)
               </span>
@@ -331,7 +335,7 @@ function ContactForm() {
                     ? FORM_CONFIG.STYLES.textarea.error
                     : FORM_CONFIG.STYLES.textarea.normal
                 }`}
-                placeholder="How can we help you? Please provide details about your needs..."
+                placeholder={t('contact.form.message.placeholder')}
                 maxLength={1000}
               />
             </div>
@@ -357,12 +361,12 @@ function ContactForm() {
               {submission.isSubmitting ? (
                 <>
                   <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                  {FORM_CONFIG.MESSAGES.loading}
+                  {t('FORM_CONFIG.MESSAGES.loading')}
                 </>
               ) : (
                 <>
                   <Send size={16} />
-                  {FORM_CONFIG.MESSAGES.submit}
+                  {t('FORM_CONFIG.MESSAGES.submit')}
                 </>
               )}
             </button>
@@ -371,9 +375,9 @@ function ContactForm() {
           {/* Form info */}
           <div className="text-center pt-2">
             <p className="text-[#E0DFD5]/60 text-xs">
-              {FORM_CONFIG.MESSAGES.privacy.text}{' '}
+              {t('FORM_CONFIG.MESSAGES.privacy.text')}{' '}
               <a href="/privacy-policy" className="text-[#E2A86B] hover:text-[#E2A86B]/80 underline" title="Privacy Policy">
-                {FORM_CONFIG.MESSAGES.privacy.linkText}
+                {t('FORM_CONFIG.MESSAGES.privacy.linkText')}
               </a>
             </p>
           </div>

@@ -4,6 +4,9 @@ import NavLinks from './NavLinks.astro';
 import SocialLinks from './SocialLinks';
 import { Image } from 'astro:assets';
 import logo from '../assets/DayOne_Logo_Light.png';
+import { useTranslations } from '../utils/i18n';
+
+const { t } = useTranslations();
 ---
 
 <footer id="footer" class="bg-dark py-8 sm:py-12">
@@ -16,8 +19,8 @@ import logo from '../assets/DayOne_Logo_Light.png';
           alt="Logo DayOne" 
           class="max-w-32 sm:max-w-36 mb-4" 
         />
-        <p class="text-secondary text-sm max-w-xs">
-          Global Talent Network
+        <p class="text-secondary text-sm max-w-xs" data-translate-key="footer.brand">
+          {t('footer.brand')}
         </p>
       </div>
       
@@ -32,17 +35,18 @@ import logo from '../assets/DayOne_Logo_Light.png';
     <!-- Bottom section -->
     <div class="border-t border-secondary/10 mt-8 pt-6 sm:pt-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-6">
       <div class="flex flex-col gap-4 w-full lg:w-auto">
-        <p class="text-secondary/60 text-xs sm:text-sm">
-          &copy; {new Date().getFullYear()} DayOne | Talent Advisory. All rights reserved.
+        <p class="text-secondary/60 text-xs sm:text-sm" data-translate-key="footer.copyright">
+          &copy; {new Date().getFullYear()} {t('footer.copyright')}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-          <a href="/privacy-policy" title="Privacy Policy" class="text-secondary/60 hover:text-accent text-xs sm:text-sm transition-colors">Privacy Policy</a>
+          <a href="/privacy-policy" title="Privacy Policy" class="text-secondary/60 hover:text-accent text-xs sm:text-sm transition-colors" data-translate-key="footer.links.privacyPolicy">{t('footer.links.privacyPolicy')}</a>
           <!-- <a href="#" class="text-secondary/60 hover:text-accent text-xs sm:text-sm transition-colors">Terms of Service</a> -->
           <button 
             id="cookie-policy-btn"
             class="text-secondary/60 hover:text-accent text-xs sm:text-sm transition-colors text-left"
+            data-translate-key="footer.links.cookiePolicy"
           >
-            Cookie Policy
+            {t('footer.links.cookiePolicy')}
           </button>
         </div>
       </div>

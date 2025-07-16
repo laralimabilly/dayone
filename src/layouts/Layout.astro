@@ -1,6 +1,6 @@
 ---
 import CookieConsent from '../components/CookieConsent';
-import { initializeLocale, getCurrentLocale } from '../utils/i18n';
+import { getCurrentLocale } from '../utils/i18n';
 
 export interface Props {
   title?: string;
@@ -18,14 +18,30 @@ const {
 
 } = Astro.props;
 
-initializeLocale();
 const currentLocale = getCurrentLocale();
 
 ---
 
 <!DOCTYPE html>
-<html lang={currentLocale}>
+<html lang="en" id="html-root">
   <head>
+
+    <!-- Early script to prevent FOUC -->
+    <script is:inline>
+      // Immediately set the language attribute to prevent flash
+      (function() {
+        const stored = localStorage.getItem('locale');
+        if (stored === 'pt' || stored === 'en') {
+          document.documentElement.lang = stored;
+        } else {
+          const browserLang = navigator.language.split('-')[0];
+          const lang = (browserLang === 'pt' || browserLang === 'en') ? browserLang : 'en';
+          document.documentElement.lang = lang;
+          localStorage.setItem('locale', lang);
+        }
+      })();
+    </script>
+
     <!-- Cookie Consent Initialization -->
     <script is:inline>
       // Initialize consent mode before GTM loads
@@ -89,20 +105,6 @@ const currentLocale = getCurrentLocale();
     <link rel="canonical" href={origin + pathname}>
 
     <title>{title}</title>
-
-    <!-- Initialize translations first -->
-    <script is:inline>
-      // Initialize locale system early
-      if (typeof window !== 'undefined') {
-        const stored = localStorage.getItem('locale');
-        const browserLang = navigator.language.split('-')[0];
-        
-        if (!stored) {
-          const defaultLang = ['en', 'pt'].includes(browserLang) ? browserLang : 'en';
-          localStorage.setItem('locale', defaultLang);
-        }
-      }
-    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -115,18 +117,18 @@ const currentLocale = getCurrentLocale();
     <!-- Cookie Consent - Available site-wide -->
     <CookieConsent client:load />
 
-    <!-- Translation initialization -->
+    <!-- Global translation initialization - ONLY HERE, NOWHERE ELSE -->
     <script>
-      import { initializeLocale } from '../utils/i18n.ts';
+      import { initializeGlobalTranslations } from '../utils/i18n.ts';
       
-      // Initialize locale when page loads
+      // Initialize once when page loads
       document.addEventListener('DOMContentLoaded', () => {
-        initializeLocale();
+        initializeGlobalTranslations();
       });
       
-      // Re-initialize after navigation
+      // Re-initialize after navigation (for SPA-like behavior)
       document.addEventListener('astro:after-swap', () => {
-        initializeLocale();
+        initializeGlobalTranslations();
       });
     </script>
 

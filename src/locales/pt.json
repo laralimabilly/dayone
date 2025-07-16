@@ -1,56 +1,288 @@
 {
-    "solutions": {
-        "h2": "Como a DayOne pode apoiar suas necessidades",
-        "h3": "Desde Executive Search e Consultoria de Talentos até Suporte de Transição de Carreira, fornecemos insights detalhados de mercado para melhorar suas decisões estratégicas de contratação.",
-        "p": "Transforme sua organização com líderes que não apenas se adaptam — eles conduzem a evolução. Nosso serviço abrangente de executive search vai além do recrutamento tradicional para entregar líderes estratégicos com DNA digital que podem navegar pela complexidade e acelerar o crescimento.",
-        "services": {
-            "role": {
-                "title": "Definição de Funções",
-                "description": "Desde arquitetura organizacional, definição de funções, executive search até onboarding e plano de 100 dias e revisões"
-            },
-            "market": {
-                "title": "Mapeamento de Mercado",
-                "description": "Mapeamento ativo de mercado e caça executiva direcionada"
-            },
-            "assessment": {
-                "title": "Avaliação de Fit",
-                "description": "Avaliação de adequação técnica e comportamental em nível de liderança"
-            },
-            "resume": {
-                "title": "Otimização de Perfil",
-                "description": "Otimização de currículo e perfil digital, desenvolvimento de marca pessoal e posicionamento de mercado"
-            },
-            "skills": {
-                "title": "Mapeamento de Competências",
-                "description": "Mapeamento de competências, avaliação de estilo de liderança e autoconhecimento"
-            },
-            "programs": {
-                "title": "Programas Personalizados",
-                "description": "Programas curtos e práticos sob medida para Executivos que querem se sentir melhor preparados para suas etapas de transição de carreira"
-            }
-        }
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "clear": "Limpar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "home": "Página Inicial",
+    "blog": "Blog",
+    "contact": "Contato",
+    "about": "Sobre",
+    "readMore": "Ler Mais",
+    "viewAll": "Ver Tudo",
+    "getStarted": "Comece Já",
+    "learnMore": "Saiba Mais",
+    "letsTalk": "Vamos conversar!"
+  },
+  "navigation": {
+    "home": "Página Inicial",
+    "ourSolutions": "Nossas Soluções",
+    "ourTeam": "Nossa Equipe",
+    "blog": "Blog",
+    "contact": "Contato",
+    "privacyPolicy": "Política de Privacidade"
+  },
+  "hero": {
+    "title": {
+      "line1": "Conectando",
+      "line2": "Grandes Empresas com",
+      "line3": "Talento Excepcional"
     },
-    "methodology": {
-        "h2": "Nossa Metodologia de Executive Search",
-        "h3": "A Abordagem DayOne: Todo Dia Como o Primeiro",
-        "p": "Acreditamos que toda grande transformação começa com a energia do primeiro dia—e que o verdadeiro sucesso acontece quando essa energia é renovada diariamente. Nossa metodologia comprovada garante que identifiquemos líderes que mantêm o espírito de inovação, dedicação e propósito como se cada desafio fosse seu primeiro e mais significativo."
+    "subtitle": "Nossa empresa de Consultoria de Talentos e Seleção de Executivos é especializada na formação de equipes de liderança preparadas para IA para empresas em expansão, transformação e entrada no mercado.",
+    "cta": {
+      "companies": "Executive Search & Talent Advisory",
+      "companiesNote": "*Para Empresas",
+      "executives": "Suporte à Transição de Carreira",
+      "executivesNote": "*Para Executivos"
     },
-    "contact": {
-        "h2": "Entre em contato",
-        "h3": "Vamos discutir como nossas soluções de Executive Search podem ajudar seu negócio",
-        "p": "Entre em contato com nossa equipe para saber mais sobre nossos serviços ou agendar uma consulta. Estamos prontos para ajudar você a otimizar suas operações de contratação.",
-        "label": {
-            "email": "Email",
-            "phone": "Telefone",
-            "office": "Escritório"
-        },
-        "input": {
-            "name": "Nome",
-            "email": "Email",
-            "phone": "Telefone",
-            "company": "Empresa",
-            "message": "Mensagem"
-        },
-        "address": "Av. Brigadeiro Faria Lima, 1.811,<br />Sala 1119<br />01452-001<br />São Paulo, SP - Brasil"
+    "social": {
+      "whatsapp": "https://wa.me/5511997127227?text=Olá%2C%20eu%20gostaria%20de%20saber%20mais%20sobre..."
     }
+  },
+  "solutions": {
+    "title": "Nossas Soluções",
+    "subtitle": "Transforme sua organização com líderes que não apenas se adaptam — eles impulsionam a mudança.",
+    "executiveSearch": {
+      "title": "EXECUTIVE SEARCH",
+      "description": "Transforme sua organização com líderes que não apenas se adaptam — eles impulsionam a mudança.",
+      "subtitle": "Nós vamos além do recrutamento para fornecer executivos estratégicos e sob medida, prontos para IA, que lideram a transformação e dimensionam o impacto."
+    },
+    "talentAdvisory": {
+      "title": "TALENT ADVISORY",
+      "description": "Do design organizacional e mapeamento competitivo às avaliações de liderança e definições de funções, ajudamos a construir equipes preparadas para o futuro.",
+      "subtitle": "Ajudamos a antecipar desafios e acelerar a evolução da liderança."
+    },
+    "careerTransition": {
+      "title": "TRANSIÇÃO DE CARREIRA",
+      "description": "Orientação personalizada para profissionais seniores que navegam por transições, buscam reinvenção e transformação de carreira.",
+      "subtitle": "Oferecemos insights humanos apoiados por inteligência de mercado."
+    },
+    "cta": {
+      "title": "Pronto para Transformar Sua Liderança?",
+      "subtitle": "Vamos discutir como nossas soluções podem ajudar você a construir a equipe executiva que sua organização precisa para prosperar na era digital.",
+      "button": "Comece Já"
+    }
+  },
+  "team": {
+    "title": "Nossa Equipe",
+    "subtitle": "Na DAYONE, acreditamos que todo grande impacto começa com a energia do primeiro dia — e que a verdadeira transformação acontece quando essa energia se renova, todos os dias. Nosso foco é identificar líderes que não apenas se adaptam — eles impulsionam a evolução de nossos clientes.",
+    "person": {
+      "fernanda": {
+        "title": "Managing Partner",
+        "description": "Fernanda Amorim traz mais de 20 anos de experiência em recrutamento de executivos, com um sólido histórico de liderança em mais de 400 projetos e uma reputação de entregar soluções personalizadas e de alto impacto com assertividade e uma visão aguçada sobre transformação digital e conexões humanas.<br>Ela construiu sua carreira em empresas globais como KPMG, Michael Page, Page Executive, Oracle e Indeed, onde desenvolveu profundo conhecimento em estratégia de negócios e contratação estratégica, bem como em liderança consultiva B2B.<br>Mais recentemente, como sócia executiva sênior na FIND HR, ela liderou o recrutamento de alta gerência em empresas de tecnologia, telecomunicações e digital, e defendeu a diversidade na liderança."
+      },
+      "claudio": {
+        "title": "Managing Partner",
+        "description": "Com mais de 20 anos de experiência no setor de tecnologia, adquirida em empresas como SAP e IBM, Claudio Guerreiro construiu uma sólida carreira como executivo antes de se tornar empreendedor e ingressar no mercado de recrutamento de executivos, onde atuou como sócio de consultorias renomadas como 2Get e Heidrick & Struggles, além de ter sido membro do conselho de empresas inovadoras.<br>Na FIND HR, liderou a expansão estratégica da empresa, expandindo sua oferta de serviços e fortalecendo sua presença no recrutamento de executivos para funções de tecnologia e transformação digital.<br>Sua abordagem combina profundo conhecimento do setor com uma forte mentalidade voltada para resultados, com foco em assertividade e excelência no recrutamento de executivos."
+      },
+      "carla": {
+        "title": "Associada",
+        "description": "Carla tem mais de 15 anos de experiência em recrutamento executivo, com forte foco em liderança e cargos de alta gerência. Ela é reconhecida por sua capacidade de entregar soluções personalizadas e altamente precisas, combinando perspicácia empresarial, profundo conhecimento de mercado e uma abordagem centrada no ser humano para conexões profissionais.<br>Construiu sua carreira em consultorias especializadas em recrutamento e empresas de busca de executivos, trabalhando com empresas como Michael Page, Hays, Robert Walters, FIND e Vyborny’s Consulting. Contribuiu para projetos estratégicos de grandes grupos nos setores de tecnologia, industrial e varejo.<br>Ao longo de sua carreira, desenvolveu expertise na construção de equipes de alto desempenho e no apoio a empresas em momentos de transformação, crescimento ou reestruturação, sempre com foco em liderança estratégica e diversidade. Seu trabalho enfatiza inovação, agilidade e impacto real nos negócios."
+      },
+      "roberta": {
+        "title": "Associada",
+        "description": "Profissional experiente com mais de 10 anos em recrutamento e seleção, Roberta possui um sólido histórico em cargos estratégicos e de liderança. Ao longo de sua carreira, desenvolveu sólida expertise em atração, seleção e desenvolvimento de talentos para cargos de nível médio e sênior, contribuindo diretamente para a formação de equipes de alta performance e o fortalecimento da cultura organizacional em grandes empresas.<br>Sua experiência inclui atuação como Gerente no Grupo Calzedonia, empresa global de varejo italiana, onde liderou processos de recrutamento e iniciativas de mapeamento de mercado. Além disso, colaborou com consultorias especializadas em recrutamento, entregando projetos estratégicos para grupos líderes nos setores de varejo, industrial e tecnologia, sempre com foco em resultados, agilidade e excelência na entrega.<br>Ela é reconhecida por sua mentalidade analítica, habilidades de diagnóstico organizacional e capacidade de alinhar perfis profissionais às necessidades únicas de cada negócio."
+      }
+    },
+    "connect": "Conecte no LinkedIn"
+  },
+  "whyChoose": {
+    "title": "Por que escolher a DayOne",
+    "subtitle": "Não é somente pesquisa. Não é apenas aconselhamento. Um verdadeiro parceiro de liderança.",
+    "features": {
+      "boutique": {
+        "title": "Mentalidade de boutique. Atenção sênior.",
+        "description": "Atendimento personalizado com parceiros experientes liderando cada engajamento"
+      },
+      "expertise": {
+        "title": "Profunda expertise no setor de Tecnologia, Produtos Digitais, Marketing e Vendas.",
+        "description": "Conhecimento especializado nos setores que impulsionam a transformação digital"
+      },
+      "humanFocused": {
+        "title": "Focado no ser humano. Orientado por estratégias.",
+        "description": "Equilibrando precisão analítica com conexão humana genuína e empatia"
+      },
+      "tailored": {
+        "title": "Jornadas personalizadas. Resultados tangíveis.",
+        "description": "Abordagens personalizadas que geram resultados mensuráveis Resultados para sua organização"
+      }
+    },
+    "quote": "Porque a liderança começa todos os dias.",
+    "cta": "Comece sua jornada de liderança"
+  },
+  "blog": {
+    "title": "Insights e Perspectivas",
+    "subtitle": "Fique por dentro das últimas tendências em busca de executivos, desenvolvimento de liderança e estratégias de transformação digital da nossa equipe de especialistas.",
+    "featured": "Artigos em destaque",
+    "latestInsights": "Últimos insights",
+    "fromOurBlog": "Do nosso blog",
+    "viewAllArticles": "Ver todos os artigos",
+    "searchPlaceholder": "Pesquisar artigos...",
+    "noResults": "Nenhum artigo encontrado",
+    "noResultsMessage": "Tente ajustar seus termos de busca ou filtro de categoria.",
+    "clearFilters": "Limpar filtros",
+    "resultsCount": "Exibindo {count} de {total} artigos",
+    "readArticle": "Ler Artigo",
+    "shareArticle": "Compartilhe este artigo",
+    "relatedArticles": "Artigos Relacionados",
+    "category": "Categoria",
+    "allCategories": "Todos",
+    "searchResults": "Resultados da Pesquisa",
+    "searchFor": "Resultados para: \"{query}\"",
+    "exploreCategories": "Explorar Outras Categorias"
+  },
+  "contact": {
+    "title": "Entre em contato",
+    "subtitle": "DayOne - cada dia como o primeiro, trabalhando para construir o extraordinário.",
+    "sendMessage": "Nos mande uma mensagem",
+    "form": {
+      "name": {
+        "label": "Nome",
+        "placeholder": "Seu nome"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "seu.email@empresa.com"
+      }, 
+      "phone": {
+        "label": "Telefone",
+        "placeholder": "(11) 91234-5678"
+      },
+      "company": {
+        "label": "Empresa",
+        "placeholder": "Sua empresa"
+      },
+      "message": {
+        "label": "Mensagem",
+        "placeholder": "Como podemos ajudar? Forneça detalhes sobre suas necessidades..."
+      },
+      "messagePlaceholder": "Como podemos ajudar? Forneça detalhes sobre suas necessidades...",
+      "submit": "Enviar mensagem",
+      "sending": "Enviando...",
+      "required": "*",
+      "success": {
+        "title": "Mensagem enviada com sucesso!",
+        "description": "Entraremos em contato com você em até 24 horas."
+      },
+      "error": {
+        "title": "Falha ao enviar a mensagem",
+        "description": "Ocorreu um erro inesperado. Tente novamente."
+      },
+      "privacy": {
+        "text": "Ao enviar este formulário, você concorda com nossa",
+        "linkText": "Política de Privacidade"
+      }
+    },
+    "info": {
+      "email": "E-mail",
+      "phone": "Telefone",
+      "office": "Escritório"
+    },
+    "address": "Av. Brigadeiro Faria Lima, 1.811,<br />Sala 1119<br />01452-001<br />São Paulo, SP - Brasil"
+  },
+  "FORM_CONFIG": {
+    "MESSAGES": {
+      "success": {
+        "title": "Mensagem enviada com sucesso!",
+        "description": "Entraremos em contato com você em até 24 horas."
+      },
+      "error": {
+        "title": "Falha ao enviar a mensagem",
+        "fallback": "Ocorreu um erro inesperado. Tente novamente."
+      },
+      "loading": "Enviando...",
+      "submit": "Enviar mensagem",
+      "privacy": {
+        "text": "Ao enviar este formulário, você concorda com nossa",
+        "linkText": "Política de Privacidade"
+      }
+    }
+  },
+  "footer": {
+    "brand": "Global Talent Network",
+    "copyright": "DayOne | Talent Advisory. Todos os direitos reservados.",
+    "links": {
+      "privacyPolicy": "Política de Privacidade",
+      "cookiePolicy": "Política de Cookies"
+    },
+    "newsletter": {
+      "title": "Fique Atualizado",
+      "description": "Obtenha insights sobre tendências de talentos e estratégias de liderança.",
+      "placeholder": "seu.email@empresa.com",
+      "subscribe": "Inscreva-se"
+    }
+  },
+  "cookies": {
+    "title": "Preferências de Cookies",
+    "description": "Usamos cookies para melhorar sua experiência, analisar o uso do site e auxiliar em nossas ações de marketing. Selecione suas preferências abaixo ou aceite todas para continuar.",
+    "showDetails": "Mostrar detalhes do cookie",
+    "hideDetails": "Ocultar detalhes do cookie",
+    "acceptAll": "Aceitar tudo",
+    "necessaryOnly": "Somente necessário",
+    "declineAll": "Recusar tudo",
+    "necessary": {
+      "title": "Cookies necessários",
+      "description": "Necessário para a funcionalidade básica do site. Não pode ser desativado."
+    },
+    "analytics": {
+      "title": "Cookies de Análise",
+      "description": "Ajude-nos a entender como os visitantes interagem com nosso site por meio do Google Analytics."
+    },
+    "marketing": {
+      "title": "Cookies de Marketing",
+      "description": "Usados para rastrear visitantes em sites para fins de marketing e publicidade."
+    },
+    "footer": "Você pode alterar suas preferências a qualquer momento em nossa"
+  },
+  "privacy": {
+    "title": "Política de Privacidade",
+    "lastUpdated": "Última atualização",
+    "sections": {
+      "information": {
+        "title": "Informações que Coletamos",
+        "description": "Saiba quais informações coletamos e como."
+      },
+      "purpose": {
+        "title": "Finalidade do Uso de Dados",
+        "description": "Entenda como usamos seus dados."
+      },
+      "sharing": {
+        "title": "Compartilhamento de Dados",
+        "description": "Saiba quando e como compartilhamos informações."
+      },
+      "rights": {
+        "title": "Direitos do Titular dos Dados (de acordo com a LGPD)",
+        "description": "Seus direitos em relação aos seus dados pessoais."
+      },
+      "retention": {
+        "title": "Retenção e Armazenamento de Dados",
+        "description": "Por quanto tempo mantemos seus dados."
+      },
+      "security": {
+        "title": "Segurança da Informação",
+        "description": "Como protegemos suas informações."
+      },
+      "cookies": {
+        "title": "Cookies e Tecnologias de Rastreamento",
+        "description": "Nosso uso de cookies e tecnologias semelhantes."
+      },
+      "changes": {
+        "title": "Alterações nesta Política de Privacidade",
+        "description": "Como lidamos com as atualizações da política."
+      },
+      "contact": {
+        "title": "Contato",
+        "description": "Como entrar em contato conosco em caso de dúvidas."
+      }
+    }
+  }
 }

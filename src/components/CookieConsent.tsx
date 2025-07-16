@@ -2,8 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Cookie, X, Check, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../hooks/useTranslation';
 
 const CookieConsent = () => {
+
+  const { t } = useTranslation();
+
   const [isVisible, setIsVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -137,7 +141,7 @@ const CookieConsent = () => {
                 <div className="bg-accent/20 p-2 rounded-lg">
                   <Cookie size={20} className="text-accent" />
                 </div>
-                <h3 className="text-lg font-semibold text-secondary">Cookie Preferences</h3>
+                <h3 className="text-lg font-semibold text-secondary">{t('cookies.title')}</h3>
               </div>
               <button 
                 onClick={() => setIsVisible(false)}
@@ -150,8 +154,7 @@ const CookieConsent = () => {
             {/* Content */}
             <div className="mb-6">
               <p className="text-secondary/80 text-sm leading-relaxed mb-4">
-                We use cookies to enhance your experience, analyze site usage, and assist in our marketing efforts. 
-                Choose your preferences below or accept all to continue.
+                {t('cookies.description')}
               </p>
 
               {/* Details Toggle */}
@@ -160,7 +163,7 @@ const CookieConsent = () => {
                 className="text-accent hover:text-accent-light text-sm font-medium flex items-center gap-2 mb-4"
               >
                 <Shield size={16} />
-                {showDetails ? 'Hide' : 'Show'} cookie details
+                {showDetails ? t('cookies.showDetails') : t('cookies.hideDetails')}
                 <svg 
                   className={`w-4 h-4 transition-transform ${showDetails ? 'rotate-180' : ''}`}
                   fill="none" 
@@ -181,16 +184,16 @@ const CookieConsent = () => {
                     className="bg-primary/20 rounded-lg p-4 mb-4 space-y-3"
                   >
                     <div>
-                      <h4 className="text-secondary font-medium text-sm mb-1">Necessary Cookies</h4>
-                      <p className="text-secondary/70 text-xs">Required for basic site functionality. Cannot be disabled.</p>
+                      <h4 className="text-secondary font-medium text-sm mb-1">{t('cookies.necessary.title')}</h4>
+                      <p className="text-secondary/70 text-xs">{t('cookies.necessary.description')}</p>
                     </div>
                     <div>
-                      <h4 className="text-secondary font-medium text-sm mb-1">Analytics Cookies</h4>
-                      <p className="text-secondary/70 text-xs">Help us understand how visitors interact with our website through Google Analytics.</p>
+                      <h4 className="text-secondary font-medium text-sm mb-1">{t('cookies.analytics.title')}</h4>
+                      <p className="text-secondary/70 text-xs">{t('cookies.analytics.description')}</p>
                     </div>
                     <div>
-                      <h4 className="text-secondary font-medium text-sm mb-1">Marketing Cookies</h4>
-                      <p className="text-secondary/70 text-xs">Used to track visitors across websites for marketing and advertising purposes.</p>
+                      <h4 className="text-secondary font-medium text-sm mb-1">{t('cookies.marketing.title')}</h4>
+                      <p className="text-secondary/70 text-xs">{t('cookies.marketing.description')}</p>
                     </div>
                   </motion.div>
                 )}
@@ -204,30 +207,30 @@ const CookieConsent = () => {
                 className="flex-1 bg-accent text-white hover:bg-accent-light transition-colors px-4 py-3 rounded-lg font-medium text-sm flex items-center justify-center gap-2"
               >
                 <Check size={16} />
-                Accept All
+                {t('cookies.acceptAll')}
               </button>
               
               <button 
                 onClick={handleAcceptNecessary}
                 className="flex-1 border border-secondary/30 text-secondary hover:bg-secondary/10 transition-colors px-4 py-3 rounded-lg font-medium text-sm"
               >
-                Necessary Only
+               {t('cookies.necessaryOnly')}
               </button>
               
               <button 
                 onClick={handleDeclineAll}
                 className="flex-1 border border-red-500/30 text-red-300 hover:bg-red-500/10 transition-colors px-4 py-3 rounded-lg font-medium text-sm"
               >
-                Decline All
+                {t('cookies.declineAll')}
               </button>
             </div>
 
             {/* Footer */}
             <div className="mt-4 pt-4 border-t border-secondary/20">
               <p className="text-secondary/60 text-xs text-center">
-                You can change your preferences anytime in our{' '}
+                {t('cookies.footer')}{' '}
                 <a href="/privacy-policy" title="Privacy Policy" className="text-accent hover:text-accent-light underline">
-                  Privacy Policy
+                  {t('privacy.title')}
                 </a>
               </p>
             </div>

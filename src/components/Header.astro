@@ -1,10 +1,14 @@
 ---
-// src/components/Header.astro (Simple adaptive version)
-import NavLinks from './NavLinks.astro';
+// src/components/Header.astro (Updated with i18n support)
 import MobileNav from './MobileNav.tsx';
+import LanguageSwitcher from './LanguageSwitcher';
 import { Image } from 'astro:assets';
 import logo from '../assets/DayOne_Logo_Dark.png';
 import logoLight from '../assets/DayOne_Logo_Light.png';
+import { useTranslations } from '../utils/i18n';
+import NavLinks from './NavLinks.astro';
+
+const { t } = useTranslations();
 ---
 
 <header class="adaptive-header">
@@ -27,19 +31,22 @@ import logoLight from '../assets/DayOne_Logo_Light.png';
     
     <!-- Desktop Navigation -->
     <div class="hidden lg:flex space-x-6 xl:space-x-8">
-      <a href="/#our-solutions" class="nav-link" title="Our Solutions">Our Solutions</a>
-      <a href="/#our-team" class="nav-link" title="Our Team">Our Team</a>
-      <a href="/blog" class="nav-link" title="Blog">Blog</a>
+      <NavLinks classList="nav-link" />
     </div>
     
-    <!-- Desktop CTA Button -->
-    <div class="hidden lg:block">
+    <!-- Desktop Actions -->
+    <div class="hidden lg:flex items-center gap-4">
+      <!-- Language Switcher -->
+      <LanguageSwitcher client:load variant="header" />
+      
+      <!-- CTA Button -->
       <a 
         href="/#contact"
         class="bg-accent text-light hover:bg-white hover:text-dark transition-colors px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-medium cursor-pointer text-sm xl:text-base"
         title="Contact"
+        data-translate-key="navigation.contact"
       >
-        Contact
+        {t('navigation.contact')}
       </a>
     </div>
     
@@ -54,7 +61,7 @@ import logoLight from '../assets/DayOne_Logo_Light.png';
     if (!header) return;
     
     const darkSections = ['hero', 'contact', 'footer', 'blog-hero', 'newsletter']; // Add your dark section IDs
-    const lightSections = [ 'our-solutions', 'our-team', 'why-choose', 'blog-featured', 'blog-featured-articles', 'blog-main', 'blog-article']; // Add your light section IDs
+    const lightSections = [ 'our-solutions', 'our-team', 'why-choose', 'blog-featured', 'blog-featured-articles', 'blog-main', 'blog-article', 'privacy-policy']; // Add your light section IDs
 
     function updateHeaderMode() {
 
@@ -103,86 +110,3 @@ import logoLight from '../assets/DayOne_Logo_Light.png';
   document.addEventListener('DOMContentLoaded', initSimpleAdaptiveHeader);
   document.addEventListener('astro:after-swap', initSimpleAdaptiveHeader);
 </script>
-
-<style>
-  .adaptive-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    background: transparent;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: border-color 0.3s ease;
-  }
-  
-  /* Logo container for positioning */
-  .logo-container {
-    position: relative;
-  }
-  
-  /* Default state - light text (for dark backgrounds) */
-  .logo-dark {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .logo-light {
-    opacity: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .nav-link {
-    color: #E0DFD5; /* Light text */
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 0.875rem;
-    transition: color 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    color: #E2A86B; /* Accent color */
-  }
-  
-  @media (min-width: 1280px) {
-    .nav-link {
-      font-size: 1rem;
-    }
-  }
-  
-  .adaptive-header[data-theme="dark-text"] .logo-dark {
-    opacity: 1;
-  }
-  
-  .adaptive-header[data-theme="dark-text"] .logo-light {
-    opacity: 0;
-  }
-  
-  .adaptive-header[data-theme="dark-text"] .nav-link {
-    color: #414F59; /* Dark text */
-  }
-  
-  .adaptive-header[data-theme="dark-text"] .nav-link:hover {
-    color: #E2A86B; /* Accent color stays the same */
-  }
-  
-  /* Mobile landscape adjustments */
-  @media (max-height: 500px) and (orientation: landscape) {
-    .adaptive-header nav {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
-    
-    .max-w-28 {
-      max-width: 6rem;
-    }
-    
-    .max-w-32 {
-      max-width: 7rem;
-    }
-  }
-</style>

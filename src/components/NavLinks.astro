@@ -1,5 +1,9 @@
 ---
 // src/components/NavLinks.astro (Fixed)
+import { useTranslations } from '../utils/i18n';
+
+const { t } = useTranslations();
+
 export interface Props {
   classList: string;
 }
@@ -7,53 +11,7 @@ export interface Props {
 const { classList } = Astro.props;
 ---
 
-<a href="/#our-solutions" class={classList} title="Our Solutions">Our Solutions</a>
-<a href="/#our-team" class={classList} title="Our Team">Our Team</a>
-<a href="/blog" class={classList} title="Blog">Blog</a>
+<a href="/#our-solutions" class={classList} data-translate-key="navigation.ourSolutions" title={t('navigation.ourSolutions')}>{t('navigation.ourSolutions')}</a>
+<a href="/#our-team" class={classList} data-translate-key="navigation.ourTeam" title={t('navigation.ourTeam')}>{t('navigation.ourTeam')}</a>
+<a href="/blog" class={classList} data-translate-key="navigation.blog" title={t('navigation.blog')}>{t('navigation.blog')}</a>
 <!-- <a href="/#contact" class={classList}>Contact</a> -->
-
-<script>
-  // Add smooth scrolling behavior to all navigation links
-  function initSmoothScrolling() {
-    const navLinks = document.querySelectorAll('a[href^="/#"]');
-    
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (!href) return;
-        
-        // Check if we're on the homepage
-        if (window.location.pathname === '/') {
-          // We're on homepage, scroll to section
-          e.preventDefault();
-          
-          const targetId = href.substring(2); // Remove /#
-          const targetElement = document.getElementById(targetId);
-          
-          if (targetElement) {
-            // Calculate header height for offset
-            const header = document.querySelector('header');
-            const headerHeight = header ? header.offsetHeight : 0;
-            
-            // Scroll to target with offset for fixed header
-            const targetPosition = targetElement.offsetTop - headerHeight;
-            
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        } else {
-          // We're on a different page, navigate to homepage with anchor
-          // Let the browser handle the navigation normally
-        }
-      });
-    });
-  }
-
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', initSmoothScrolling);
-  
-  // Re-initialize after navigation (for SPA-like behavior)
-  document.addEventListener('astro:after-swap', initSmoothScrolling);
-</script>

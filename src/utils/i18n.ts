@@ -1,3 +1,4 @@
+// src/utils/i18n.ts - Global solution for static sites
 import en from '../locales/en.json';
 import pt from '../locales/pt.json';
 
@@ -9,15 +10,16 @@ const translations = {
 export type Locale = keyof typeof translations;
 export type TranslationKey = string;
 
-// Server-side default (for Astro SSR)
-let serverLocale: Locale = 'en';
+// Global locale that persists across components
+let globalLocale: Locale = 'en';
 
-// Get current locale (works on both server and client)
+// Get current locale
 export function getCurrentLocale(): Locale {
-  // Client-side
+  // Client-side - read from localStorage
   if (typeof window !== 'undefined') {
     const stored = localStorage.getItem('locale') as Locale;
     if (stored && stored in translations) {
+      globalLocale = stored;
       return stored;
     }
     
@@ -25,28 +27,32 @@ export function getCurrentLocale(): Locale {
     const browserLang = navigator.language.split('-')[0] as Locale;
     if (browserLang && browserLang in translations) {
       localStorage.setItem('locale', browserLang);
+      globalLocale = browserLang;
       return browserLang;
     }
     
     // Fallback to English
     localStorage.setItem('locale', 'en');
+    globalLocale = 'en';
     return 'en';
   }
   
-  // Server-side - return default or detected locale
-  return serverLocale;
+  // Server-side - return global locale
+  return globalLocale;
 }
 
-// Set current locale
+// Set current locale (used by language selector)
 export function setCurrentLocale(locale: Locale): void {
-  serverLocale = locale; // Update server-side cache
+  globalLocale = locale;
   
   if (typeof window !== 'undefined') {
     localStorage.setItem('locale', locale);
+    
     // Dispatch custom event for React components
     window.dispatchEvent(new CustomEvent('localeChanged', { detail: locale }));
-    // Dispatch event for Astro components that need to reload
-    window.dispatchEvent(new CustomEvent('astroLocaleChanged', { detail: locale }));
+    
+    // Update Astro components that use data attributes
+    updateAstroTranslations(locale);
   }
 }
 
@@ -72,20 +78,52 @@ export function t(key: TranslationKey, locale?: Locale): string {
   return value || key;
 }
 
-// Hook for Astro components
-export function useTranslations(locale?: Locale) {
-  const targetLocale = locale || getCurrentLocale();
+// Hook for Astro components - automatically uses global locale
+export function useTranslations(): { t: (key: TranslationKey) => string; locale: Locale } {
+  const currentLocale = getCurrentLocale();
   
   return {
-    t: (key: TranslationKey) => t(key, targetLocale),
-    locale: targetLocale
+    t: (key: TranslationKey) => t(key, currentLocale),
+    locale: currentLocale
   };
 }
 
-// Initialize locale from browser/storage
-export function initializeLocale(): void {
-  if (typeof window !== 'undefined') {
-    getCurrentLocale(); // This will set up localStorage if needed
+// Update Astro translations on client-side
+function updateAstroTranslations(locale: Locale): void {
+  const translatableElements = document.querySelectorAll('[data-translate-key]');
+  
+  translatableElements.forEach(element => {
+    const key = element.getAttribute('data-translate-key');
+    if (key) {
+      const translation = t(key, locale);
+      
+      if (element.getAttribute('data-translate-html') === 'true') {
+        element.innerHTML = translation;
+      } else {
+        element.textContent = translation;
+      }
+    }
+  });
+}
+
+// Initialize locale and set up global listeners (called only once from Layout)
+export function initializeGlobalTranslations(): void {
+  if (typeof window !== 'undefined' && !window.__i18nInitialized) {
+    // Get the current locale to ensure it's set
+    const currentLocale = getCurrentLocale();
+    
+    // Set up global listener for locale changes
+    window.addEventListener('localeChanged', (event: CustomEvent) => {
+      updateAstroTranslations(event.detail);
+    });
+    
+    // Update translations immediately based on stored locale
+    // Use a small delay to ensure DOM is ready
+    setTimeout(() => {
+      updateAstroTranslations(currentLocale);
+    }, 0);
+    
+    window.__i18nInitialized = true;
   }
 }
 
@@ -94,3 +132,10 @@ export const availableLocales: { code: Locale; name: string; flag: string }[] = 
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'pt', name: 'Português', flag: '🇧🇷' }
 ];
+
+// Extend window interface for TypeScript
+declare global {
+  interface Window {
+    __i18nInitialized?: boolean;
+  }
+}
