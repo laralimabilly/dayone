@@ -35,14 +35,15 @@ const { t } = useTranslations();
     </div>
     
     <!-- Desktop Actions -->
-    <div class="hidden lg:flex items-center gap-4">
+    <div class="flex items-center gap-4">
+      
       <!-- Language Switcher -->
       <LanguageSwitcher client:load variant="header" />
       
       <!-- CTA Button -->
       <a 
         href="/#contact"
-        class="bg-accent text-light hover:bg-white hover:text-dark transition-colors px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-medium cursor-pointer text-sm xl:text-base"
+        class="hidden lg:block bg-accent text-light hover:bg-white hover:text-dark transition-colors px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-medium cursor-pointer text-sm xl:text-base"
         title="Contact"
         data-translate-key="navigation.contact"
       >
