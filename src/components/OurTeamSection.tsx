@@ -44,6 +44,24 @@ const OurTeamSection = () => {
       image: '/img/Roberta.png',
       linkedinUrl: 'https://www.linkedin.com/in/roberta-vyborny-389ba123/',
       description: t('team.person.roberta.description')
+    },
+    {
+      id: 'osvaldo-aranha',
+      name: 'Osvaldo Aranha',
+      title: t('team.person.osvaldo.title'),
+      email: 'osvaldo.aranha@dayonetalent.com',
+      image: '/img/Osvaldo.png',
+      linkedinUrl: 'https://www.linkedin.com/in/osvaldoaranha/',
+      description: t('team.person.osvaldo.description')
+    },
+    {
+      id: 'gustavo-brant',
+      name: 'Gustavo Brant',
+      title: t('team.person.gustavo.title'),
+      email: 'gustavo.brant@dayonetalent.com',
+      image: '/img/Gustavo.png',
+      linkedinUrl: 'https://www.linkedin.com/in/gustavobrant/',
+      description: t('team.person.gustavo.description')
     }
   ];
 
