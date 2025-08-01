@@ -36,9 +36,9 @@
       "title": {
         "line1": "Connecting",
         "line2": "Great Companies with",
-        "line3": "Exceptional Talent"
+        "line3": "Exceptional Talents"
       },
-      "subtitle": "Our Talent Advisory and Executive Search firm specializes in building AI-ready leadership teams for companies undergoing expansion, transformation, and market entry.",
+      "subtitle": "Our Talent Advisory and Executive Search services specialize in building leadership teams prepared for the Artificial Intelligence era, both for companies undergoing expansion and transformation, as well as those preparing to enter new markets.",
       "cta": {
         "companies": "Executive Search & Talent Advisory",
         "companiesNote": "*For Companies",
@@ -51,20 +51,20 @@
     },
     "solutions": {
       "title": "Our Solutions",
-      "subtitle": "Transform your organization with leaders who don't just adapt — they drive change.",
+      "subtitle": "Transform your organization with leaders who not only adapt, but drive change.",
       "executiveSearch": {
         "title": "EXECUTIVE SEARCH",
-        "description": "Transform your organization with leaders who don't just adapt — they drive change.",
-        "subtitle": "We go beyond recruitment to deliver tailored, strategic AI-ready executives who lead transformation and scale impact."
+        "description": "Transform your organization with leaders who not only adapt, but drive change.",
+        "subtitle": "We go beyond recruiting to find tailored executives, ready for the AI era, who strategically lead transformation and its impact on the market."
       },
       "talentAdvisory": {
         "title": "TALENT ADVISORY", 
-        "description": "From organizational design and competitive mapping to leadership assessments and role definitions - we help build future-ready teams.",
+        "description": "From organizational design and competitor mapping to leadership assessments and role definitions, we help build future-ready teams.",
         "subtitle": "We help anticipate challenges and accelerate leadership evolution."
       },
       "careerTransition": {
         "title": "CAREER TRANSITION SUPPORT",
-        "description": "Tailor-made guidance for senior professionals navigating transitions, searching for reinvention, and in career transformation.",
+        "description": "Personalized guidance for senior professionals going through transitions, seeking reinvention, and career transformation.",
         "subtitle": "We deliver human insight backed by market intelligence."
       },
       "cta": {
@@ -75,7 +75,7 @@
     },
     "team": {
       "title": "Our Team",
-      "subtitle": "At DAYONE, we believe that every great impact begins with the energy of the first day — and that true transformation happens when that energy is renewed, every single day. We focus on identifying leaders who don't just adapt — they drive the evolution of our clients.",
+      "subtitle": "At DAYONE, we believe that every great impact begins with the energy of the first day and that true transformation happens when that energy is renewed, every single day. We focus on identifying leaders who don't just adapt, they drive the evolution of our clients.",
       "person": {
         "fernanda": {
           "title": "Managing Partner",
@@ -99,26 +99,26 @@
         },
         "gustavo": {
           "title": "Thought Leader",
-          "description": "Gustavo Brant has over 30 years of experience as an executive in the B2B technology market, working with hardware, software, and services. He built a solid career leading operations at companies such as SAP, Oracle, IBM, Dell, and others, and most recently as Senior Vice President of DocuSign LATAM and Chief Growth Officer at Sankhya. He has received numerous recognitions, including eight President's Club honorees throughout his career.<br>Recognized for his ability to accelerate challenging businesses and develop high-performance teams, he spearheaded DocuSign's expansion in the region, developing a go-to-market plan that drove growth and exponentially scaling the team to market leadership. At Sankhya, he consistently exceeded targets, driving strategic restructuring that leveraged growth and transformation of both the internal structure and the partner ecosystem.<br>His leadership style is marked by strategic vision, excellent execution, and a strong focus on results in transformative contexts. His experience developing people has transcended hierarchical boundaries and includes several mentoring cases that have transformed the performance of business executives, especially in the technology industry."
+          "description": "Gustavo Brant has over 30 years of experience as an executive in the B2B technology market, working with hardware, software, and services. He built a solid career leading operations at companies such as SAP, Oracle, IBM, and Dell, among others, and most recently as Senior Vice President of DocuSign LATAM and Chief Growth Officer at Sankhya.<br>Recognized for his ability to accelerate challenging businesses and develop high-performance teams, he spearheaded DocuSign's expansion in the region, developing a go-to-market plan that drove growth and scaling the team exponentially to become market leader. At Sankhya, he consistently exceeded targets, driving strategic restructuring that leveraged growth and transformation of both the internal structure and the partner ecosystem.<br>His leadership style is marked by strategic vision, excellent execution, and a strong focus on results in transformative contexts. His experience developing people has transcended hierarchical boundaries and includes several mentoring cases that have transformed the performance of business executives, especially in the technology industry."
         }
       },
       "connect": "Connect on LinkedIn"
     },
     "whyChoose": {
       "title": "Why Choose DayOne",
-      "subtitle": "Not just search. Not just advice. A true leadership partner.",
+      "subtitle": "Not just executive search. Not just advice. A true leadership partner.",
       "features": {
         "boutique": {
-          "title": "Boutique mindset. Senior attention.",
-          "description": "Personalized service with experienced partners leading every engagement"
+          "title": "Boutique mindset. Senior engagement.",
+          "description": "Personalized service with experienced partners leading each connection"
+        },
+        "humanFocused": {
+          "title": "Human-centered. Strategy-driven.",
+          "description": "Balancing analytical precision with genuine, empathetic human connection and empathy"
         },
         "expertise": {
           "title": "Deep industry expertise in Tech, Digital Products, Marketing and Sales.",
           "description": "Specialized knowledge in the sectors that drive digital transformation"
-        },
-        "humanFocused": {
-          "title": "Human-focused. Strategy-driven.",
-          "description": "Balancing analytical precision with genuine human connection and empathy"
         },
         "tailored": {
           "title": "Tailored journeys. Tangible outcomes.",
